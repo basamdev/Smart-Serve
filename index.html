@@ -338,18 +338,22 @@
             const msg = document.getElementById('fmsg');
             if (!rest || !phone){ msg.className = 'fmsg err'; msg.textContent = t('lnd_form_err'); return; }
             const bar = '\u{2501}'.repeat(18);
+            const p2 = n => String(n).padStart(2, '0');
+            const now = new Date();
+            const stamp = p2(now.getDate()) + '/' + p2(now.getMonth() + 1) + '/' + now.getFullYear() + ' - ' + p2(now.getHours()) + ':' + p2(now.getMinutes());
             const lines = [
                 '*SmartServe*',
-                'داواکاریی مێنیوی دیجیتاڵ / Menu request',
+                t('lnd_wa_req'),
                 bar,
-                '*ناوی شوێن:* ' + rest,
-                '*ناو:* ' + (name || '-'),
-                '*ژمارە:* ' + phone,
-                '*شار:* ' + (city || '-')
+                '*' + t('lnd_wa_place') + ':* ' + rest,
+                '*' + t('lnd_wa_name') + ':* ' + (name || '-'),
+                '*' + t('lnd_wa_phone') + ':* ' + phone,
+                '*' + t('lnd_wa_city') + ':* ' + (city || '-')
             ];
-            if (note) lines.push('*تێبینی:* ' + note);
+            if (note) lines.push('*' + t('lnd_wa_note') + ':* ' + note);
+            lines.push('*' + t('lnd_wa_time') + ':* ' + stamp);
             lines.push(bar);
-            lines.push('Smart-Serve | مێنیوی دیجیتاڵی مۆدێرن');
+            lines.push('Smart-Serve | ' + t('lnd_wa_footer'));
             msg.className = 'fmsg ok'; msg.textContent = t('lnd_form_ok');
             window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n')), '_blank');
         }
