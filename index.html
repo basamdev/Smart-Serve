@@ -337,9 +337,19 @@
             const rest = v('f-rest'), name = v('f-name'), phone = v('f-phone'), city = v('f-city'), note = v('f-note');
             const msg = document.getElementById('fmsg');
             if (!rest || !phone){ msg.className = 'fmsg err'; msg.textContent = t('lnd_form_err'); return; }
-            const E = { plate:'\u{1F37D}\u{FE0F}', shop:'\u{1F3EA}', person:'\u{1F464}', phone:'\u{1F4DE}', pin:'\u{1F4CD}', note:'\u{1F4DD}' };
-            const lines = [E.plate + ' داواکاریی مێنیوی دیجیتاڵ / Menu request', '', E.shop + ' ' + rest, E.person + ' ' + (name || '-'), E.phone + ' ' + phone, E.pin + ' ' + (city || '-')];
-            if (note) lines.push(E.note + ' ' + note);
+            const bar = '\u{2501}'.repeat(18);
+            const lines = [
+                '*SmartServe*',
+                'داواکاریی مێنیوی دیجیتاڵ / Menu request',
+                bar,
+                '*ناوی شوێن:* ' + rest,
+                '*ناو:* ' + (name || '-'),
+                '*ژمارە:* ' + phone,
+                '*شار:* ' + (city || '-')
+            ];
+            if (note) lines.push('*تێبینی:* ' + note);
+            lines.push(bar);
+            lines.push('Smart-Serve | مێنیوی دیجیتاڵی مۆدێرن');
             msg.className = 'fmsg ok'; msg.textContent = t('lnd_form_ok');
             window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n')), '_blank');
         }
