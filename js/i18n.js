@@ -47,7 +47,7 @@
         msg_login_bad:{ ku: 'ناوی بەکارهێنەر یان وشەی نهێنی هەڵەیە', ar: 'اسم المستخدم أو كلمة المرور غير صحيحة', en: 'Invalid username or password' },
 
         /* ---- لاندینگ / landing ---- */
-        lnd_brand:      { ku: "سمارت <b class='g'>سێرڤ</b>", ar: "سمارت <b class='g'>سيرف</b>", en: "Smart<b class='g'>Serve</b>" },
+        lnd_brand:      { ku: "سمارت <b class='g'>سێرڤ</b>", ar: "سمارت <b class='g'>سيرف</b>", en: "Smart <b class='g'>Serve</b>" },
         lnd_nav_features:{ ku: "تایبەتمەندییەکان", ar: "المميزات", en: "Features" },
         lnd_nav_how:    { ku: "چۆن کار دەکات", ar: "كيف يعمل", en: "How it works" },
         lnd_hero_pill:  { ku: "◆ مێنیوی ئۆنلاین بۆ شوێنەکەت: کافێ و رێستورانت، شیرینی", ar: "◆ قائمة أونلاين لمكانك: مقهى، مطعم، حلويات", en: "◆ Online menu for your place: café, restaurant, sweets" },

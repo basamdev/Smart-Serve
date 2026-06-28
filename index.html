@@ -4,7 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SmartServe — مێنیوی دیجیتاڵ</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%BD%EF%B8%8F%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" href="images/icon-192.png">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0C0A1B">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SmartServe">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -22,9 +29,17 @@
         /* HEADER */
         header{position:sticky;top:0;z-index:50;background:rgba(20,11,0,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
         .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
-        .brand{display:flex;align-items:center;gap:9px;font-weight:900;font-size:19px;letter-spacing:.3px;white-space:nowrap}
+        .brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:15px;letter-spacing:.2px;white-space:nowrap}
         .brand .mk{font-size:26px}
-        .brand .g{background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding-inline-start:2px}
+        .brand .brand-logo{width:38px;height:38px;border-radius:10px;object-fit:cover;display:block;animation:logoFloat 3.2s ease-in-out infinite}
+        @keyframes logoFloat{0%,100%{transform:translateY(0) rotate(0);filter:drop-shadow(0 0 6px rgba(99,102,241,.55))}50%{transform:translateY(-3px) rotate(-1.5deg);filter:drop-shadow(0 0 16px rgba(139,92,246,.95))}}
+        .brand .bt{display:inline-flex;align-items:center;gap:0;color:var(--text);min-width:8em}
+        .brand .brand-tw{display:inline-block;border-inline-end:2px solid transparent;padding-inline-end:1px}
+        .brand .brand-tw.typing{border-inline-end-color:var(--gold);animation:brandCaret .7s step-end infinite}
+        @keyframes brandCaret{50%{border-color:transparent}}
+        .brand .brand-sep{color:var(--gold);font-weight:800;font-size:.95em;padding-inline-start:5px;animation:sepPulse 1.5s ease-in-out infinite}
+        @keyframes sepPulse{0%,100%{opacity:.5;text-shadow:0 0 6px rgba(99,102,241,.35)}50%{opacity:1;text-shadow:0 0 14px rgba(139,92,246,.85);transform:scale(1.08)}}
+        .brand .g{background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding-inline-start:1px;font-weight:900}
         .menu{display:flex;align-items:center;gap:18px}
         .menu a.navlink{font-size:14px;color:var(--sub);font-weight:600;transition:color .2s}
         .menu a.navlink:hover{color:var(--text)}
@@ -163,7 +178,7 @@
 
     <header>
         <div class="wrap nav">
-            <a class="brand" href="#top"><span class="mk">🍽️</span> <span data-i18n="lnd_brand"></span></a>
+            <a class="brand" href="#top"><img class="brand-logo" src="images/logo.png" alt="SmartServe logo"> <span class="bt"><span class="brand-tw"></span><span class="brand-sep">|</span></span></a>
             <nav class="menu">
                 <a class="navlink" href="#features" data-i18n="lnd_nav_features"></a>
                 <a class="navlink" href="#how" data-i18n="lnd_nav_how"></a>
@@ -416,6 +431,56 @@
         }
         document.addEventListener('langchange', applyCustLang);
         applyCustLang();
+
+        // ── brand title: ku ↔ en typewriter; | stays at end ──
+        (function(){
+            var ORDER = ['ku', 'en'];
+            var idx = 0;
+            function brandTypewriter(){
+                var word = document.querySelector('.brand .brand-tw');
+                var STR = window.I18N && window.I18N.STR;
+                if (!word || !STR || !STR.lnd_brand) return;
+                clearInterval(word._tw);
+                clearTimeout(word._twPause);
+                word._twActive = true;
+                function plain(html){ var s = document.createElement('span'); s.innerHTML = html; return s.textContent || ''; }
+                function typeOne(lang, done){
+                    if (!word._twActive) return;
+                    var html = STR.lnd_brand[lang] || '';
+                    var text = plain(html);
+                    word.textContent = '';
+                    word.classList.add('typing');
+                    var i = 0;
+                    word._tw = setInterval(function(){
+                        word.textContent = text.slice(0, ++i);
+                        if (i >= text.length){
+                            clearInterval(word._tw);
+                            word.classList.remove('typing');
+                            word.innerHTML = html;
+                            word._twPause = setTimeout(function(){
+                                if (!word._twActive) return;
+                                word.textContent = '';
+                                word.classList.add('typing');
+                                var j = text.length;
+                                word._tw = setInterval(function(){
+                                    word.textContent = text.slice(0, --j);
+                                    if (j <= 0){ clearInterval(word._tw); word.classList.remove('typing'); done(); }
+                                }, 38);
+                            }, 2200);
+                        }
+                    }, 88);
+                }
+                function cycle(){
+                    if (!word._twActive) return;
+                    typeOne(ORDER[idx], function(){
+                        idx = (idx + 1) % ORDER.length;
+                        word._twPause = setTimeout(cycle, 500);
+                    });
+                }
+                cycle();
+            }
+            brandTypewriter();
+        })();
     </script>
 </body>
 </html>
