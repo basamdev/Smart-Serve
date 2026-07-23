@@ -109,7 +109,7 @@
         lnd_form_note_ph: { ku: "هەر داواکارییەکی تایبەت...", ar: "أي طلب خاص...", en: "Any special request..." },
         lnd_form_send:  { ku: "📲 ناردن بە واتساپ", ar: "📲 إرسال عبر واتساب", en: "📲 Send via WhatsApp" },
         lnd_footer_name:{ ku: "SmartServe", ar: "SmartServe", en: "SmartServe" },
-        lnd_follow_us:  { ku: "فۆڵۆی بکە", ar: "تابعونا", en: "Follow Us" },
+        lnd_follow_us:  { ku: "<span class='g'>فۆڵۆمان بکەن</span>", ar: "<span class='g'>تابعنا</span>", en: "<span class='g'>follow us</span>" },
         lnd_made_by:    { ku: "دروستکراوە لەلایەن", ar: "صُنع بواسطة", en: "Made by" },
         lnd_form_err:   { ku: "تکایە ناوی شوێن و ژمارەی واتساپ پڕبکەرەوە.", ar: "يرجى إدخال اسم المكان ورقم واتساب.", en: "Please enter the place name and WhatsApp number." },
         lnd_form_ok:    { ku: "واتساپ دەکرێتەوە...", ar: "يتم فتح واتساب...", en: "Opening WhatsApp..." },
