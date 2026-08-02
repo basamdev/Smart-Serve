@@ -157,10 +157,17 @@
         .morebtn:hover::before{left:100%}
 
         /* FEATURED CLIENT */
-        .client-feature{display:flex;align-items:center;gap:28px;max-width:760px;margin:0 auto;background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:22px;padding:28px 32px;box-shadow:0 18px 50px rgba(139,92,246,.16);transition:all .3s;position:relative;overflow:hidden}
+        .client-feature{display:flex;align-items:center;gap:28px;max-width:760px;margin:0 auto;background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:22px;padding:28px 32px;box-shadow:0 18px 50px rgba(139,92,246,.16);transition:all .3s;position:relative}
         .client-feature::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(99,102,241,.06),transparent 70%);opacity:0;transition:opacity .3s}
+        .client-border{position:absolute;inset:0;border-radius:22px;pointer-events:none;z-index:2}
+        .client-border svg{position:absolute;inset:0;width:100%;height:100%;border-radius:22px}
+        .client-border .path-cw{fill:none;stroke:var(--blue1);stroke-width:2;stroke-linecap:round;stroke-dasharray:40 1000;stroke-dashoffset:0;filter:drop-shadow(0 0 6px var(--blue1)) drop-shadow(0 0 12px var(--cyan));animation:borderCW 4s linear infinite}
+        .client-border .path-ccw{fill:none;stroke:var(--cyan);stroke-width:2;stroke-linecap:round;stroke-dasharray:40 1000;stroke-dashoffset:0;filter:drop-shadow(0 0 6px var(--cyan)) drop-shadow(0 0 12px var(--blue1));animation:borderCCW 4s linear infinite}
         .client-feature:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 22px 60px rgba(99,102,246,.25)}
         .client-feature:hover::before{opacity:1}
+        .client-feature:hover .path-cw{stroke:var(--gold);filter:drop-shadow(0 0 8px var(--gold)) drop-shadow(0 0 16px var(--cyan));animation-duration:2.5s}
+        .client-feature:hover .path-ccw{stroke:var(--cyan);filter:drop-shadow(0 0 8px var(--cyan)) drop-shadow(0 0 16px var(--gold));animation-duration:2.5s}
+        .client-inner{position:relative;z-index:1;display:flex;align-items:center;gap:28px;width:100%}
         .client-feature + .client-feature{margin-top:20px}
         .cf-logo{flex:none;width:78px;height:78px;border-radius:20px;overflow:hidden;background:transparent;box-shadow:0 8px 22px rgba(0,0,0,.35)}
         .cf-logo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04)}
@@ -193,11 +200,6 @@
         .gcard-inner{position:relative;z-index:1}
         .gcard img{display:block;width:100%;height:auto;transition:transform .4s}
         .gcard:hover img{transform:scale(1.03)}
-        @media(max-width:760px){
-            .client-feature{flex-direction:column;text-align:center;padding:26px 20px;gap:18px}
-            .cf-info{text-align:center}
-            .gallery{grid-template-columns:1fr}
-        }
 
         /* PRICING */
         .plans{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:900px;margin:0 auto}
@@ -226,9 +228,10 @@
         .plan .pcta::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .5s}
         .plan .pcta:hover{transform:translateY(-2px);box-shadow:0 14px 35px rgba(139,92,246,.5),0 0 50px rgba(99,102,246,.4)}
         .plan .pcta:hover::before{left:100%}
-        @media(max-width:760px){.plans{grid-template-columns:1fr}}
-        @media(max-width:820px){.statsrow{grid-template-columns:repeat(2,1fr)}.custs{grid-template-columns:repeat(2,1fr)}}
-        @media(max-width:600px){.custs{grid-template-columns:1fr}.statbox .sn{font-size:30px}}
+        @media(max-width:1024px){.feats{grid-template-columns:repeat(3,1fr)}.gallery{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:768px){.feats{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}.plans{grid-template-columns:1fr}.statsrow{grid-template-columns:repeat(2,1fr)}.custs{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:1fr}.client-feature{flex-direction:column;text-align:center;padding:26px 20px;gap:18px}.cf-info{text-align:center}.client-inner{flex-direction:column;text-align:center}}
+        @media(max-width:600px){.custs{grid-template-columns:1fr}.statbox .sn{font-size:30px}.menu .navlink{display:none}.hero h1{font-size:32px}.hero p{font-size:15px}.stitle h2{font-size:24px}.grid2{grid-template-columns:1fr}.hero{padding:52px 0 44px}.feats{grid-template-columns:1fr}.cf-logo{width:64px;height:64px}.cf-qr .qrbox{width:110px;height:110px}.cf-qr .qrbox canvas,.cf-qr .qrbox svg{width:96px!important;height:96px!important}.cf-name{font-size:18px}.cf-desc{font-size:12px}}
+        @media(max-width:480px){.hero h1{font-size:28px}.hero p{font-size:14px}.stitle h2{font-size:22px}.feat{padding:20px 16px}.step{padding:24px 18px}.plan{padding:32px 24px 28px}.formcard{padding:28px 20px}}
 
         /* FORM */
         .formsec{background:linear-gradient(180deg,transparent,rgba(201,168,76,.05))}
@@ -265,8 +268,6 @@
         .socials .s-tiktok:hover{box-shadow:0 8px 24px rgba(0,0,0,.6)}
         .socials svg{width:20px;height:20px;fill:currentColor}
 
-        @media(max-width:820px){.feats{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}}
-        @media(max-width:600px){.menu .navlink{display:none}.hero h1{font-size:32px}.hero p{font-size:15px}.stitle h2{font-size:24px}.grid2{grid-template-columns:1fr}.hero{padding:52px 0 44px}}
     </style>
 </head>
 <body>
@@ -365,42 +366,9 @@
                 <h2 data-i18n="lnd_cust_title"></h2>
                 <p data-i18n="lnd_cust_sub"></p>
             </div>
-            <div class="client-feature">
-                <div class="cf-logo"><img src="images/smartserve-menu-logo.png" alt="SmartServe logo"></div>
-                <div class="cf-info">
-                    <span class="cf-badge"><span class="cf-dot"></span><span data-i18n="lnd_cust_live"></span></span>
-                    <h3 class="cf-name">SmartServe</h3>
-                    <p class="cf-desc" data-i18n="lnd_cust_ali_desc"></p>
-                    <a class="cf-btn" href="https://smartserve-pos-menu.vercel.app/" target="_blank" rel="noopener noreferrer" data-i18n="lnd_cust_visit"></a>
-                </div>
-                <div class="cf-qr">
-                    <div class="qrbox" data-qr="https://smartserve-pos-menu.vercel.app/"></div>
-                </div>
-            </div>
-            <div class="client-feature">
-                <div class="cf-logo"><img src="images/shawarma-demeshq-logo.jpg" alt="Shawarma Demeshq logo"></div>
-                <div class="cf-info">
-                    <span class="cf-badge"><span class="cf-dot"></span><span data-i18n="lnd_cust_live"></span></span>
-                    <h3 class="cf-name">Shawarma Demeshq</h3>
-                    <p class="cf-desc" data-i18n="lnd_cust_shaw_args"></p>
-                    <a class="cf-btn" href="https://shawarma-demeshq-menu.vercel.app/" target="_blank" rel="noopener noreferrer" data-i18n="lnd_cust_visit"></a>
-                </div>
-                <div class="cf-qr">
-                    <div class="qrbox" data-qr="https://shawarma-demeshq-menu.vercel.app/"></div>
-                </div>
-            </div>
-            <div class="client-feature">
-                <div class="cf-logo"><img src="images/yasamin-al-sham-logo.png" alt="Yasamin Al Sham logo"></div>
-                <div class="cf-info">
-                    <span class="cf-badge"><span class="cf-dot"></span><span data-i18n="lnd_cust_live"></span></span>
-                    <h3 class="cf-name">Yasamin Al Sham</h3>
-                    <p class="cf-desc" data-i18n="lnd_cust_yas_desc"></p>
-                    <a class="cf-btn" href="https://yasamin-al-sham-menu.vercel.app/" target="_blank" rel="noopener noreferrer" data-i18n="lnd_cust_visit"></a>
-                </div>
-                <div class="cf-qr">
-                    <div class="qrbox" data-qr="https://yasamin-al-sham-menu.vercel.app/"></div>
-                </div>
-            </div>
+            <div class="client-feature"><div class="client-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="22" ry="22"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="22" ry="22"/></svg></div><div class="client-inner"><div class="cf-logo"><img src="images/smartserve-menu-logo.png" alt="SmartServe logo"></div><div class="cf-info"><span class="cf-badge"><span class="cf-dot"></span><span data-i18n="lnd_cust_live"></span></span><h3 class="cf-name">SmartServe</h3><p class="cf-desc" data-i18n="lnd_cust_ali_desc"></p><a class="cf-btn" href="https://smartserve-pos-menu.vercel.app/" target="_blank" rel="noopener noreferrer" data-i18n="lnd_cust_visit"></a></div><div class="cf-qr"><div class="qrbox" data-qr="https://smartserve-pos-menu.vercel.app/"></div></div></div></div>
+            <div class="client-feature"><div class="client-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="22" ry="22"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="22" ry="22"/></svg></div><div class="client-inner"><div class="cf-logo"><img src="images/shawarma-demeshq-logo.jpg" alt="Shawarma Demeshq logo"></div><div class="cf-info"><span class="cf-badge"><span class="cf-dot"></span><span data-i18n="lnd_cust_live"></span></span><h3 class="cf-name">Shawarma Demeshq</h3><p class="cf-desc" data-i18n="lnd_cust_shaw_args"></p><a class="cf-btn" href="https://shawarma-demeshq-menu.vercel.app/" target="_blank" rel="noopener noreferrer" data-i18n="lnd_cust_visit"></a></div><div class="cf-qr"><div class="qrbox" data-qr="https://shawarma-demeshq-menu.vercel.app/"></div></div></div></div>
+            <div class="client-feature"><div class="client-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="22" ry="22"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="22" ry="22"/></svg></div><div class="client-inner"><div class="cf-logo"><img src="images/yasamin-al-sham-logo.png" alt="Yasamin Al Sham logo"></div><div class="cf-info"><span class="cf-badge"><span class="cf-dot"></span><span data-i18n="lnd_cust_live"></span></span><h3 class="cf-name">Yasamin Al Sham</h3><p class="cf-desc" data-i18n="lnd_cust_yas_desc"></p><a class="cf-btn" href="https://yasamin-al-sham-menu.vercel.app/" target="_blank" rel="noopener noreferrer" data-i18n="lnd_cust_visit"></a></div><div class="cf-qr"><div class="qrbox" data-qr="https://yasamin-al-sham-menu.vercel.app/"></div></div></div></div>
         </div>
     </section>
 
