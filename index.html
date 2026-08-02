@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ku" dir="rtl" id="html-root">
+<html lang="ku" dir="ltr" id="html-root">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,13 +16,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;border:0;outline:0}
         :root{--gold:#6366F1;--gold2:#8B5CF6;--gold3:#A78BFA;--bg:#0C0A1B;--card:#16132C;--card2:#1E1A3C;--text:#EDEBFB;--sub:#938CC2;--line:rgba(139,92,246,.20);--wa:#25D366;--blue1:#3B82F6;--blue2:#60A5FA;--blue3:#93C5FD;--cyan:#06B6D4;--purple:#8B5CF6}
-        html{scroll-behavior:smooth}
-        body{font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;overflow-x:hidden}
+        html{scroll-behavior:smooth;overflow-x:hidden;width:100%;min-width:100%;text-align:left}
+        body{font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;overflow-x:hidden;margin:0;padding:0;width:100%;min-width:100%;text-align:left}
         a{text-decoration:none;color:inherit}
         .g{color:var(--gold)}
-        .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+        .wrap{margin:0;padding:0;width:100%;box-sizing:border-box;text-align:left;display:block;position:static;float:none;clear:both}
         .glow{position:fixed;width:480px;height:480px;border-radius:50%;filter:blur(40px);z-index:0;pointer-events:none;opacity:.6}
         .glow.a{top:-160px;inset-inline-end:-120px;background:radial-gradient(circle,rgba(99,102,241,.4),rgba(59,130,246,.3),transparent 70%);animation:floatGlow1 8s ease-in-out infinite}
         .glow.b{bottom:-180px;inset-inline-start:-120px;background:radial-gradient(circle,rgba(139,92,246,.4),rgba(6,182,212,.3),transparent 70%);animation:floatGlow2 10s ease-in-out infinite}
@@ -77,19 +77,19 @@
         .hero .note{margin-top:14px;font-size:13px;color:var(--sub)}
 
         /* SECTIONS */
-        section{position:relative;z-index:1;padding:60px 0}
+        section{position:relative;z-index:1;padding:60px 0;margin:0;width:100%}
         .stitle{text-align:center;margin-bottom:42px;position:relative}
         .stitle h2{font-size:30px;font-weight:800;text-shadow:0 0 30px rgba(99,102,241,.2);position:relative;display:inline-block}
         .stitle h2::after{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:60px;height:3px;background:linear-gradient(90deg,var(--gold),var(--blue1));border-radius:2px}
         .stitle p{color:var(--sub);font-size:15px;margin-top:16px}
 
-        .feats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+        .feats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%;min-width:100%}
         .feat{background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:18px;padding:24px 18px;text-align:center;transition:all .3s;position:relative}
         .feat::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(99,102,241,.1),transparent 70%);opacity:0;transition:opacity .3s}
-        .feat-border{position:absolute;inset:0;border-radius:18px;pointer-events:none;z-index:2}
+        .feat-border{position:absolute;inset:0;border-radius:18px;pointer-events:none;z-index:2;overflow:hidden}
         .feat-border svg{position:absolute;inset:0;width:100%;height:100%;border-radius:18px}
-        .feat-border .path-cw{fill:none;stroke:var(--blue1);stroke-width:2;stroke-linecap:round;stroke-dasharray:30 1000;stroke-dashoffset:0;filter:drop-shadow(0 0 6px var(--blue1)) drop-shadow(0 0 12px var(--cyan));animation:borderCW 4s linear infinite}
-        .feat-border .path-ccw{fill:none;stroke:var(--cyan);stroke-width:2;stroke-linecap:round;stroke-dasharray:30 1000;stroke-dashoffset:0;filter:drop-shadow(0 0 6px var(--cyan)) drop-shadow(0 0 12px var(--blue1));animation:borderCCW 4s linear infinite}
+        .feat-border .path-cw{fill:none;stroke:var(--blue1);stroke-width:2;stroke-linecap:round;stroke-dasharray:30 1000;stroke-dashoffset:0;filter:drop-shadow(0 0 8px var(--blue1)) drop-shadow(0 0 16px var(--cyan));animation:borderCW 4s linear infinite}
+        .feat-border .path-ccw{fill:none;stroke:var(--cyan);stroke-width:2;stroke-linecap:round;stroke-dasharray:30 1000;stroke-dashoffset:0;filter:drop-shadow(0 0 8px var(--cyan)) drop-shadow(0 0 16px var(--blue1));animation:borderCCW 4s linear infinite}
         .feat:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 12px 40px rgba(99,102,246,.2)}
         .feat:hover::before{opacity:1}
         .feat:hover .path-cw{stroke:var(--gold);filter:drop-shadow(0 0 8px var(--gold)) drop-shadow(0 0 16px var(--cyan));animation-duration:2.5s}
@@ -228,10 +228,11 @@
         .plan .pcta::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .5s}
         .plan .pcta:hover{transform:translateY(-2px);box-shadow:0 14px 35px rgba(139,92,246,.5),0 0 50px rgba(99,102,246,.4)}
         .plan .pcta:hover::before{left:100%}
-        @media(max-width:1024px){.feats{grid-template-columns:repeat(3,1fr)}.gallery{grid-template-columns:repeat(2,1fr)}}
-        @media(max-width:768px){.feats{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}.plans{grid-template-columns:1fr}.statsrow{grid-template-columns:repeat(2,1fr)}.custs{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:1fr}.client-feature{flex-direction:column;text-align:center;padding:26px 20px;gap:18px}.cf-info{text-align:center}.client-inner{flex-direction:column;text-align:center}}
-        @media(max-width:600px){.custs{grid-template-columns:1fr}.statbox .sn{font-size:30px}.menu .navlink{display:none}.hero h1{font-size:32px}.hero p{font-size:15px}.stitle h2{font-size:24px}.grid2{grid-template-columns:1fr}.hero{padding:52px 0 44px}.feats{grid-template-columns:1fr}.cf-logo{width:64px;height:64px}.cf-qr .qrbox{width:110px;height:110px}.cf-qr .qrbox canvas,.cf-qr .qrbox svg{width:96px!important;height:96px!important}.cf-name{font-size:18px}.cf-desc{font-size:12px}}
-        @media(max-width:480px){.hero h1{font-size:28px}.hero p{font-size:14px}.stitle h2{font-size:22px}.feat{padding:20px 16px}.step{padding:24px 18px}.plan{padding:32px 24px 28px}.formcard{padding:28px 20px}}
+        @media(min-width:1400px){.wrap{max-width:1400px}}
+        @media(max-width:1024px){.wrap{max-width:100%;padding:0 15px}.feats{grid-template-columns:repeat(3,1fr)}.gallery{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:768px){.wrap{padding:0 16px}.feats{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}.plans{grid-template-columns:1fr}.statsrow{grid-template-columns:repeat(2,1fr)}.custs{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:1fr}.client-feature{flex-direction:column;text-align:center;padding:26px 20px;gap:18px}.cf-info{text-align:center}.client-inner{flex-direction:column;text-align:center}}
+        @media(max-width:600px){.wrap{padding:0;max-width:100%}.custs{grid-template-columns:1fr}.statbox .sn{font-size:30px}.menu .navlink{display:none}.hero h1{font-size:32px}.hero p{font-size:15px}.stitle h2{font-size:24px}.grid2{grid-template-columns:1fr}.hero{padding:52px 0 44px}.feats{grid-template-columns:1fr}.feats{gap:6px}.steps{gap:6px}.gallery{gap:6px}.custs{gap:6px}.plans{gap:6px}.cf-logo{width:64px;height:64px}.cf-qr .qrbox{width:110px;height:110px}.cf-qr .qrbox canvas,.cf-qr .qrbox svg{width:96px!important;height:96px!important}.cf-name{font-size:18px}.cf-desc{font-size:12px}}
+        @media(max-width:480px){.wrap{padding:0;max-width:100%}.hero h1{font-size:28px}.hero p{font-size:14px}.stitle h2{font-size:22px}.feat{padding:16px 10px}.step{padding:20px 14px}.plan{padding:28px 18px 24px}.formcard{padding:24px 14px}.feats{gap:6px}.steps{gap:6px}.gallery{gap:6px}.custs{gap:6px}.plans{gap:6px}}
 
         /* FORM */
         .formsec{background:linear-gradient(180deg,transparent,rgba(201,168,76,.05))}
@@ -326,20 +327,20 @@
                 <p data-i18n="lnd_feat_sub"></p>
             </div>
             <div class="feats">
-                <div class="feat"><div class="feat-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">📱</div><h3 data-i18n="lnd_f_qr_t"></h3><p data-i18n="lnd_f_qr_d"></p></div></div>
-                <div class="feat"><div class="feat-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">🌐</div><h3 data-i18n="lnd_f_multi_t"></h3><p data-i18n="lnd_f_multi_d"></p></div></div>
-                <div class="feat"><div class="feat-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">🎨</div><h3 data-i18n="lnd_f_theme_t"></h3><p data-i18n="lnd_f_theme_d"></p></div></div>
-                <div class="feat"><div class="feat-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">🛒</div><h3 data-i18n="lnd_f_cart_t"></h3><p data-i18n="lnd_f_cart_d"></p></div></div>
-                <div class="feat"><div class="feat-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">🍔</div><h3 data-i18n="lnd_f_menu_t"></h3><p data-i18n="lnd_f_menu_d"></p></div></div>
-                <div class="feat"><div class="feat-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">📊</div><h3 data-i18n="lnd_f_anal_t"></h3><p data-i18n="lnd_f_anal_d"></p></div></div>
-                <div class="feat"><div class="feat-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">⭐</div><h3 data-i18n="lnd_f_rate_t"></h3><p data-i18n="lnd_f_rate_d"></p></div></div>
-                <div class="feat"><div class="feat-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">⚡</div><h3 data-i18n="lnd_f_speed_t"></h3><p data-i18n="lnd_f_speed_d"></p></div></div>
-                <div class="feat"><div class="feat-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">🔗</div><h3 data-i18n="lnd_f_social_t"></h3><p data-i18n="lnd_f_social_d"></p></div></div>
-                <div class="feat"><div class="feat-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">📍</div><h3 data-i18n="lnd_f_map_t"></h3><p data-i18n="lnd_f_map_d"></p></div></div>
-                <div class="feat"><div class="feat-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">💰</div><h3 data-i18n="lnd_f_income_t"></h3><p data-i18n="lnd_f_income_d"></p></div></div>
-                <div class="feat"><div class="feat-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">🔄</div><h3 data-i18n="lnd_f_sales_t"></h3><p data-i18n="lnd_f_sales_d"></p></div></div>
-                <div class="feat"><div class="feat-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">🧾</div><h3 data-i18n="lnd_f_expense_t"></h3><p data-i18n="lnd_f_expense_d"></p></div></div>
-                <div class="feat"><div class="feat-border"><svg><rect class="path-cw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="100%" height="100%" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">📈</div><h3 data-i18n="lnd_f_profit_t"></h3><p data-i18n="lnd_f_profit_d"></p></div></div>
+                <div class="feat"><div class="feat-border"><svg viewBox="0 0 300 150" preserveAspectRatio="none"><rect class="path-cw" x="1" y="1" width="298" height="148" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="298" height="148" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">📱</div><h3 data-i18n="lnd_f_qr_t"></h3><p data-i18n="lnd_f_qr_d"></p></div></div>
+                <div class="feat"><div class="feat-border"><svg viewBox="0 0 300 150" preserveAspectRatio="none"><rect class="path-cw" x="1" y="1" width="298" height="148" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="298" height="148" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">🌐</div><h3 data-i18n="lnd_f_multi_t"></h3><p data-i18n="lnd_f_multi_d"></p></div></div>
+                <div class="feat"><div class="feat-border"><svg viewBox="0 0 300 150" preserveAspectRatio="none"><rect class="path-cw" x="1" y="1" width="298" height="148" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="298" height="148" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">🎨</div><h3 data-i18n="lnd_f_theme_t"></h3><p data-i18n="lnd_f_theme_d"></p></div></div>
+                <div class="feat"><div class="feat-border"><svg viewBox="0 0 300 150" preserveAspectRatio="none"><rect class="path-cw" x="1" y="1" width="298" height="148" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="298" height="148" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">🛒</div><h3 data-i18n="lnd_f_cart_t"></h3><p data-i18n="lnd_f_cart_d"></p></div></div>
+                <div class="feat"><div class="feat-border"><svg viewBox="0 0 300 150" preserveAspectRatio="none"><rect class="path-cw" x="1" y="1" width="298" height="148" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="298" height="148" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">🍔</div><h3 data-i18n="lnd_f_menu_t"></h3><p data-i18n="lnd_f_menu_d"></p></div></div>
+                <div class="feat"><div class="feat-border"><svg viewBox="0 0 300 150" preserveAspectRatio="none"><rect class="path-cw" x="1" y="1" width="298" height="148" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="298" height="148" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">📊</div><h3 data-i18n="lnd_f_anal_t"></h3><p data-i18n="lnd_f_anal_d"></p></div></div>
+                <div class="feat"><div class="feat-border"><svg viewBox="0 0 300 150" preserveAspectRatio="none"><rect class="path-cw" x="1" y="1" width="298" height="148" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="298" height="148" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">⭐</div><h3 data-i18n="lnd_f_rate_t"></h3><p data-i18n="lnd_f_rate_d"></p></div></div>
+                <div class="feat"><div class="feat-border"><svg viewBox="0 0 300 150" preserveAspectRatio="none"><rect class="path-cw" x="1" y="1" width="298" height="148" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="298" height="148" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">⚡</div><h3 data-i18n="lnd_f_speed_t"></h3><p data-i18n="lnd_f_speed_d"></p></div></div>
+                <div class="feat"><div class="feat-border"><svg viewBox="0 0 300 150" preserveAspectRatio="none"><rect class="path-cw" x="1" y="1" width="298" height="148" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="298" height="148" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">🔗</div><h3 data-i18n="lnd_f_social_t"></h3><p data-i18n="lnd_f_social_d"></p></div></div>
+                <div class="feat"><div class="feat-border"><svg viewBox="0 0 300 150" preserveAspectRatio="none"><rect class="path-cw" x="1" y="1" width="298" height="148" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="298" height="148" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">📍</div><h3 data-i18n="lnd_f_map_t"></h3><p data-i18n="lnd_f_map_d"></p></div></div>
+                <div class="feat"><div class="feat-border"><svg viewBox="0 0 300 150" preserveAspectRatio="none"><rect class="path-cw" x="1" y="1" width="298" height="148" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="298" height="148" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">💰</div><h3 data-i18n="lnd_f_income_t"></h3><p data-i18n="lnd_f_income_d"></p></div></div>
+                <div class="feat"><div class="feat-border"><svg viewBox="0 0 300 150" preserveAspectRatio="none"><rect class="path-cw" x="1" y="1" width="298" height="148" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="298" height="148" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">🔄</div><h3 data-i18n="lnd_f_sales_t"></h3><p data-i18n="lnd_f_sales_d"></p></div></div>
+                <div class="feat"><div class="feat-border"><svg viewBox="0 0 300 150" preserveAspectRatio="none"><rect class="path-cw" x="1" y="1" width="298" height="148" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="298" height="148" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">🧾</div><h3 data-i18n="lnd_f_expense_t"></h3><p data-i18n="lnd_f_expense_d"></p></div></div>
+                <div class="feat"><div class="feat-border"><svg viewBox="0 0 300 150" preserveAspectRatio="none"><rect class="path-cw" x="1" y="1" width="298" height="148" rx="18" ry="18"/><rect class="path-ccw" x="1" y="1" width="298" height="148" rx="18" ry="18"/></svg></div><div class="feat-inner"><div class="fi">📈</div><h3 data-i18n="lnd_f_profit_t"></h3><p data-i18n="lnd_f_profit_d"></p></div></div>
             </div>
         </div>
     </section>
