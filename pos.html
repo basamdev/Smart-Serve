@@ -130,10 +130,10 @@
         <h1 data-i18n="hero_h1">سیستەمی <span class='g'>POS</span>ی مۆدێرن بۆ کافێ و ڕێستورانت</h1>
         <p data-i18n="hero_p">بەڕێوەبردنی مێز، کاشێر، چێشتخانە، گەیاندن، خەرجی و ڕاپۆرت — هەمووی لە یەک سیستەمی پیشەیی.</p>
         <div class="cta-row">
-            <a class="btn btn-primary" href="https://smartserve-pos-menu.vercel.app/" target="_blank" rel="noopener noreferrer">
-                <i class="fas fa-play"></i> <span data-i18n="cta_demo">بینینی دیمۆ</span>
+            <a class="btn btn-primary" data-wa="demo" href="https://wa.me/9647506454656" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i> <span data-i18n="cta_demo">داواکردنی دیمۆ لە واتساپ</span>
             </a>
-            <a class="btn btn-wa" href="https://wa.me/9647506454656?text=Hello%20SmartServe%2C%20I%20want%20POS" target="_blank" rel="noopener noreferrer">
+            <a class="btn btn-wa" data-wa="order" href="https://wa.me/9647506454656" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-whatsapp"></i> <span data-i18n="cta_wa">داواکاری لە واتساپ</span>
             </a>
         </div>
@@ -216,10 +216,14 @@
     <div class="wrap">
         <div class="cta-band">
             <h2 data-i18n="band_t">ئامادەیت بۆ POSی خۆت؟</h2>
-            <p data-i18n="band_p">دیمۆ ببینە یان لە واتساپ پەیوەندیمان پێوە بکە</p>
+            <p data-i18n="band_p">لە واتساپ نامە بنێرە بۆ دیمۆ یان داواکاری سیستەم</p>
             <div class="cta-row">
-                <a class="btn btn-primary" href="https://smartserve-pos-menu.vercel.app/" target="_blank" rel="noopener noreferrer" data-i18n="cta_demo">بینینی دیمۆ</a>
-                <a class="btn btn-wa" href="https://wa.me/9647506454656?text=Hello%20SmartServe%2C%20I%20want%20POS" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> <span data-i18n="cta_wa">داواکاری لە واتساپ</span></a>
+                <a class="btn btn-primary" data-wa="demo" href="https://wa.me/9647506454656" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> <span data-i18n="cta_demo">داواکردنی دیمۆ لە واتساپ</span>
+                </a>
+                <a class="btn btn-wa" data-wa="order" href="https://wa.me/9647506454656" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> <span data-i18n="cta_wa">داواکاری لە واتساپ</span>
+                </a>
                 <a class="btn btn-ghost" href="index.html" data-i18n="back">گەڕانەوە</a>
             </div>
         </div>
@@ -254,8 +258,22 @@
             ar: "إدارة الطاولات والكاشير والمطبخ والتوصيل والمصاريف والتقارير — كل ذلك في نظام واحد احترافي.",
             en: "Tables, cashier, kitchen, delivery, expenses and reports — all in one professional system."
         },
-        cta_demo: { ku: "بینینی دیمۆ", ar: "عرض العرض التجريبي", en: "View live demo" },
+        cta_demo: {
+            ku: "داواکردنی دیمۆ لە واتساپ",
+            ar: "اطلب العرض التجريبي عبر واتساب",
+            en: "Request demo on WhatsApp"
+        },
         cta_wa: { ku: "داواکاری لە واتساپ", ar: "اطلب عبر واتساب", en: "Order on WhatsApp" },
+        wa_demo: {
+            ku: "سڵاو SmartServe، دەمەوێت دیمۆی سیستەمی POS ببینم. تکایە کاتی دیمۆم بۆ دیاری بکە.",
+            ar: "مرحبا SmartServe، أريد مشاهدة عرض تجريبي لنظام POS. يرجى تحديد موعد للعرض.",
+            en: "Hello SmartServe, I want to see a live POS demo. Please schedule a demo for me."
+        },
+        wa_order: {
+            ku: "سڵاو SmartServe، دەمەوێت سیستەمی POS بۆ کافێ / ڕێستورانت.",
+            ar: "مرحبا SmartServe، أريد نظام POS لمقهى / مطعم.",
+            en: "Hello SmartServe, I want a POS system for a café / restaurant."
+        },
         shots_title: {
             ku: "سکرینشۆتی ڕاستەقینەی سیستەمەکە",
             ar: "لقطات حقيقية من النظام",
@@ -332,10 +350,21 @@
         f12_t: { ku: "بەکارهێنەران", ar: "المستخدمون", en: "Users" },
         f12_d: { ku: "کارمەند، ڕۆڵ و مۆڵەتی دەستگەیشتن.", ar: "الموظفون والأدوار وصلاحيات الوصول.", en: "Staff, roles, and access permissions." },
         band_t: { ku: "ئامادەیت بۆ POSی خۆت؟", ar: "جاهز لنظام POS خاص بك؟", en: "Ready for your own POS?" },
-        band_p: { ku: "دیمۆ ببینە یان لە واتساپ پەیوەندیمان پێوە بکە", ar: "شاهد العرض التجريبي أو تواصل معنا عبر واتساب", en: "View the demo or contact us on WhatsApp" }
+        band_p: {
+            ku: "لە واتساپ نامە بنێرە بۆ دیمۆ یان داواکاری سیستەم",
+            ar: "أرسل رسالة عبر واتساب لطلب العرض التجريبي أو النظام",
+            en: "Send a WhatsApp message to request a demo or order the system"
+        }
     };
 
+    const WA_NUMBER = "9647506454656";
     let LANG = localStorage.getItem('pos_lang') || 'ku';
+
+    function waLink(type) {
+        const key = type === 'order' ? 'wa_order' : 'wa_demo';
+        const msg = (POS_I18N[key] && POS_I18N[key][LANG]) || POS_I18N[key].ku;
+        return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
+    }
 
     function setPosLang(l) {
         LANG = l;
@@ -349,6 +378,9 @@
             const entry = POS_I18N[key];
             if (!entry) return;
             el.innerHTML = entry[l] != null ? entry[l] : (entry.ku || key);
+        });
+        document.querySelectorAll('[data-wa]').forEach(a => {
+            a.href = waLink(a.getAttribute('data-wa'));
         });
         document.title = l === 'ar' ? 'Smart Serve POS — نظام المطاعم' : (l === 'en' ? 'Smart Serve POS — Café & Restaurant' : 'Smart Serve POS — کافێ و ڕێستورانت');
     }
