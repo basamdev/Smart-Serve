@@ -556,6 +556,13 @@ main {
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
 }
 
+.card-icon-svg {
+    width: 52px;
+    height: 52px;
+    display: block;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.28));
+}
+
 .card-title {
     font-size: 42px;
     font-weight: 700;
@@ -948,6 +955,11 @@ main {
 
     .card-icon i {
         font-size: 1.45rem;
+    }
+
+    .card-icon-svg {
+        width: 40px;
+        height: 40px;
     }
 
     .card-content {
