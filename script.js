@@ -11,6 +11,17 @@ document.addEventListener('DOMContentLoaded', function() {
     initModal();
 });
 
+// Open social apps/sites reliably (new tab; mobile opens the app when installed)
+window.openSocial = function(url) {
+    if (!url) return true;
+    var win = window.open(url, '_blank', 'noopener,noreferrer');
+    if (!win) {
+        // Popup blocked — fall back to normal link navigation
+        window.location.href = url;
+    }
+    return false;
+};
+
 // Modal functionality
 function initModal() {
     const modalOverlay = document.getElementById('modalOverlay');

@@ -406,6 +406,7 @@ main {
     background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08));
     opacity: 0;
     transition: opacity 0.4s ease;
+    pointer-events: none;
 }
 
 .card:hover::before {
@@ -500,6 +501,16 @@ main {
 .card:nth-child(4) { animation-delay: 1.5s; }
 .card:nth-child(5) { animation-delay: 2s; }
 
+.card-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
 .card-icon {
     width: 90px;
     height: 90px;
@@ -509,6 +520,8 @@ main {
     justify-content: center;
     flex-shrink: 0;
     animation: iconPulse 2s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
 }
 
 .blue-icon {
@@ -541,14 +554,6 @@ main {
     color: white;
     font-size: 2.1rem;
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
-}
-
-.card-content {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .card-title {
@@ -650,6 +655,8 @@ main {
     align-items: center;
     gap: 12px;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 5;
 }
 
 .social-btn {
@@ -664,10 +671,21 @@ main {
     text-decoration: none;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     border: 1px solid rgba(255, 255, 255, 0.18);
+    position: relative;
+    z-index: 6;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
-.social-btn:hover {
+.social-btn:hover,
+.social-btn:focus-visible {
     transform: translateY(-3px) scale(1.06);
+    outline: none;
+}
+
+.social-btn:active {
+    transform: scale(0.96);
 }
 
 .social-wa {
@@ -683,6 +701,11 @@ main {
 .social-fb {
     background: linear-gradient(135deg, #4d9fff, #1877f2 55%, #0d5bb8);
     box-shadow: 0 8px 22px rgba(24, 119, 242, 0.45);
+}
+
+.social-tt {
+    background: linear-gradient(135deg, #25f4ee, #000 42%, #fe2c55);
+    box-shadow: 0 8px 22px rgba(254, 44, 85, 0.4);
 }
 
 .button-indigo {

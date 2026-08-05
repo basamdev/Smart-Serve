@@ -49,6 +49,7 @@
         /* ---- لاندینگ / landing ---- */
         lnd_brand:      { ku: "سمارت <b class='g'>سێرڤ</b>", ar: "سمارت <b class='g'>سيرف</b>", en: "Smart <b class='g'>Serve</b>" },
         lnd_nav_features:{ ku: "تایبەتمەندییەکان", ar: "المميزات", en: "Features" },
+        lnd_hub_back:   { ku: "گەڕانەوە", ar: "رجوع", en: "Back to Hub" },
         lnd_nav_how:    { ku: "چۆن کار دەکات", ar: "كيف يعمل", en: "How it works" },
         lnd_hero_pill:  { ku: "◆ مێنیوی ئۆنلاین بۆ شوێنەکەت: کافێ و رێستورانت، شیرینی", ar: "◆ قائمة أونلاين لمكانك: مقهى، مطعم، حلويات", en: "◆ Online menu for your place: café, restaurant, sweets" },
         lnd_hero_h1:    { ku: "مێنیوی <span class='g'>دیجیتاڵ</span> بۆ شوێنەکەت<br>بە QR و چەند زمان", ar: "قائمة طعام <span class='g'>رقمية</span> لمكانك<br>عبر QR وبعدة لغات", en: "<span class='g'>Digital</span> menu for your place<br>via QR & multilingual" },
