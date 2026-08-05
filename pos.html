@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl" id="html-root">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Serve POS</title>
+    <meta name="description" content="Premium POS for cafés and restaurants — tables, cashier, kitchen, delivery, reports.">
+    <meta name="theme-color" content="#07140F">
+    <link rel="icon" type="image/png" href="images/icon-192.png">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#07140F;--bg2:#0C1F18;--card:rgba(255,255,255,.05);--line:rgba(52,211,153,.18);
+            --text:#F0FDF6;--muted:#9CB5A8;--green:#34D399;--green2:#10B981;--mint:#A7F3D0;--wa:#25D366;
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;min-height:100vh}
+        a{text-decoration:none;color:inherit}
+        .bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+            radial-gradient(ellipse 70% 50% at 15% 10%,rgba(16,185,129,.22),transparent 55%),
+            radial-gradient(ellipse 55% 45% at 90% 20%,rgba(52,211,153,.12),transparent 50%),
+            radial-gradient(ellipse 60% 40% at 50% 100%,rgba(5,150,105,.18),transparent 55%),
+            linear-gradient(165deg,var(--bg),var(--bg2))}
+        .bg::after{content:'';position:absolute;inset:0;opacity:.3;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:28px 28px}
+        .wrap{width:min(1100px,100%);margin:0 auto;padding:0 20px}
+
+        .top{position:sticky;top:0;z-index:40;backdrop-filter:blur(14px);background:rgba(7,20,15,.82);border-bottom:1px solid var(--line)}
+        .top-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:10px}
+        .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px}
+        .brand img{width:36px;height:36px;border-radius:10px;object-fit:cover;box-shadow:0 0 18px rgba(52,211,153,.45)}
+        .brand em{font-style:normal;color:var(--green)}
+        .top-actions{display:flex;align-items:center;gap:10px}
+        .lang-sw{display:flex;gap:3px;background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:999px;padding:3px}
+        .lang-btn{background:none;border:none;color:var(--muted);font-family:inherit;font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;cursor:pointer}
+        .lang-btn.on{background:var(--green2);color:#04140E}
+        .hub-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;color:#04140E;background:linear-gradient(135deg,var(--mint),var(--green));padding:8px 13px;border-radius:999px;box-shadow:0 8px 20px rgba(16,185,129,.3)}
+        .hub-back svg{width:14px;height:14px}
+
+        .hero{padding:56px 0 40px;text-align:center}
+        .pill{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--mint);border:1px solid var(--line);background:rgba(16,185,129,.1);padding:7px 14px;border-radius:999px;margin-bottom:16px}
+        .hero h1{font-size:clamp(28px,5vw,48px);font-weight:900;line-height:1.25;margin-bottom:12px}
+        .hero h1 .g{background:linear-gradient(120deg,var(--mint),var(--green));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+        .hero p{color:var(--muted);font-size:16px;max-width:640px;margin:0 auto 24px}
+        .cta-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-weight:800;font-size:14px;padding:13px 20px;border-radius:14px;border:none;cursor:pointer;transition:transform .2s}
+        .btn:hover{transform:translateY(-2px)}
+        .btn-primary{color:#04140E;background:linear-gradient(135deg,var(--mint),var(--green2));box-shadow:0 12px 28px rgba(16,185,129,.35)}
+        .btn-wa{color:#fff;background:var(--wa);box-shadow:0 10px 24px rgba(37,211,102,.35)}
+        .btn-ghost{color:var(--text);background:transparent;border:1px solid var(--line)}
+
+        section{padding:40px 0 56px}
+        .stitle{text-align:center;margin-bottom:28px}
+        .stitle h2{font-size:clamp(22px,3vw,32px);font-weight:900}
+        .stitle p{color:var(--muted);margin-top:8px;font-size:14px}
+
+        .shots{display:grid;gap:28px}
+        .shot{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:16px;overflow:hidden}
+        .shot:nth-child(even){grid-template-columns:.85fr 1.15fr}
+        .shot:nth-child(even) .shot-media{order:2}
+        html[dir="ltr"] .shot:nth-child(even) .shot-media{order:0}
+        html[dir="ltr"] .shot:nth-child(even) .shot-info{order:2}
+        .shot-media{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0a1a14;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+        .shot-media img{display:block;width:100%;height:auto;vertical-align:middle}
+        .shot-info{padding:8px 10px}
+        .shot-tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.04em;color:#04140E;background:var(--green);padding:4px 10px;border-radius:999px;margin-bottom:10px}
+        .shot-info h3{font-size:20px;font-weight:900;margin-bottom:8px}
+        .shot-info p{color:var(--muted);font-size:14px;line-height:1.75}
+
+        .feats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+        .feat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 14px}
+        .feat .fi{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;background:rgba(16,185,129,.15);color:var(--mint);border:1px solid var(--line)}
+        .feat h3{font-size:14px;font-weight:800;margin-bottom:5px}
+        .feat p{font-size:12px;color:var(--muted);line-height:1.55}
+
+        .cta-band{margin:10px 0 36px;border-radius:24px;padding:36px 22px;text-align:center;background:linear-gradient(135deg,rgba(16,185,129,.18),rgba(5,150,105,.06));border:1px solid var(--line)}
+        .cta-band h2{font-size:24px;font-weight:900;margin-bottom:8px}
+        .cta-band p{color:var(--muted);margin-bottom:18px;font-size:14px}
+
+        footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--muted);font-size:13px}
+        footer .hub-back{margin-top:12px}
+
+        @media(max-width:980px){
+            .feats{grid-template-columns:repeat(3,1fr)}
+        }
+        @media(max-width:860px){
+            .shot,.shot:nth-child(even){grid-template-columns:1fr}
+            .shot:nth-child(even) .shot-media,.shot:nth-child(even) .shot-info{order:0}
+            html[dir="ltr"] .shot:nth-child(even) .shot-info{order:0}
+            .feats{grid-template-columns:1fr 1fr}
+        }
+        @media(max-width:560px){
+            .feats{grid-template-columns:1fr}
+            .cta-row{flex-direction:column}
+            .btn{width:100%}
+            .top-inner{height:auto;padding:10px 0;flex-wrap:wrap}
+            .brand span{font-size:12px}
+        }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+
+    <div class="top">
+        <div class="wrap top-inner">
+            <a class="brand" href="index.html">
+                <img src="images/logo-pos.svg" alt="Smart Serve">
+                <span>SMART <em>SERVE</em> POS</span>
+            </a>
+            <div class="top-actions">
+                <div class="lang-sw">
+                    <button type="button" class="lang-btn on" data-l="ku" onclick="setPosLang('ku')">کوردی</button>
+                    <button type="button" class="lang-btn" data-l="ar" onclick="setPosLang('ar')">عربي</button>
+                    <button type="button" class="lang-btn" data-l="en" onclick="setPosLang('en')">EN</button>
+                </div>
+                <a class="hub-back" href="index.html">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                    <span data-i18n="back">گەڕانەوە</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <header class="wrap hero">
+        <span class="pill"><i class="fas fa-cash-register"></i> <span data-i18n="pill">بۆ کافێ و ڕێستورانت</span></span>
+        <h1 data-i18n="hero_h1">سیستەمی <span class='g'>POS</span>ی مۆدێرن بۆ کافێ و ڕێستورانت</h1>
+        <p data-i18n="hero_p">بەڕێوەبردنی مێز، کاشێر، چێشتخانە، گەیاندن، خەرجی و ڕاپۆرت — هەمووی لە یەک سیستەمی پیشەیی.</p>
+        <div class="cta-row">
+            <a class="btn btn-primary" href="https://smartserve-pos-menu.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-play"></i> <span data-i18n="cta_demo">بینینی دیمۆ</span>
+            </a>
+            <a class="btn btn-wa" href="https://wa.me/9647506454656?text=Hello%20SmartServe%2C%20I%20want%20POS" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i> <span data-i18n="cta_wa">داواکاری لە واتساپ</span>
+            </a>
+        </div>
+    </header>
+
+    <section>
+        <div class="wrap">
+            <div class="stitle">
+                <h2 data-i18n="shots_title">سکرینشۆتی ڕاستەقینەی سیستەمەکە</h2>
+                <p data-i18n="shots_sub">ئەمە ئەو شاشانەن کە کارمەند و خاوەنکار لە ڕۆژانەدا بەکاریان دەهێنن</p>
+            </div>
+            <div class="shots">
+                <article class="shot">
+                    <div class="shot-media"><img src="images/pos/pos-tables.png" alt="Table management" loading="lazy"></div>
+                    <div class="shot-info">
+                        <span class="shot-tag" data-i18n="s1_tag">مێزەکان</span>
+                        <h3 data-i18n="s1_t">بەڕێوەبردنی مێزەکان</h3>
+                        <p data-i18n="s1_d">دۆخی هەر مێزێک ببینە: بەردەست، گیراوە، ئامادەکردنی خواردن، داواکردنی حساب و حساب ئامادە. کۆی پارە بە دینار و کاتی دانیشتن لەسەر هەر مێز.</p>
+                    </div>
+                </article>
+                <article class="shot">
+                    <div class="shot-media"><img src="images/pos/pos-cashier.png" alt="Cashier" loading="lazy"></div>
+                    <div class="shot-info">
+                        <span class="shot-tag" data-i18n="s2_tag">کاشێر</span>
+                        <h3 data-i18n="s2_t">شاشەی کاشێر و فرۆشتن</h3>
+                        <p data-i18n="s2_d">هەڵبژاردنی خواردن بە وێنە و نرخ، زیادکردن بۆ داواکاری، جۆری ناوخۆ / گەیاندن / دەرەوە، و فرۆشتنی خێرا بە چاپ و ناردن بۆ چێشتخانە.</p>
+                    </div>
+                </article>
+                <article class="shot">
+                    <div class="shot-media"><img src="images/pos/pos-captain.png" alt="Captain tables" loading="lazy"></div>
+                    <div class="shot-info">
+                        <span class="shot-tag" data-i18n="s3_tag">کاپتن</span>
+                        <h3 data-i18n="s3_t">شاشەی کاپتن — هەڵبژاردنی مێز</h3>
+                        <p data-i18n="s3_d">کارمەند بە خێرایی مێز هەڵدەبژێرێت، دۆخی ڕەنگی دەبینێت، کات و کۆی حساب دەزانێت — گونجاو بۆ تابڵێت و مۆبایل.</p>
+                    </div>
+                </article>
+                <article class="shot">
+                    <div class="shot-media"><img src="images/pos/pos-kitchen.png" alt="Kitchen display" loading="lazy"></div>
+                    <div class="shot-info">
+                        <span class="shot-tag" data-i18n="s4_tag">چێشتخانە</span>
+                        <h3 data-i18n="s4_t">شاشەی چێشتخانە (Kitchen)</h3>
+                        <p data-i18n="s4_d">داواکارییەکان بە کارت دەردەکەون: ژمارەی مێز یان گەیاندن، ناوی خواردن، بڕ، وێنە، و دوگمەی دەستپێکردن — بۆ خێراکردنی کار لە چێشتخانە.</p>
+                    </div>
+                </article>
+                <article class="shot">
+                    <div class="shot-media"><img src="images/pos/pos-delivery.png" alt="Delivery cashier" loading="lazy"></div>
+                    <div class="shot-info">
+                        <span class="shot-tag" data-i18n="s5_tag">گەیاندن</span>
+                        <h3 data-i18n="s5_t">گەیاندن و شۆفێر و واتساپ</h3>
+                        <p data-i18n="s5_d">بەڕێوەبردنی داواکاریی گەیاندن، ناردن بۆ شۆفێر، دووبارە ناردنی واتساپ، چاپکردنی فاتوورە و هەڵوەشاندنەوە — هەمووی لە یەک شوێن.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="wrap">
+            <div class="stitle">
+                <h2 data-i18n="feat_title">تایبەتمەندییە سەرەکییەکان</h2>
+                <p data-i18n="feat_sub">هەمان سیستەمی ڕاستەقینە کە لە سکرینشۆتەکاندا دەیبینیت</p>
+            </div>
+            <div class="feats">
+                <article class="feat"><div class="fi"><i class="fas fa-chair"></i></div><h3 data-i18n="f1_t">مێزەکان</h3><p data-i18n="f1_d">دۆخی مێز، کات، و کۆی حساب بە ڕەنگی ڕوون.</p></article>
+                <article class="feat"><div class="fi"><i class="fas fa-cash-register"></i></div><h3 data-i18n="f2_t">کاشێر</h3><p data-i18n="f2_d">فرۆشتنی خێرا، چاپ، و ناردن بۆ چێشتخانە.</p></article>
+                <article class="feat"><div class="fi"><i class="fas fa-user-tie"></i></div><h3 data-i18n="f3_t">کاپتن</h3><p data-i18n="f3_d">هەڵبژاردنی مێز و خزمەتگوزاری بۆ وەیتەر.</p></article>
+                <article class="feat"><div class="fi"><i class="fas fa-fire-burner"></i></div><h3 data-i18n="f4_t">چێشتخانە</h3><p data-i18n="f4_d">شاشەی ئامادەکردن بە کارت و دۆخی داواکاری.</p></article>
+                <article class="feat"><div class="fi"><i class="fas fa-motorcycle"></i></div><h3 data-i18n="f5_t">گەیاندن</h3><p data-i18n="f5_d">شۆفێر، ناونیشان، و واتساپی کڕیار.</p></article>
+                <article class="feat"><div class="fi"><i class="fas fa-utensils"></i></div><h3 data-i18n="f6_t">ئایتەم و بەش</h3><p data-i18n="f6_d">بەڕێوەبردنی مێنوو، نرخ، وێنە و کاتەگۆری.</p></article>
+                <article class="feat"><div class="fi"><i class="fas fa-clipboard-list"></i></div><h3 data-i18n="f7_t">داواکارییەکان</h3><p data-i18n="f7_d">شوێنکەوتنی هەموو داواکارییەکان لە یەک شوێن.</p></article>
+                <article class="feat"><div class="fi"><i class="fas fa-wallet"></i></div><h3 data-i18n="f8_t">خەرجییەکان</h3><p data-i18n="f8_d">تۆمارکردنی خەرجی ڕۆژانە و کۆنترۆڵی پارە.</p></article>
+                <article class="feat"><div class="fi"><i class="fas fa-chart-line"></i></div><h3 data-i18n="f9_t">ڕاپۆرتەکان</h3><p data-i18n="f9_d">فرۆشتن، قازانج، و ڕاپۆرتی کار بۆ خاوەنکار.</p></article>
+                <article class="feat"><div class="fi"><i class="fas fa-calendar-check"></i></div><h3 data-i18n="f10_t">داخستنی ڕۆژ</h3><p data-i18n="f10_d">کۆتایی ڕۆژ، کۆی فرۆشتن و داخستنی حساب.</p></article>
+                <article class="feat"><div class="fi"><i class="fas fa-database"></i></div><h3 data-i18n="f11_t">باکئەپ</h3><p data-i18n="f11_d">پاراستنی داتاکان و گەڕاندنەوە لە کاتی پێویست.</p></article>
+                <article class="feat"><div class="fi"><i class="fas fa-users-cog"></i></div><h3 data-i18n="f12_t">بەکارهێنەران</h3><p data-i18n="f12_d">کارمەند، ڕۆڵ و مۆڵەتی دەستگەیشتن.</p></article>
+            </div>
+        </div>
+    </section>
+
+    <div class="wrap">
+        <div class="cta-band">
+            <h2 data-i18n="band_t">ئامادەیت بۆ POSی خۆت؟</h2>
+            <p data-i18n="band_p">دیمۆ ببینە یان لە واتساپ پەیوەندیمان پێوە بکە</p>
+            <div class="cta-row">
+                <a class="btn btn-primary" href="https://smartserve-pos-menu.vercel.app/" target="_blank" rel="noopener noreferrer" data-i18n="cta_demo">بینینی دیمۆ</a>
+                <a class="btn btn-wa" href="https://wa.me/9647506454656?text=Hello%20SmartServe%2C%20I%20want%20POS" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> <span data-i18n="cta_wa">داواکاری لە واتساپ</span></a>
+                <a class="btn btn-ghost" href="index.html" data-i18n="back">گەڕانەوە</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrap">
+            <div>© 2026 Smart Serve POS</div>
+            <div><a class="hub-back" href="index.html" data-i18n="back">گەڕانەوە</a></div>
+        </div>
+    </footer>
+
+    <script>
+    const POS_I18N = {
+        back: {
+            ku: "گەڕانەوە",
+            ar: "رجوع للرئيسية",
+            en: "Back to Hub"
+        },
+        pill: {
+            ku: "بۆ کافێ و ڕێستورانت",
+            ar: "للمقاهي والمطاعم",
+            en: "For cafés & restaurants"
+        },
+        hero_h1: {
+            ku: "سیستەمی <span class='g'>POS</span>ی مۆدێرن بۆ کافێ و ڕێستورانت",
+            ar: "نظام <span class='g'>POS</span> عصري للمقاهي والمطاعم",
+            en: "Modern <span class='g'>POS</span> for cafés & restaurants"
+        },
+        hero_p: {
+            ku: "بەڕێوەبردنی مێز، کاشێر، چێشتخانە، گەیاندن، خەرجی و ڕاپۆرت — هەمووی لە یەک سیستەمی پیشەیی.",
+            ar: "إدارة الطاولات والكاشير والمطبخ والتوصيل والمصاريف والتقارير — كل ذلك في نظام واحد احترافي.",
+            en: "Tables, cashier, kitchen, delivery, expenses and reports — all in one professional system."
+        },
+        cta_demo: { ku: "بینینی دیمۆ", ar: "عرض العرض التجريبي", en: "View live demo" },
+        cta_wa: { ku: "داواکاری لە واتساپ", ar: "اطلب عبر واتساب", en: "Order on WhatsApp" },
+        shots_title: {
+            ku: "سکرینشۆتی ڕاستەقینەی سیستەمەکە",
+            ar: "لقطات حقيقية من النظام",
+            en: "Real screenshots of the system"
+        },
+        shots_sub: {
+            ku: "ئەمە ئەو شاشانەن کە کارمەند و خاوەنکار لە ڕۆژانەدا بەکاریان دەهێنن",
+            ar: "هذه الشاشات التي يستخدمها الموظفون وأصحاب المحلات يوميًا",
+            en: "The same screens staff and owners use every day"
+        },
+        s1_tag: { ku: "مێزەکان", ar: "الطاولات", en: "Tables" },
+        s1_t: { ku: "بەڕێوەبردنی مێزەکان", ar: "إدارة الطاولات", en: "Table management" },
+        s1_d: {
+            ku: "دۆخی هەر مێزێک ببینە: بەردەست، گیراوە، ئامادەکردنی خواردن، داواکردنی حساب و حساب ئامادە. کۆی پارە بە دینار و کاتی دانیشتن لەسەر هەر مێز.",
+            ar: "تابع حالة كل طاولة: متاحة، مشغولة، تحضير الطعام، طلب الحساب، والحساب جاهز. مع المبلغ بالدينار ووقت الجلوس.",
+            en: "See every table status: available, occupied, preparing, requesting bill, bill ready — with IQD total and seating time."
+        },
+        s2_tag: { ku: "کاشێر", ar: "الكاشير", en: "Cashier" },
+        s2_t: { ku: "شاشەی کاشێر و فرۆشتن", ar: "شاشة الكاشير والبيع", en: "Cashier & sales screen" },
+        s2_d: {
+            ku: "هەڵبژاردنی خواردن بە وێنە و نرخ، زیادکردن بۆ داواکاری، جۆری ناوخۆ / گەیاندن / دەرەوە، و فرۆشتنی خێرا بە چاپ و ناردن بۆ چێشتخانە.",
+            ar: "اختر الأصناف بالصور والأسعار، أضفها للطلب، اختر داخلي / توصيل / خارجي، وبع بسرعة مع الطباعة والإرسال للمطبخ.",
+            en: "Pick items with photos and prices, add to the order, choose dine-in / delivery / takeaway, then print and send to kitchen."
+        },
+        s3_tag: { ku: "کاپتن", ar: "الكابتن", en: "Captain" },
+        s3_t: { ku: "شاشەی کاپتن — هەڵبژاردنی مێز", ar: "شاشة الكابتن — اختيار الطاولة", en: "Captain screen — select table" },
+        s3_d: {
+            ku: "کارمەند بە خێرایی مێز هەڵدەبژێرێت، دۆخی ڕەنگی دەبینێت، کات و کۆی حساب دەزانێت — گونجاو بۆ تابڵێت و مۆبایل.",
+            ar: "يختار الموظف الطاولة بسرعة، يرى الحالة بالألوان، والوقت والمبلغ — مناسب للتابلت والجوال.",
+            en: "Staff quickly pick a table, see color status, time and bill total — built for tablet and phone."
+        },
+        s4_tag: { ku: "چێشتخانە", ar: "المطبخ", en: "Kitchen" },
+        s4_t: { ku: "شاشەی چێشتخانە (Kitchen)", ar: "شاشة المطبخ (Kitchen)", en: "Kitchen display (KDS)" },
+        s4_d: {
+            ku: "داواکارییەکان بە کارت دەردەکەون: ژمارەی مێز یان گەیاندن، ناوی خواردن، بڕ، وێنە، و دوگمەی دەستپێکردن — بۆ خێراکردنی کار لە چێشتخانە.",
+            ar: "تظهر الطلبات كبطاقات: رقم الطاولة أو التوصيل، اسم الصنف، الكمية، الصورة، وزر البدء — لتسريع عمل المطبخ.",
+            en: "Orders appear as cards: table or delivery, item name, qty, photo, and a Start button — to speed up the kitchen."
+        },
+        s5_tag: { ku: "گەیاندن", ar: "التوصيل", en: "Delivery" },
+        s5_t: { ku: "گەیاندن و شۆفێر و واتساپ", ar: "التوصيل والسائق وواتساب", en: "Delivery, drivers & WhatsApp" },
+        s5_d: {
+            ku: "بەڕێوەبردنی داواکاریی گەیاندن، ناردن بۆ شۆفێر، دووبارە ناردنی واتساپ، چاپکردنی فاتوورە و هەڵوەشاندنەوە — هەمووی لە یەک شوێن.",
+            ar: "إدارة طلبات التوصيل، إرسال للسائق، إعادة إرسال واتساب، طباعة الفاتورة والإلغاء — كل ذلك في مكان واحد.",
+            en: "Manage delivery orders, send to driver, resend WhatsApp, print invoice and cancel — all in one place."
+        },
+        feat_title: { ku: "تایبەتمەندییە سەرەکییەکان", ar: "المميزات الرئيسية", en: "Key features" },
+        feat_sub: {
+            ku: "هەموو مۆدیوولەکانی سیستەم — کاشێر، کاپتن، چێشتخانە، ڕاپۆرت، داخستنی ڕۆژ، باکئەپ و زیاتر",
+            ar: "كل وحدات النظام — الكاشير والكابتن والمطبخ والتقارير وإغلاق اليوم والنسخ الاحتياطي والمزيد",
+            en: "Full system modules — cashier, captain, kitchen, reports, day closing, backup and more"
+        },
+        f1_t: { ku: "مێزەکان", ar: "الطاولات", en: "Tables" },
+        f1_d: { ku: "دۆخی مێز، کات، و کۆی حساب بە ڕەنگی ڕوون.", ar: "حالة الطاولة والوقت والمبلغ بألوان واضحة.", en: "Table status, time, and bill total with clear colors." },
+        f2_t: { ku: "کاشێر", ar: "الكاشير", en: "Cashier" },
+        f2_d: { ku: "فرۆشتنی خێرا، چاپ، و ناردن بۆ چێشتخانە.", ar: "بيع سريع وطباعة وإرسال للمطبخ.", en: "Fast selling, print, and send to kitchen." },
+        f3_t: { ku: "کاپتن", ar: "الكابتن", en: "Captain" },
+        f3_d: { ku: "هەڵبژاردنی مێز و خزمەتگوزاری بۆ وەیتەر.", ar: "اختيار الطاولة وخدمة الويتر.", en: "Table selection and waiter service screen." },
+        f4_t: { ku: "چێشتخانە", ar: "المطبخ", en: "Kitchen" },
+        f4_d: { ku: "شاشەی ئامادەکردن بە کارت و دۆخی داواکاری.", ar: "شاشة تحضير بالبطاقات وحالة الطلب.", en: "Prep screen with cards and order status." },
+        f5_t: { ku: "گەیاندن", ar: "التوصيل", en: "Delivery" },
+        f5_d: { ku: "شۆفێر، ناونیشان، و واتساپی کڕیار.", ar: "السائق والعنوان وواتساب الزبون.", en: "Drivers, address, and customer WhatsApp." },
+        f6_t: { ku: "ئایتەم و بەش", ar: "الأصناف والأقسام", en: "Items & categories" },
+        f6_d: { ku: "بەڕێوەبردنی مێنوو، نرخ، وێنە و کاتەگۆری.", ar: "إدارة القائمة والأسعار والصور والأقسام.", en: "Manage menu, prices, photos and categories." },
+        f7_t: { ku: "داواکارییەکان", ar: "الطلبات", en: "Orders" },
+        f7_d: { ku: "شوێنکەوتنی هەموو داواکارییەکان لە یەک شوێن.", ar: "متابعة كل الطلبات في مكان واحد.", en: "Track every order from one place." },
+        f8_t: { ku: "خەرجییەکان", ar: "المصاريف", en: "Expenses" },
+        f8_d: { ku: "تۆمارکردنی خەرجی ڕۆژانە و کۆنترۆڵی پارە.", ar: "تسجيل مصاريف اليوم والتحكم بالمال.", en: "Log daily expenses and control cash." },
+        f9_t: { ku: "ڕاپۆرتەکان", ar: "التقارير", en: "Reports" },
+        f9_d: { ku: "فرۆشتن، قازانج، و ڕاپۆرتی کار بۆ خاوەنکار.", ar: "المبيعات والأرباح وتقارير العمل لصاحب المحل.", en: "Sales, profit, and business reports for owners." },
+        f10_t: { ku: "داخستنی ڕۆژ", ar: "إغلاق اليوم", en: "Day closing" },
+        f10_d: { ku: "کۆتایی ڕۆژ، کۆی فرۆشتن و داخستنی حساب.", ar: "نهاية اليوم وإجمالي المبيعات وإغلاق الحساب.", en: "End of day, sales total, and account close." },
+        f11_t: { ku: "باکئەپ", ar: "النسخ الاحتياطي", en: "Backup" },
+        f11_d: { ku: "پاراستنی داتاکان و گەڕاندنەوە لە کاتی پێویست.", ar: "حفظ البيانات واسترجاعها عند الحاجة.", en: "Protect data and restore when needed." },
+        f12_t: { ku: "بەکارهێنەران", ar: "المستخدمون", en: "Users" },
+        f12_d: { ku: "کارمەند، ڕۆڵ و مۆڵەتی دەستگەیشتن.", ar: "الموظفون والأدوار وصلاحيات الوصول.", en: "Staff, roles, and access permissions." },
+        band_t: { ku: "ئامادەیت بۆ POSی خۆت؟", ar: "جاهز لنظام POS خاص بك؟", en: "Ready for your own POS?" },
+        band_p: { ku: "دیمۆ ببینە یان لە واتساپ پەیوەندیمان پێوە بکە", ar: "شاهد العرض التجريبي أو تواصل معنا عبر واتساب", en: "View the demo or contact us on WhatsApp" }
+    };
+
+    let LANG = localStorage.getItem('pos_lang') || 'ku';
+
+    function setPosLang(l) {
+        LANG = l;
+        localStorage.setItem('pos_lang', l);
+        const root = document.getElementById('html-root');
+        root.lang = l;
+        root.dir = (l === 'en') ? 'ltr' : 'rtl';
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('on', b.dataset.l === l));
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const entry = POS_I18N[key];
+            if (!entry) return;
+            el.innerHTML = entry[l] != null ? entry[l] : (entry.ku || key);
+        });
+        document.title = l === 'ar' ? 'Smart Serve POS — نظام المطاعم' : (l === 'en' ? 'Smart Serve POS — Café & Restaurant' : 'Smart Serve POS — کافێ و ڕێستورانت');
+    }
+
+    setPosLang(LANG);
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Serve — CV</title>
+    <meta name="description" content="Basam Ali — Web & App Developer CV">
+    <meta name="theme-color" content="#0B1220">
+    <link rel="icon" type="image/png" href="images/icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#0B1220;--line:rgba(251,146,60,.28);--text:#FFF7ED;--muted:#FDBA74;
+            --orange:#FB923C;--orange2:#F97316;
+        }
+        html,body{height:100%;overflow:hidden}
+        body{font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--text)}
+        a{text-decoration:none;color:inherit}
+        .bar{
+            position:fixed;top:0;left:0;right:0;z-index:50;height:56px;
+            display:flex;align-items:center;justify-content:space-between;gap:10px;
+            padding:0 14px;background:rgba(11,18,32,.92);backdrop-filter:blur(12px);
+            border-bottom:1px solid var(--line);
+        }
+        .brand{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800}
+        .brand img{width:30px;height:30px;border-radius:8px;object-fit:cover}
+        .brand em{font-style:normal;color:var(--orange)}
+        .hub-back{
+            display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;
+            color:#1C1008;background:linear-gradient(135deg,#FDBA74,var(--orange2));
+            padding:8px 13px;border-radius:999px;box-shadow:0 8px 20px rgba(249,115,22,.35);
+        }
+        .hub-back svg{width:14px;height:14px}
+        .open-ext{
+            display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;
+            color:var(--muted);border:1px solid var(--line);padding:7px 11px;border-radius:999px;
+        }
+        .actions{display:flex;align-items:center;gap:8px}
+        .frame-wrap{position:fixed;inset:56px 0 0 0}
+        .frame-wrap iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+        @media(max-width:520px){
+            .brand span{display:none}
+            .open-ext span{display:none}
+            .open-ext{padding:8px 10px}
+        }
+    </style>
+</head>
+<body>
+    <div class="bar">
+        <a class="brand" href="index.html">
+            <img src="images/logo.png" alt="Smart Serve">
+            <span>SMART <em>SERVE</em> · CV</span>
+        </a>
+        <div class="actions">
+            <a class="open-ext" href="https://basam-ali-info.vercel.app/" target="_blank" rel="noopener noreferrer" title="Open full page">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7"/><path d="M10 14L21 3"/><path d="M21 14v7H3V3h7"/></svg>
+                <span>Full page</span>
+            </a>
+            <a class="hub-back" href="index.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                <span>Back to Hub</span>
+            </a>
+        </div>
+    </div>
+    <div class="frame-wrap">
+        <iframe src="https://basam-ali-info.vercel.app/" title="Basam Ali CV" loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</body>
+</html>
