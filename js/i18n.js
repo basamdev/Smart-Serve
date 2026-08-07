@@ -212,6 +212,7 @@
         lnd_cust_shaw_args:{ ku: "مێنیوی مۆدێرن بۆ ڕێستورانت", ar: "قائمة عصرية للمطعم", en: "A modern menu for restaurant" },
         lnd_cust_yas_desc:{ ku: "مێنیوی دیجیتاڵی تایبەت بۆ مطعم ياسمين الشام — خواردنی سووری، سێ زمان، QR و داشبۆرد", ar: "قائمة رقمية مميزة لمطعم ياسمين الشام — أطباق شامية أصيلة، ثلاث لغات، QR ولوحة تحكم", en: "Custom digital menu for Yasamin Al Sham — authentic Syrian cuisine, 3 languages, QR & dashboard" },
         lnd_cust_zayed_desc:{ ku: "مێنیوی دیجیتاڵی مۆدێرن بۆ Zayed Alkhair لە Sky Towers هەولێر — سێ زمان، QR و داشبۆردی بەڕێوەبردن", ar: "قائمة رقمية عصرية لزايد الخير في سكاي تاورز أربيل — ثلاث لغات، QR ولوحة إدارة", en: "Modern digital menu for Zayed Alkhair at Sky Towers Erbil — 3 languages, QR & management dashboard" },
+        lnd_cust_gaming_desc:{ ku: "مێنیوی دیجیتاڵی مۆدێرن بۆ یاری — تجربة gaming لە ئاستێکی گەیترینی", ar: "قائمة رقمية عصرية للألعاب — تجربة ألعاب من المستوى التالي", en: "Modern digital gaming menu — next-level gaming experience" },
         lnd_cust_live:  { ku: "ڕاستەوخۆ", ar: "مباشر", en: "LIVE" },
         lnd_styles_title:{ ku: "<span class='g'>ستایلی</span> دیزاینەکانمان", ar: "<span class='g'>تصاميمنا</span> الجاهزة", en: "Our design <span class='g'>styles</span>" },
         lnd_styles_sub: { ku: "ستایلی ئامادە بۆ مێنیوەکەت — بە تەواوی گونجاوکراو", ar: "تصاميم جاهزة لقائمتك — قابلة للتخصيص بالكامل", en: "Ready styles for your menu — fully customizable" },
