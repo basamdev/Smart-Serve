@@ -1,24 +1,247 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" dir="ltr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Serve - Digital Solutions for Your Business</title>
-    <meta name="description" content="Smart Serve provides premium digital solutions including QR restaurant menus, POS systems, developer portfolio, and creative design services.">
+    <title id="pageTitle">Smart Serve - Digital Solutions for Your Business</title>
+    <meta name="description" id="pageMetaDesc" content="Smart Serve provides premium digital solutions including QR restaurant menus, POS systems, developer portfolio, and creative design services.">
     <meta property="og:title" content="Smart Serve - Digital Solutions">
     <meta property="og:description" content="Premium digital solutions for your business. QR menus, POS systems, developer portfolio, and creative design services.">
     <meta property="og:type" content="website">
-    <meta name="theme-color" content="#0B1026">
+    <meta name="theme-color" content="#0B1026" id="themeColorMeta">
     <link rel="icon" type="image/png" href="images/icon-192.png">
     <link rel="apple-touch-icon" href="images/icon-192.png">
     <link rel="manifest" href="manifest.json">
+    
+    <!-- Pre-load theme & language to prevent flash -->
+    <script>
+        (function() {
+            try {
+                var savedTheme = localStorage.getItem('smartserve_theme') || 'dark';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                var savedLang = localStorage.getItem('smartserve_lang') || 'en';
+                var isRTL = (savedLang === 'ckb' || savedLang === 'bad' || savedLang === 'ar');
+                document.documentElement.setAttribute('lang', (savedLang === 'ckb' || savedLang === 'bad') ? 'ku' : savedLang);
+                document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+            } catch(e) {}
+        })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Top Luxury Floating Island Navigation Bar -->
+    <nav class="hub-nav" id="hubNav" aria-label="Main Navigation">
+        <div class="hub-nav-inner">
+            <a href="index.html" class="hub-nav-brand" aria-label="Smart Serve Home">
+                <img src="images/logo.png" alt="Smart Serve logo" class="hub-nav-logo" width="34" height="34">
+                <span class="hub-nav-title">SMART <span class="nav-gradient-text">SERVE</span></span>
+            </a>
+
+            <div class="hub-nav-actions">
+                <!-- Luxury Language Dropdown -->
+                <div class="lang-picker" id="langPicker">
+                    <button type="button" class="lang-picker-btn" id="langPickerBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select Language">
+                        <span class="flag-icon-wrap" id="activeFlagIcon"></span>
+                        <span class="active-lang-text" id="activeLangText">English</span>
+                        <svg class="picker-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+
+                    <div class="lang-dropdown-panel" id="langDropdownPanel" role="menu" aria-label="Languages">
+                        <div class="dropdown-header">
+                            <span data-i18n="select_lang">Select Language</span>
+                        </div>
+
+                        <!-- 1. Kurdish Sorani -->
+                        <button type="button" class="lang-item" role="menuitem" data-lang="ckb" onclick="setLanguage('ckb')">
+                            <span class="lang-item-flag">
+                                <svg class="flag-svg" viewBox="0 0 640 480" width="22" height="16" aria-hidden="true">
+                                    <rect width="640" height="160" fill="#ED1B24"/>
+                                    <rect y="160" width="640" height="160" fill="#FFFFFF"/>
+                                    <rect y="320" width="640" height="160" fill="#278E43"/>
+                                    <g transform="translate(320, 240)">
+                                        <circle r="44" fill="#FFC80B"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(0)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(17.14)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(34.28)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(51.42)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(68.57)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(85.71)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(102.85)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(120)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(137.14)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(154.28)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(171.42)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(188.57)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(205.71)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(222.85)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(240)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(257.14)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(274.28)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(291.42)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(308.57)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(325.71)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(342.85)"/>
+                                    </g>
+                                </svg>
+                            </span>
+                            <div class="lang-item-names">
+                                <span class="lang-primary-name">کوردی (سۆرانی)</span>
+                                <span class="lang-native-name">Kurdî Soranî</span>
+                            </div>
+                            <span class="lang-check-icon"><i class="fas fa-check"></i></span>
+                        </button>
+
+                        <!-- 2. Kurdish Badini -->
+                        <button type="button" class="lang-item" role="menuitem" data-lang="bad" onclick="setLanguage('bad')">
+                            <span class="lang-item-flag">
+                                <svg class="flag-svg" viewBox="0 0 640 480" width="22" height="16" aria-hidden="true">
+                                    <rect width="640" height="160" fill="#ED1B24"/>
+                                    <rect y="160" width="640" height="160" fill="#FFFFFF"/>
+                                    <rect y="320" width="640" height="160" fill="#278E43"/>
+                                    <g transform="translate(320, 240)">
+                                        <circle r="44" fill="#FFC80B"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(0)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(17.14)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(34.28)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(51.42)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(68.57)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(85.71)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(102.85)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(120)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(137.14)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(154.28)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(171.42)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(188.57)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(205.71)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(222.85)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(240)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(257.14)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(274.28)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(291.42)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(308.57)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(325.71)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(342.85)"/>
+                                    </g>
+                                </svg>
+                            </span>
+                            <div class="lang-item-names">
+                                <span class="lang-primary-name">کوردی (بادینی)</span>
+                                <span class="lang-native-name">Kurdî Badînî</span>
+                            </div>
+                            <span class="lang-check-icon"><i class="fas fa-check"></i></span>
+                        </button>
+
+                        <!-- 3. Kurdish Kurmanji -->
+                        <button type="button" class="lang-item" role="menuitem" data-lang="kmr" onclick="setLanguage('kmr')">
+                            <span class="lang-item-flag">
+                                <svg class="flag-svg" viewBox="0 0 640 480" width="22" height="16" aria-hidden="true">
+                                    <rect width="640" height="160" fill="#ED1B24"/>
+                                    <rect y="160" width="640" height="160" fill="#FFFFFF"/>
+                                    <rect y="320" width="640" height="160" fill="#278E43"/>
+                                    <g transform="translate(320, 240)">
+                                        <circle r="44" fill="#FFC80B"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(0)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(17.14)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(34.28)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(51.42)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(68.57)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(85.71)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(102.85)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(120)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(137.14)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(154.28)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(171.42)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(188.57)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(205.71)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(222.85)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(240)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(257.14)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(274.28)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(291.42)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(308.57)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(325.71)"/>
+                                        <path d="M0,-74 L6,-44 L-6,-44 Z" fill="#FFC80B" transform="rotate(342.85)"/>
+                                    </g>
+                                </svg>
+                            </span>
+                            <div class="lang-item-names">
+                                <span class="lang-primary-name">Kurdî (Kurmancî)</span>
+                                <span class="lang-native-name">کورمانجی</span>
+                            </div>
+                            <span class="lang-check-icon"><i class="fas fa-check"></i></span>
+                        </button>
+
+                        <!-- 4. Arabic -->
+                        <button type="button" class="lang-item" role="menuitem" data-lang="ar" onclick="setLanguage('ar')">
+                            <span class="lang-item-flag">
+                                <svg class="flag-svg" viewBox="0 0 640 480" width="22" height="16" aria-hidden="true">
+                                    <rect width="640" height="480" fill="#006C35"/>
+                                    <g fill="#FFFFFF">
+                                        <path d="M210 325 h220 v9 h-220 z"/>
+                                        <path d="M430 320 l18 9 l-18 9 z"/>
+                                        <path d="M210 315 v29 h-10 v-29 z"/>
+                                        <path d="M190 325 h30 v9 h-30 z"/>
+                                        <text x="320" y="275" font-family="'Vazirmatn', 'Arial', sans-serif" font-size="64" font-weight="900" text-anchor="middle" fill="#FFFFFF" letter-spacing="2">لا إله إلا الله</text>
+                                    </g>
+                                </svg>
+                            </span>
+                            <div class="lang-item-names">
+                                <span class="lang-primary-name">العربية</span>
+                                <span class="lang-native-name">Arabic (السعودية)</span>
+                            </div>
+                            <span class="lang-check-icon"><i class="fas fa-check"></i></span>
+                        </button>
+
+                        <!-- 5. English -->
+                        <button type="button" class="lang-item" role="menuitem" data-lang="en" onclick="setLanguage('en')">
+                            <span class="lang-item-flag">
+                                <svg class="flag-svg" viewBox="0 0 640 480" width="22" height="16" aria-hidden="true">
+                                    <clipPath id="uk-clip-hub"><rect width="640" height="480" rx="2"/></clipPath>
+                                    <g clip-path="url(#uk-clip-hub)">
+                                        <path fill="#012169" d="M0 0h640v480H0z"/>
+                                        <path fill="#FFF" d="M0 0l640 480m0-480L0 480" stroke="#FFF" stroke-width="64"/>
+                                        <path fill="#C8102E" d="M0 0l640 480m0-480L0 480" stroke="#C8102E" stroke-width="22"/>
+                                        <path fill="#FFF" d="M320 0v480M0 240h640" stroke="#FFF" stroke-width="106"/>
+                                        <path fill="#C8102E" d="M320 0v480M0 240h640" stroke="#C8102E" stroke-width="64"/>
+                                    </g>
+                                </svg>
+                            </span>
+                            <div class="lang-item-names">
+                                <span class="lang-primary-name">English</span>
+                                <span class="lang-native-name">International</span>
+                            </div>
+                            <span class="lang-check-icon"><i class="fas fa-check"></i></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Luxury Light / Dark Mode Toggle Pill -->
+                <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Light / Dark Mode" title="Toggle Theme" onclick="toggleTheme()">
+                    <span class="theme-sun-ico" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="4.5"/>
+                            <path d="M12 2v2.5M12 19.5V22M4.22 4.22l1.77 1.77M18.01 18.01l1.77 1.77M2 12h2.5M19.5 12H22M4.22 19.78l1.77-1.77M18.01 5.99l1.77-1.77"/>
+                        </svg>
+                    </span>
+                    <span class="theme-moon-ico" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </span>
+                    <span class="theme-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Animated Ambient Glowing Background -->
     <div class="background">
         <div class="glow glow-tl"></div>
         <div class="glow glow-tr"></div>
@@ -29,12 +252,13 @@
         <div class="particles"></div>
     </div>
 
-    <header>
+    <!-- Main Header Section -->
+    <header class="hub-header">
         <div class="logo-container">
-            <img class="logo" src="images/logo.png" alt="Smart Serve logo" width="88" height="88">
+            <img class="logo" src="images/logo.png" alt="Smart Serve logo" width="96" height="96">
         </div>
         <h1 class="title">SMART <span class="gradient-text">SERVE</span></h1>
-        <p class="subtitle">Digital Solutions for Your Business</p>
+        <p class="subtitle" data-i18n="brand_sub">Digital Solutions for Your Business</p>
         <div class="divider">
             <div class="divider-line"></div>
             <div class="divider-dot"></div>
@@ -42,18 +266,20 @@
         </div>
     </header>
 
+    <!-- Interactive Solution Cards -->
     <main>
         <div class="cards-container">
+            <!-- 1. Digital Menu Card -->
             <div class="card" data-card="1">
                 <div class="card-icon blue-icon" aria-hidden="true">
                     <i class="fas fa-qrcode"></i>
                 </div>
                 <div class="card-content">
-                    <h2 class="card-title">Digital Menu</h2>
+                    <h2 class="card-title" data-i18n="menu_title">Digital Menu</h2>
                     <div class="card-accent blue-accent"></div>
-                    <p class="card-description">Modern QR Code Restaurant Menu</p>
+                    <p class="card-description" data-i18n="menu_desc">Modern QR Code Restaurant Menu</p>
                     <a href="landing.html" class="card-button button-blue">
-                        <span>Open Menu</span>
+                        <span data-i18n="menu_btn">Open Menu</span>
                         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
@@ -61,16 +287,17 @@
                 </div>
             </div>
 
+            <!-- 2. POS System Card -->
             <div class="card" data-card="2">
                 <div class="card-icon green-icon" aria-hidden="true">
                     <img class="card-icon-svg" src="assets/icon-pos.svg" alt="" width="52" height="52">
                 </div>
                 <div class="card-content">
-                    <h2 class="card-title">POS System</h2>
+                    <h2 class="card-title" data-i18n="pos_title">POS System</h2>
                     <div class="card-accent green-accent"></div>
-                    <p class="card-description">Complete Restaurant Management System</p>
+                    <p class="card-description" data-i18n="pos_desc">Complete Restaurant Management System</p>
                     <a href="pos.html" class="card-button button-green">
-                        <span>Open POS</span>
+                        <span data-i18n="pos_btn">Open POS</span>
                         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
@@ -78,16 +305,17 @@
                 </div>
             </div>
 
+            <!-- 3. Developer Portfolio Card -->
             <div class="card" data-card="3">
                 <div class="card-icon orange-icon" aria-hidden="true">
                     <i class="fas fa-laptop-code"></i>
                 </div>
                 <div class="card-content">
-                    <h2 class="card-title">Developer Portfolio</h2>
+                    <h2 class="card-title" data-i18n="cv_title">Developer Portfolio</h2>
                     <div class="card-accent orange-accent"></div>
-                    <p class="card-description">Explore Projects, Skills & Live Work</p>
+                    <p class="card-description" data-i18n="cv_desc">Explore Projects, Skills & Live Work</p>
                     <a href="cv.html" class="card-button button-orange">
-                        <span>View Portfolio</span>
+                        <span data-i18n="cv_btn">View Portfolio</span>
                         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
@@ -95,14 +323,15 @@
                 </div>
             </div>
 
+            <!-- 4. Social Media Card -->
             <div class="card" data-card="4">
                 <div class="card-icon rose-icon" aria-hidden="true">
                     <i class="fas fa-share-nodes"></i>
                 </div>
                 <div class="card-content">
-                    <h2 class="card-title">Social Media</h2>
+                    <h2 class="card-title" data-i18n="social_title">Social Media</h2>
                     <div class="card-accent rose-accent"></div>
-                    <p class="card-description">Creative Branding & Social Media Design</p>
+                    <p class="card-description" data-i18n="social_desc">Creative Branding & Social Media Design</p>
                     <div class="social-btns" role="group" aria-label="Social media links">
                         <a class="social-btn social-wa" href="https://wa.me/9647506454656" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" onclick="return openSocial(this.href)">
                             <i class="fab fa-whatsapp"></i>
@@ -122,10 +351,12 @@
         </div>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Smart Serve. All rights reserved.</p>
+        <p data-i18n="footer_text">&copy; 2026 Smart Serve. All rights reserved.</p>
     </footer>
 
+    <!-- Interactive Modal Container -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-container">
             <button type="button" class="modal-close" id="modalClose" aria-label="Close">
@@ -142,6 +373,7 @@
         </div>
     </div>
 
+    <!-- Core Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
