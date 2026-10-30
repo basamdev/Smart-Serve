@@ -1,72 +1,563 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Serve — Developer Portfolio</title>
-    <meta name="description" content="Basam Ali — Web & App Developer Portfolio">
-    <meta name="theme-color" content="#0B1220">
+    <title>Basam Ali Sedqi — Software Developer</title>
+    <meta name="description" content="Basam Ali Sedqi — Software Developer Portfolio & CV">
+    <meta name="theme-color" content="#0a0e1a">
     <link rel="icon" type="image/png" href="images/icon-192.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Vazirmatn:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
         :root{
-            --bg:#0B1220;--line:rgba(251,146,60,.28);--text:#FFF7ED;--muted:#FDBA74;
-            --orange:#FB923C;--orange2:#F97316;
+            --bg:#0a0e1a;--surface:#111827;--surface2:#1a2236;--border:rgba(99,130,255,.15);
+            --text:#e8eaf6;--muted:#94a3b8;--accent:#6366f1;--accent2:#818cf8;
+            --gold:#fbbf24;--gold2:#f59e0b;--cyan:#22d3ee;--emerald:#10b981;
+            --rose:#f43f5e;--orange:#fb923c;
         }
-        html,body{height:100%;overflow:hidden}
-        body{font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--text)}
-        a{text-decoration:none;color:inherit}
-        .bar{
-            position:fixed;top:0;left:0;right:0;z-index:50;height:56px;
-            display:flex;align-items:center;justify-content:space-between;gap:10px;
-            padding:0 14px;background:rgba(11,18,32,.92);backdrop-filter:blur(12px);
-            border-bottom:1px solid var(--line);
+        html{scroll-behavior:smooth}
+        body{font-family:'Inter','Vazirmatn',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+        [dir="rtl"] body{font-family:'Vazirmatn','Inter',sans-serif}
+
+        /* ─── Ambient Background ─── */
+        .ambient{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+        .ambient .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.25;animation:orbFloat 12s ease-in-out infinite alternate}
+        .orb-1{width:500px;height:500px;background:var(--accent);top:-10%;left:-10%;animation-delay:0s}
+        .orb-2{width:400px;height:400px;background:var(--cyan);bottom:-10%;right:-10%;animation-delay:-4s}
+        .orb-3{width:300px;height:300px;background:var(--gold);top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:-8s}
+        @keyframes orbFloat{0%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.1)}100%{transform:translate(-20px,30px) scale(.95)}}
+
+        /* ─── Top Bar ─── */
+        .topbar{
+            position:sticky;top:0;z-index:100;height:60px;
+            display:flex;align-items:center;justify-content:space-between;
+            padding:0 20px;background:rgba(10,14,26,.88);backdrop-filter:blur(20px) saturate(1.6);
+            border-bottom:1px solid var(--border);
         }
-        .brand{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800}
-        .brand img{width:30px;height:30px;border-radius:50%;object-fit:cover}
-        .brand em{font-style:normal;color:var(--orange)}
-        .hub-back{
+        .topbar-brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px;color:var(--text);text-decoration:none}
+        .topbar-brand img{width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}
+        .topbar-brand em{font-style:normal;color:var(--accent2)}
+        .topbar-actions{display:flex;align-items:center;gap:10px}
+        .lang-toggle{
+            display:flex;align-items:center;gap:0;border-radius:999px;overflow:hidden;
+            border:1px solid var(--border);background:rgba(99,130,255,.08);
+        }
+        .lang-toggle button{
+            padding:7px 12px;font-size:11px;font-weight:700;background:none;border:none;color:var(--muted);
+            cursor:pointer;transition:all .3s ease;font-family:inherit;
+        }
+        .lang-toggle button.active{background:var(--accent);color:#fff}
+        .back-btn{
             display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;
-            color:#1C1008;background:linear-gradient(135deg,#FDBA74,var(--orange2));
-            padding:8px 13px;border-radius:999px;box-shadow:0 8px 20px rgba(249,115,22,.35);
+            color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));
+            padding:8px 16px;border-radius:999px;text-decoration:none;
+            box-shadow:0 4px 15px rgba(99,102,241,.35);transition:all .3s ease;
         }
-        .hub-back svg{width:14px;height:14px}
-        .open-ext{
-            display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;
-            color:var(--muted);border:1px solid var(--line);padding:7px 11px;border-radius:999px;
+        .back-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(99,102,241,.5)}
+        .back-btn svg{width:14px;height:14px}
+
+        /* ─── Hero Section ─── */
+        .hero{
+            position:relative;z-index:1;padding:60px 20px 40px;text-align:center;
         }
-        .actions{display:flex;align-items:center;gap:8px}
-        .frame-wrap{position:fixed;inset:56px 0 0 0}
-        .frame-wrap iframe{width:100%;height:100%;border:0;display:block;background:#fff}
-        @media(max-width:520px){
-            .brand span{display:none}
-            .open-ext span{display:none}
-            .open-ext{padding:8px 10px}
+        .hero-badge{
+            display:inline-flex;align-items:center;gap:8px;
+            padding:8px 18px;border-radius:999px;font-size:12px;font-weight:700;
+            background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.25);
+            color:var(--accent2);margin-bottom:20px;
+            animation:fadeInDown .6s ease;
+        }
+        .hero-badge i{font-size:10px;animation:pulse 2s ease-in-out infinite}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+        .hero h1{
+            font-size:clamp(28px,5vw,48px);font-weight:900;letter-spacing:-1px;
+            background:linear-gradient(135deg,#fff 0%,var(--accent2) 50%,var(--cyan) 100%);
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+            margin-bottom:8px;animation:fadeInUp .6s ease .1s both;
+        }
+        .hero .subtitle{
+            font-size:clamp(14px,2.5vw,18px);color:var(--muted);font-weight:500;
+            animation:fadeInUp .6s ease .2s both;
+        }
+        .hero .tagline{
+            display:flex;align-items:center;justify-content:center;gap:12px;
+            margin-top:14px;font-size:13px;color:var(--muted);font-weight:600;
+            animation:fadeInUp .6s ease .3s both;
+        }
+        .hero .tagline span{display:flex;align-items:center;gap:5px}
+        .hero .tagline .dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes fadeInDown{from{opacity:0;transform:translateY(-15px)}to{opacity:1;transform:translateY(0)}}
+
+        /* ─── CV Showcase ─── */
+        .cv-showcase{
+            position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 20px 40px;
+        }
+        .cv-frame{
+            position:relative;border-radius:20px;overflow:hidden;
+            background:var(--surface);border:1px solid var(--border);
+            box-shadow:0 25px 80px rgba(0,0,0,.5),0 0 60px rgba(99,102,241,.08);
+            animation:fadeInUp .8s ease .4s both;
+        }
+        .cv-frame-header{
+            display:flex;align-items:center;justify-content:space-between;
+            padding:16px 20px;background:rgba(26,34,54,.8);border-bottom:1px solid var(--border);
+        }
+        .cv-frame-dots{display:flex;gap:7px}
+        .cv-frame-dots span{width:12px;height:12px;border-radius:50%}
+        .cv-frame-dots span:nth-child(1){background:#f43f5e}
+        .cv-frame-dots span:nth-child(2){background:#fbbf24}
+        .cv-frame-dots span:nth-child(3){background:#10b981}
+        .cv-frame-title{font-size:12px;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:6px}
+        .cv-frame-title i{color:var(--accent2)}
+        .cv-image-wrap{
+            position:relative;cursor:zoom-in;overflow:hidden;
+        }
+        .cv-image-wrap img{
+            width:100%;height:auto;display:block;transition:transform .5s ease;
+        }
+        .cv-image-wrap:hover img{transform:scale(1.02)}
+        .cv-image-overlay{
+            position:absolute;inset:0;background:linear-gradient(to top,rgba(10,14,26,.7) 0%,transparent 30%);
+            display:flex;align-items:flex-end;justify-content:center;padding:30px;
+            opacity:0;transition:opacity .4s ease;pointer-events:none;
+        }
+        .cv-image-wrap:hover .cv-image-overlay{opacity:1}
+        .cv-image-overlay span{
+            font-size:14px;font-weight:700;color:#fff;
+            background:rgba(99,102,241,.6);backdrop-filter:blur(10px);
+            padding:10px 20px;border-radius:999px;
+        }
+
+        /* ─── Action Buttons ─── */
+        .cv-actions{
+            display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;
+            padding:30px 20px;position:relative;z-index:1;animation:fadeInUp .8s ease .5s both;
+        }
+        .btn{
+            display:inline-flex;align-items:center;gap:8px;padding:14px 28px;
+            border-radius:14px;font-size:14px;font-weight:700;text-decoration:none;
+            transition:all .35s ease;border:none;cursor:pointer;font-family:inherit;
+        }
+        .btn i{font-size:16px}
+        .btn-primary{
+            background:linear-gradient(135deg,var(--accent),#4f46e5);color:#fff;
+            box-shadow:0 8px 25px rgba(99,102,241,.35);
+        }
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(99,102,241,.5)}
+        .btn-gold{
+            background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1000;
+            box-shadow:0 8px 25px rgba(251,191,36,.3);
+        }
+        .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(251,191,36,.45)}
+        .btn-outline{
+            background:rgba(99,130,255,.08);color:var(--accent2);
+            border:1.5px solid rgba(99,102,241,.3);
+        }
+        .btn-outline:hover{background:rgba(99,130,255,.18);transform:translateY(-2px)}
+        .btn-whatsapp{
+            background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;
+            box-shadow:0 8px 25px rgba(37,211,102,.3);
+        }
+        .btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(37,211,102,.45)}
+
+        /* ─── Info Cards Grid ─── */
+        .info-section{
+            position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:20px 20px 40px;
+        }
+        .section-title{
+            text-align:center;font-size:clamp(20px,3vw,28px);font-weight:800;margin-bottom:30px;
+            color:var(--text);
+        }
+        .section-title span{color:var(--accent2)}
+        .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+        .info-card{
+            background:var(--surface);border:1px solid var(--border);border-radius:16px;
+            padding:24px;transition:all .35s ease;position:relative;overflow:hidden;
+        }
+        .info-card::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:3px;
+            background:linear-gradient(90deg,var(--accent),var(--cyan));
+            transform:scaleX(0);transition:transform .4s ease;transform-origin:left;
+        }
+        .info-card:hover{transform:translateY(-4px);border-color:rgba(99,102,241,.3);box-shadow:0 15px 40px rgba(0,0,0,.3)}
+        .info-card:hover::before{transform:scaleX(1)}
+        .info-card-icon{
+            width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+            font-size:20px;margin-bottom:14px;
+        }
+        .info-card-icon.blue{background:rgba(99,102,241,.12);color:var(--accent2)}
+        .info-card-icon.cyan{background:rgba(34,211,238,.12);color:var(--cyan)}
+        .info-card-icon.gold{background:rgba(251,191,36,.12);color:var(--gold)}
+        .info-card-icon.emerald{background:rgba(16,185,129,.12);color:var(--emerald)}
+        .info-card-icon.rose{background:rgba(244,63,94,.12);color:var(--rose)}
+        .info-card-icon.orange{background:rgba(251,146,60,.12);color:var(--orange)}
+        .info-card h3{font-size:16px;font-weight:700;margin-bottom:6px;color:var(--text)}
+        .info-card p{font-size:13px;color:var(--muted);line-height:1.6}
+
+        /* ─── Skills Section ─── */
+        .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:20px}
+        .skill-bar{
+            background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;
+        }
+        .skill-bar-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+        .skill-bar-head span:first-child{font-size:13px;font-weight:600;color:var(--text)}
+        .skill-bar-head span:last-child{font-size:12px;font-weight:700;color:var(--accent2)}
+        .skill-track{height:6px;border-radius:99px;background:rgba(99,130,255,.1)}
+        .skill-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--cyan));transition:width 1.2s ease}
+
+        /* ─── Contact Footer ─── */
+        .contact-footer{
+            position:relative;z-index:1;text-align:center;
+            padding:40px 20px 30px;
+            border-top:1px solid var(--border);
+            margin-top:20px;
+        }
+        .contact-footer p{font-size:13px;color:var(--muted);margin-top:12px}
+        .contact-footer .copy{font-size:11px;color:rgba(148,163,184,.5);margin-top:16px}
+
+        /* ─── Lightbox ─── */
+        .lightbox{
+            position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.92);backdrop-filter:blur(15px);
+            display:flex;align-items:center;justify-content:center;padding:20px;
+            opacity:0;visibility:hidden;transition:all .4s ease;
+        }
+        .lightbox.active{opacity:1;visibility:visible}
+        .lightbox img{max-width:95%;max-height:90vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6);transform:scale(.9);transition:transform .4s ease}
+        .lightbox.active img{transform:scale(1)}
+        .lightbox-close{
+            position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;
+            background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+            color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+            transition:all .3s ease;
+        }
+        .lightbox-close:hover{background:rgba(244,63,94,.6)}
+
+        /* ─── Responsive ─── */
+        @media(max-width:600px){
+            .topbar-brand span{display:none}
+            .hero{padding:40px 16px 30px}
+            .cv-actions{gap:10px;padding:20px 16px}
+            .btn{padding:12px 20px;font-size:13px}
+            .info-grid{grid-template-columns:1fr}
+            .skills-grid{grid-template-columns:1fr}
         }
     </style>
 </head>
 <body>
-    <div class="bar">
-        <a class="brand" href="index.html">
+    <!-- Ambient BG -->
+    <div class="ambient">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <a class="topbar-brand" href="index.html">
             <img src="images/logo.png" alt="Smart Serve">
-            <span>SMART <em>SERVE</em> · PORTFOLIO</span>
+            <span>SMART <em>SERVE</em></span>
         </a>
-        <div class="actions">
-            <a class="open-ext" href="https://basam-ali-info.vercel.app/" target="_blank" rel="noopener noreferrer" title="Open full page">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7"/><path d="M10 14L21 3"/><path d="M21 14v7H3V3h7"/></svg>
-                <span>Full page</span>
-            </a>
-            <a class="hub-back" href="index.html">
+        <div class="topbar-actions">
+            <div class="lang-toggle" id="langToggle">
+                <button data-lang="en" class="active">EN</button>
+                <button data-lang="ku">کوردی</button>
+                <button data-lang="ar">عربی</button>
+            </div>
+            <a class="back-btn" href="index.html">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-                <span>Back to Hub</span>
+                <span data-t="back">Back</span>
             </a>
         </div>
     </div>
-    <div class="frame-wrap">
-        <iframe src="https://basam-ali-info.vercel.app/" title="Basam Ali Portfolio" loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge"><i class="fas fa-circle"></i> <span data-t="available">Available for Work</span></div>
+        <h1 data-t="hero_name">Basam Ali Sedqi</h1>
+        <p class="subtitle" data-t="hero_role">Software Developer — Build • Develop • Innovate</p>
+        <div class="tagline">
+            <span><i class="fas fa-map-marker-alt" style="color:var(--rose)"></i> <span data-t="hero_loc">Erbil, Iraq</span></span>
+            <span class="dot"></span>
+            <span><i class="fas fa-graduation-cap" style="color:var(--gold)"></i> <span data-t="hero_edu">B.Sc. Computer Science</span></span>
+            <span class="dot"></span>
+            <span><i class="fas fa-code" style="color:var(--cyan)"></i> <span data-t="hero_exp">Cihan University 2021–2025</span></span>
+        </div>
+    </section>
+
+    <!-- CV Image Showcase -->
+    <section class="cv-showcase">
+        <div class="cv-frame">
+            <div class="cv-frame-header">
+                <div class="cv-frame-dots"><span></span><span></span><span></span></div>
+                <div class="cv-frame-title"><i class="fas fa-file-alt"></i> <span data-t="cv_file">CV — Basam Ali Sedqi.pdf</span></div>
+                <div style="width:50px"></div>
+            </div>
+            <div class="cv-image-wrap" onclick="openLightbox()">
+                <img src="images/cv-basam.jpg" alt="Basam Ali Sedqi — CV / Resume" loading="eager">
+                <div class="cv-image-overlay">
+                    <span><i class="fas fa-search-plus"></i>&nbsp; <span data-t="click_zoom">Click to zoom</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Action Buttons -->
+    <div class="cv-actions">
+        <a class="btn btn-primary" href="images/cv-basam.jpg" download="Basam_Ali_Sedqi_CV.jpg">
+            <i class="fas fa-download"></i> <span data-t="btn_download">Download CV</span>
+        </a>
+        <a class="btn btn-gold" href="https://basam-ali-info.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-globe"></i> <span data-t="btn_portfolio">View Full Portfolio</span>
+        </a>
+        <a class="btn btn-whatsapp" href="https://wa.me/9647506454656" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i> <span data-t="btn_contact">Contact Me</span>
+        </a>
+        <a class="btn btn-outline" href="https://github.com/BasamDev" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i> <span>GitHub</span>
+        </a>
+        <a class="btn btn-outline" href="https://linkedin.com/in/basam-ali-1059b73b" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin"></i> <span>LinkedIn</span>
+        </a>
     </div>
+
+    <!-- About Me Cards -->
+    <section class="info-section">
+        <h2 class="section-title" data-t="about_title">About <span>Me</span></h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-card-icon blue"><i class="fas fa-user-tie"></i></div>
+                <h3 data-t="card_summary">Professional Summary</h3>
+                <p data-t="card_summary_desc">Computer Science graduate and Software Developer with hands-on experience in desktop and web application development. Skilled in JavaScript, Node.js, Express, SQLite, and Electron.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon cyan"><i class="fas fa-briefcase"></i></div>
+                <h3 data-t="card_work">Work Experience</h3>
+                <p data-t="card_work_desc">IT & Network Technical Intern at Dil Technology (2023–2024). Passionate about building reliable, user-friendly software solutions.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon gold"><i class="fas fa-project-diagram"></i></div>
+                <h3 data-t="card_projects">Projects Built</h3>
+                <p data-t="card_projects_desc">SmartServe Restaurant POS • Market POS System • Café Website & Digital Menu — all developed with modern technologies and deployed to production.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon emerald"><i class="fas fa-language"></i></div>
+                <h3 data-t="card_lang">Languages</h3>
+                <p data-t="card_lang_desc">Kurdish (Native — 100%) • English (Intermediate — 70%) • Arabic (Basic — 67%)</p>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon rose"><i class="fas fa-graduation-cap"></i></div>
+                <h3 data-t="card_education">Education</h3>
+                <p data-t="card_education_desc">Bachelor of Science in Computer Science (B.Sc.) — Cihan University, Erbil (2021–2025). Grade: 73.00</p>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon orange"><i class="fas fa-lightbulb"></i></div>
+                <h3 data-t="card_soft">Soft Skills</h3>
+                <p data-t="card_soft_desc">Problem-Solving • Critical Thinking • Teamwork • Time Management • Adaptability</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="info-section">
+        <h2 class="section-title" data-t="skills_title">Technical <span>Skills</span></h2>
+        <div class="skills-grid">
+            <div class="skill-bar">
+                <div class="skill-bar-head"><span>JavaScript</span><span>90%</span></div>
+                <div class="skill-track"><div class="skill-fill" style="width:90%"></div></div>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-bar-head"><span>Node.js & Express</span><span>88%</span></div>
+                <div class="skill-track"><div class="skill-fill" style="width:88%"></div></div>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-bar-head"><span>Python</span><span>80%</span></div>
+                <div class="skill-track"><div class="skill-fill" style="width:80%"></div></div>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-bar-head"><span>Java, C++</span><span>75%</span></div>
+                <div class="skill-track"><div class="skill-fill" style="width:75%"></div></div>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-bar-head"><span>SQLite</span><span>85%</span></div>
+                <div class="skill-track"><div class="skill-fill" style="width:85%"></div></div>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-bar-head"><span>Electron & Flutter</span><span>80%</span></div>
+                <div class="skill-track"><div class="skill-fill" style="width:80%"></div></div>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-bar-head"><span>Responsive Web Design</span><span>85%</span></div>
+                <div class="skill-track"><div class="skill-fill" style="width:85%"></div></div>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-bar-head"><span>HTML & CSS</span><span>92%</span></div>
+                <div class="skill-track"><div class="skill-fill" style="width:92%"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="contact-footer">
+        <div class="cv-actions" style="padding:0;margin-bottom:10px">
+            <a class="btn btn-primary" href="mailto:basaminfo9@gmail.com"><i class="fas fa-envelope"></i> basaminfo9@gmail.com</a>
+            <a class="btn btn-outline" href="tel:+9647506454656"><i class="fas fa-phone"></i> +964 750 645 45 66</a>
+        </div>
+        <p data-t="motto">❝ Dream Big, Build Better ❞</p>
+        <p class="copy">© 2026 Basam Ali Sedqi — Smart Serve. All rights reserved.</p>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)"><i class="fas fa-times"></i></button>
+        <img src="images/cv-basam.jpg" alt="CV Full View">
+    </div>
+
+    <script>
+    /* ─── Trilingual Dictionary ─── */
+    const T = {
+        en: {
+            back:'Back', available:'Available for Work',
+            hero_name:'Basam Ali Sedqi', hero_role:'Software Developer — Build • Develop • Innovate',
+            hero_loc:'Erbil, Iraq', hero_edu:'B.Sc. Computer Science', hero_exp:'Cihan University 2021–2025',
+            cv_file:'CV — Basam Ali Sedqi.pdf', click_zoom:'Click to zoom',
+            btn_download:'Download CV', btn_portfolio:'View Full Portfolio',
+            btn_contact:'Contact Me',
+            about_title:'About <span>Me</span>',
+            card_summary:'Professional Summary',
+            card_summary_desc:'Computer Science graduate and Software Developer with hands-on experience in desktop and web application development. Skilled in JavaScript, Node.js, Express, SQLite, and Electron.',
+            card_work:'Work Experience',
+            card_work_desc:'IT & Network Technical Intern at Dil Technology (2023–2024). Passionate about building reliable, user-friendly software solutions.',
+            card_projects:'Projects Built',
+            card_projects_desc:'SmartServe Restaurant POS • Market POS System • Café Website & Digital Menu — all developed with modern technologies and deployed to production.',
+            card_lang:'Languages',
+            card_lang_desc:'Kurdish (Native — 100%) • English (Intermediate — 70%) • Arabic (Basic — 67%)',
+            card_education:'Education',
+            card_education_desc:'Bachelor of Science in Computer Science (B.Sc.) — Cihan University, Erbil (2021–2025). Grade: 73.00',
+            card_soft:'Soft Skills',
+            card_soft_desc:'Problem-Solving • Critical Thinking • Teamwork • Time Management • Adaptability',
+            skills_title:'Technical <span>Skills</span>',
+            motto:'❝ Dream Big, Build Better ❞'
+        },
+        ku: {
+            back:'گەڕانەوە', available:'ئامادەم بۆ کار',
+            hero_name:'بەسام عەلی سەدقی', hero_role:'پەرەپێدەری نەرمەکاڵا — دروستکردن • پەرەپێدان • داهێنان',
+            hero_loc:'هەولێر، عێراق', hero_edu:'بەکالۆریۆس لە زانستی کۆمپیوتەر', hero_exp:'زانکۆی جیهان ٢٠٢١–٢٠٢٥',
+            cv_file:'CV — بەسام عەلی سەدقی', click_zoom:'کرتە بکە بۆ گەورەکردن',
+            btn_download:'داگرتنی CV', btn_portfolio:'پیشاندانی پرۆفایل',
+            btn_contact:'پەیوەندیم پێوە بکە',
+            about_title:'دەربارەی <span>من</span>',
+            card_summary:'پوختەی پیشەیی',
+            card_summary_desc:'دەرچوی زانستی کۆمپیوتەر و پەرەپێدەری نەرمەکاڵا لەگەڵ ئەزموونی کاری لە پەرەپێدانی بەرنامەی دێسکتۆپ و وێب. شارەزا لە JavaScript, Node.js, Express, SQLite, و Electron.',
+            card_work:'ئەزموونی کار',
+            card_work_desc:'مامۆستای تەکنیکی IT و تۆڕ لە کۆمپانیای دڵ تەکنۆلۆجی (٢٠٢٣–٢٠٢٤). حەزی هەیە بەرنامەی کارامە و ئاسان بۆ بەکارهێنەر دروست بکات.',
+            card_projects:'پرۆژەکان',
+            card_projects_desc:'سیستەمی POS ی چێشتخانەی SmartServe • سیستەمی POS ی مارکێت • ماڵپەڕ و مینیوی دیجیتاڵی کافێ — هەموو بە تەکنەلۆژیای نوێ دروستکراون.',
+            card_lang:'زمانەکان',
+            card_lang_desc:'کوردی (زمانی دایک — ١٠٠٪) • ئینگلیزی (ناوەند — ٧٠٪) • عەرەبی (بنەڕەتی — ٦٧٪)',
+            card_education:'خوێندن',
+            card_education_desc:'بەکالۆریۆس لە زانستی کۆمپیوتەر — زانکۆی جیهان، هەولێر (٢٠٢١–٢٠٢٥). نمرە: ٧٣.٠٠',
+            card_soft:'تواناکانی نەرم',
+            card_soft_desc:'چارەسەرکردنی کێشە • بیرکردنەوەی ڕەخنەیی • کاری تیمی • بەڕێوەبردنی کات • لایەنگریکردن',
+            skills_title:'تواناکانی <span>تەکنیکی</span>',
+            motto:'❝ خەونی گەورە ببینە، باشتر بنیاد بنێ ❞'
+        },
+        ar: {
+            back:'رجوع', available:'متاح للعمل',
+            hero_name:'بسام علي صدقي', hero_role:'مطور برمجيات — بناء • تطوير • ابتكار',
+            hero_loc:'أربيل، العراق', hero_edu:'بكالوريوس علوم الحاسوب', hero_exp:'جامعة جيهان ٢٠٢١–٢٠٢٥',
+            cv_file:'CV — بسام علي صدقي', click_zoom:'انقر للتكبير',
+            btn_download:'تحميل السيرة الذاتية', btn_portfolio:'عرض الملف الكامل',
+            btn_contact:'تواصل معي',
+            about_title:'عن <span>الشخص</span>',
+            card_summary:'الملخص المهني',
+            card_summary_desc:'خريج علوم الحاسوب ومطور برمجيات ذو خبرة عملية في تطوير تطبيقات سطح المكتب والويب. ماهر في JavaScript و Node.js و Express و SQLite و Electron.',
+            card_work:'الخبرة العملية',
+            card_work_desc:'متدرب تقني في تكنولوجيا المعلومات والشبكات في شركة دل تكنولوجي (٢٠٢٣–٢٠٢٤). شغوف ببناء حلول برمجية موثوقة وسهلة الاستخدام.',
+            card_projects:'المشاريع المنجزة',
+            card_projects_desc:'نظام POS للمطاعم SmartServe • نظام POS للمتاجر • موقع وقائمة رقمية للكافيه — جميعها مطورة بتقنيات حديثة.',
+            card_lang:'اللغات',
+            card_lang_desc:'الكردية (لغة أم — ١٠٠٪) • الإنجليزية (متوسط — ٧٠٪) • العربية (أساسي — ٦٧٪)',
+            card_education:'التعليم',
+            card_education_desc:'بكالوريوس علوم الحاسوب — جامعة جيهان، أربيل (٢٠٢١–٢٠٢٥). المعدل: ٧٣.٠٠',
+            card_soft:'المهارات الشخصية',
+            card_soft_desc:'حل المشكلات • التفكير النقدي • العمل الجماعي • إدارة الوقت • التكيف',
+            skills_title:'المهارات <span>التقنية</span>',
+            motto:'❝ احلم كبيرًا، وابنِ الأفضل ❞'
+        }
+    };
+
+    /* ─── Language System ─── */
+    let currentLang = localStorage.getItem('smartserve_lang') || 'en';
+    // Map hub languages to our 3
+    function mapLang(l){ if(['ckb','ku'].includes(l)) return 'ku'; if(l==='ar') return 'ar'; return 'en'; }
+
+    function applyLang(lang){
+        lang = mapLang(lang);
+        currentLang = lang;
+        const dict = T[lang] || T.en;
+        const isRTL = lang !== 'en';
+        document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+        document.documentElement.lang = lang === 'ku' ? 'ckb' : lang;
+
+        document.querySelectorAll('[data-t]').forEach(el => {
+            const key = el.getAttribute('data-t');
+            if(dict[key] !== undefined){
+                if(dict[key].includes('<span>')) el.innerHTML = dict[key];
+                else el.textContent = dict[key];
+            }
+        });
+
+        // Update active lang button
+        document.querySelectorAll('#langToggle button').forEach(btn => {
+            btn.classList.toggle('active', mapLang(btn.dataset.lang) === lang);
+        });
+
+        localStorage.setItem('smartserve_lang', lang === 'ku' ? 'ckb' : lang);
+    }
+
+    // Init
+    applyLang(currentLang);
+
+    // Language toggle buttons
+    document.querySelectorAll('#langToggle button').forEach(btn => {
+        btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+    });
+
+    /* ─── Lightbox ─── */
+    function openLightbox(){
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(e){
+        if(e.target === document.getElementById('lightbox') || e.target.closest('.lightbox-close')){
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+    document.addEventListener('keydown', e => {
+        if(e.key === 'Escape'){
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    /* ─── Animate skill bars on scroll ─── */
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+                    bar.style.width = bar.style.width; // trigger re-animation
+                });
+            }
+        });
+    }, {threshold: 0.2});
+    document.querySelectorAll('.skills-grid').forEach(g => observer.observe(g));
+    </script>
 </body>
 </html>
