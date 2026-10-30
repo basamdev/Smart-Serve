@@ -1,391 +1,432 @@
 <!DOCTYPE html>
-<html lang="ku" dir="rtl" id="html-root">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Serve POS</title>
-    <meta name="description" content="Premium POS for cafés and restaurants — tables, cashier, kitchen, delivery, reports.">
-    <meta name="theme-color" content="#07140F">
-    <link rel="icon" type="image/png" href="images/icon-192.png">
-    <link rel="apple-touch-icon" href="images/icon-192.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        :root{
-            --bg:#07140F;--bg2:#0C1F18;--card:rgba(255,255,255,.05);--line:rgba(52,211,153,.18);
-            --text:#F0FDF6;--muted:#9CB5A8;--green:#34D399;--green2:#10B981;--mint:#A7F3D0;--wa:#25D366;
-        }
-        html{scroll-behavior:smooth}
-        body{font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;min-height:100vh}
-        a{text-decoration:none;color:inherit}
-        .bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background:
-            radial-gradient(ellipse 70% 50% at 15% 10%,rgba(16,185,129,.22),transparent 55%),
-            radial-gradient(ellipse 55% 45% at 90% 20%,rgba(52,211,153,.12),transparent 50%),
-            radial-gradient(ellipse 60% 40% at 50% 100%,rgba(5,150,105,.18),transparent 55%),
-            linear-gradient(165deg,var(--bg),var(--bg2))}
-        .bg::after{content:'';position:absolute;inset:0;opacity:.3;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:28px 28px}
-        .wrap{width:min(1100px,100%);margin:0 auto;padding:0 20px}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Serve POS System — Complete Market Management</title>
+<meta name="description" content="Smart Serve POS: A full-featured, multi-language point-of-sale system for restaurants, cafes, and markets. Built with Kurdish, Arabic and English support.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07091a;--bg2:#0b0e26;--bg3:#0f1232;
+  --card:rgba(255,255,255,0.04);--cardh:rgba(255,255,255,0.07);
+  --border:rgba(255,255,255,0.08);--borderg:rgba(34,197,94,0.3);
+  --green:#22c55e;--green2:#16a34a;--green3:#4ade80;
+  --glow:rgba(34,197,94,0.2);--glow2:rgba(34,197,94,0.08);
+  --cyan:#06b6d4;--purple:#a855f7;--orange:#f97316;
+  --text:#f1f5f9;--muted:#94a3b8;--muted2:#64748b;
+  --nav:70px
+}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
 
-        .top{position:sticky;top:0;z-index:40;backdrop-filter:blur(14px);background:rgba(7,20,15,.82);border-bottom:1px solid var(--line)}
-        .top-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:10px}
-        .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px}
-        .brand img{width:36px;height:36px;border-radius:10px;object-fit:cover;box-shadow:0 0 18px rgba(52,211,153,.45)}
-        .brand em{font-style:normal;color:var(--green)}
-        .top-actions{display:flex;align-items:center;gap:10px}
-        .lang-sw{display:flex;gap:3px;background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:999px;padding:3px}
-        .lang-btn{background:none;border:none;color:var(--muted);font-family:inherit;font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;cursor:pointer}
-        .lang-btn.on{background:var(--green2);color:#04140E}
-        .hub-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;color:#04140E;background:linear-gradient(135deg,var(--mint),var(--green));padding:8px 13px;border-radius:999px;box-shadow:0 8px 20px rgba(16,185,129,.3)}
-        .hub-back svg{width:14px;height:14px}
+/* ── BG ── */
+.bg-fx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg-fx::before{content:'';position:absolute;top:-300px;left:-300px;width:800px;height:800px;background:radial-gradient(circle,rgba(34,197,94,0.09) 0%,transparent 65%);animation:bf 16s ease-in-out infinite alternate}
+.bg-fx::after{content:'';position:absolute;bottom:-200px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(6,182,212,0.07) 0%,transparent 65%);animation:bf2 20s ease-in-out infinite alternate}
+@keyframes bf{to{transform:translate(80px,60px) scale(1.1)}}
+@keyframes bf2{to{transform:translate(-80px,-60px) scale(1.05)}}
+.grid-bg{position:fixed;inset:0;z-index:0;background-image:linear-gradient(rgba(34,197,94,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
 
-        .hero{padding:56px 0 40px;text-align:center}
-        .pill{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--mint);border:1px solid var(--line);background:rgba(16,185,129,.1);padding:7px 14px;border-radius:999px;margin-bottom:16px}
-        .hero h1{font-size:clamp(28px,5vw,48px);font-weight:900;line-height:1.25;margin-bottom:12px}
-        .hero h1 .g{background:linear-gradient(120deg,var(--mint),var(--green));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-        .hero p{color:var(--muted);font-size:16px;max-width:640px;margin:0 auto 24px}
-        .cta-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-        .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-weight:800;font-size:14px;padding:13px 20px;border-radius:14px;border:none;cursor:pointer;transition:transform .2s}
-        .btn:hover{transform:translateY(-2px)}
-        .btn-primary{color:#04140E;background:linear-gradient(135deg,var(--mint),var(--green2));box-shadow:0 12px 28px rgba(16,185,129,.35)}
-        .btn-wa{color:#fff;background:var(--wa);box-shadow:0 10px 24px rgba(37,211,102,.35)}
-        .btn-ghost{color:var(--text);background:transparent;border:1px solid var(--line)}
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav);background:rgba(7,9,26,0.9);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 2rem}
+.nw{max-width:1280px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nlogo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+.nlogo .ico{width:38px;height:38px;background:linear-gradient(135deg,var(--green),var(--cyan));border-radius:10px;display:grid;place-items:center;font-size:1.1rem;color:#fff;flex-shrink:0}
+.nlogo span{font-weight:800;font-size:1.1rem;letter-spacing:.3px}
+.nlogo span em{font-style:normal;color:var(--green)}
+.nlinks{display:flex;gap:6px;align-items:center}
+.nl{padding:7px 16px;border-radius:8px;font-family:inherit;font-size:.82rem;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:all .25s;color:var(--muted)}
+.nl:hover{color:var(--text);background:var(--card)}
+.nbtn{padding:9px 22px;border-radius:9px;font-family:inherit;font-size:.85rem;font-weight:700;text-decoration:none;cursor:pointer;border:none;background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;box-shadow:0 4px 20px var(--glow);transition:all .3s}
+.nbtn:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--glow)}
 
-        section{padding:40px 0 56px}
-        .stitle{text-align:center;margin-bottom:28px}
-        .stitle h2{font-size:clamp(22px,3vw,32px);font-weight:900}
-        .stitle p{color:var(--muted);margin-top:8px;font-size:14px}
+/* ── HERO ── */
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nav) + 5rem) 2rem 3rem}
+.hbadge{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:100px;padding:7px 20px;font-size:.8rem;font-weight:600;color:var(--green);margin-bottom:2rem;animation:rise .7s ease both}
+.hbadge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.hh1{font-size:clamp(2.5rem,6vw,5.5rem);font-weight:900;line-height:1.05;margin-bottom:1.5rem;animation:rise .7s .1s ease both}
+.hh1 .g1{background:linear-gradient(90deg,var(--green),var(--green3),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hh1 .g2{background:linear-gradient(90deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hsub{font-size:1.1rem;color:var(--muted);line-height:1.75;max-width:680px;margin:0 auto 2.5rem;animation:rise .7s .2s ease both}
+.hbtns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:5rem;animation:rise .7s .3s ease both}
+.bg_{display:inline-flex;align-items:center;gap:9px;padding:15px 34px;border-radius:13px;background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;font-family:inherit;font-size:1rem;font-weight:700;text-decoration:none;border:none;cursor:pointer;box-shadow:0 8px 32px var(--glow);transition:all .3s}
+.bg_:hover{transform:translateY(-3px);box-shadow:0 14px 40px var(--glow)}
+.bo_{display:inline-flex;align-items:center;gap:9px;padding:15px 34px;border-radius:13px;background:var(--card);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:all .3s}
+.bo_:hover{border-color:var(--green);color:var(--green);background:var(--glow2);transform:translateY(-2px)}
 
-        .shots{display:grid;gap:28px}
-        .shot{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:16px;overflow:hidden}
-        .shot:nth-child(even){grid-template-columns:.85fr 1.15fr}
-        .shot:nth-child(even) .shot-media{order:2}
-        html[dir="ltr"] .shot:nth-child(even) .shot-media{order:0}
-        html[dir="ltr"] .shot:nth-child(even) .shot-info{order:2}
-        .shot-media{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0a1a14;box-shadow:0 18px 40px rgba(0,0,0,.35)}
-        .shot-media img{display:block;width:100%;height:auto;vertical-align:middle}
-        .shot-info{padding:8px 10px}
-        .shot-tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.04em;color:#04140E;background:var(--green);padding:4px 10px;border-radius:999px;margin-bottom:10px}
-        .shot-info h3{font-size:20px;font-weight:900;margin-bottom:8px}
-        .shot-info p{color:var(--muted);font-size:14px;line-height:1.75}
+/* ── HERO FRAME ── */
+.hfwrap{position:relative;max-width:1100px;width:100%;margin:0 auto;animation:rise .9s .4s ease both}
+.hfwrap::before{content:'';position:absolute;inset:-60px;background:radial-gradient(ellipse,rgba(34,197,94,0.15) 0%,transparent 70%);z-index:0}
+.hframe{position:relative;z-index:1;border-radius:18px;overflow:hidden;border:1px solid rgba(34,197,94,0.3);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 80px rgba(34,197,94,.12)}
+.fbar{background:#0d1030;padding:12px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.fd{width:13px;height:13px;border-radius:50%}
+.fd-r{background:#ff5f57}.fd-y{background:#febc2e}.fd-g{background:#28c840}
+.furl{margin-left:14px;flex:1;background:rgba(255,255,255,0.06);border-radius:7px;padding:5px 14px;font-size:.75rem;color:var(--muted);font-family:monospace;display:flex;align-items:center;gap:8px}
+.furl-l{color:var(--green);font-size:.7rem}
+.hframe img{width:100%;display:block}
 
-        .feats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-        .feat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 14px}
-        .feat .fi{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;background:rgba(16,185,129,.15);color:var(--mint);border:1px solid var(--line)}
-        .feat h3{font-size:14px;font-weight:800;margin-bottom:5px}
-        .feat p{font-size:12px;color:var(--muted);line-height:1.55}
+/* ── COMMON ── */
+section{position:relative;z-index:1;padding:7rem 2rem}
+.sw{max-width:1280px;margin:0 auto}
+.stag{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);color:var(--green);font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:1.2rem}
+.sh2{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;line-height:1.2;margin-bottom:1rem}
+.sd{font-size:1rem;color:var(--muted);line-height:1.75;max-width:580px}
+.sd.cen{text-align:center;margin:0 auto}
+.ch{text-align:center;margin-bottom:1rem}
 
-        .cta-band{margin:10px 0 36px;border-radius:24px;padding:36px 22px;text-align:center;background:linear-gradient(135deg,rgba(16,185,129,.18),rgba(5,150,105,.06));border:1px solid var(--line)}
-        .cta-band h2{font-size:24px;font-weight:900;margin-bottom:8px}
-        .cta-band p{color:var(--muted);margin-bottom:18px;font-size:14px}
+/* ── STATS ── */
+.stats{position:relative;z-index:1;background:rgba(11,14,38,0.9);border-top:1px solid var(--border);border-bottom:1px solid var(--border);backdrop-filter:blur(16px);padding:2.5rem 2rem}
+.stg{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2rem;text-align:center}
+.sn{font-size:2rem;font-weight:900;line-height:1;background:linear-gradient(90deg,var(--green),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.4rem}
+.sl{font-size:.82rem;color:var(--muted);font-weight:500}
 
-        footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--muted);font-size:13px}
-        footer .hub-back{margin-top:12px}
+/* ── STEPS ── */
+.steps-s{background:var(--bg2)}
+.stepsg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;margin-top:3.5rem}
+.scard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2rem;position:relative;transition:all .3s;overflow:hidden}
+.scard:hover{border-color:var(--borderg);transform:translateY(-5px)}
+.snum{position:absolute;top:1.5rem;right:1.5rem;font-size:3rem;font-weight:900;color:rgba(34,197,94,0.1);line-height:1}
+.sico{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,rgba(34,197,94,0.15),rgba(6,182,212,0.1));border:1px solid rgba(34,197,94,0.2);display:grid;place-items:center;font-size:1.4rem;color:var(--green);margin-bottom:1.4rem}
+.stit{font-size:1.15rem;font-weight:700;margin-bottom:.7rem}
+.sdsc{font-size:.9rem;color:var(--muted);line-height:1.65}
 
-        @media(max-width:980px){
-            .feats{grid-template-columns:repeat(3,1fr)}
-        }
-        @media(max-width:860px){
-            .shot,.shot:nth-child(even){grid-template-columns:1fr}
-            .shot:nth-child(even) .shot-media,.shot:nth-child(even) .shot-info{order:0}
-            html[dir="ltr"] .shot:nth-child(even) .shot-info{order:0}
-            .feats{grid-template-columns:1fr 1fr}
-        }
-        @media(max-width:560px){
-            .feats{grid-template-columns:1fr}
-            .cta-row{flex-direction:column}
-            .btn{width:100%}
-            .top-inner{height:auto;padding:10px 0;flex-wrap:wrap}
-            .brand span{font-size:12px}
-        }
-    </style>
+/* ── SCREENSHOTS ── */
+.scwrap{margin-top:3rem}
+.sctabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2rem}
+.sct{padding:10px 22px;border-radius:100px;background:var(--card);border:1px solid var(--border);color:var(--muted);font-family:inherit;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .25s}
+.sct.on,.sct:hover{background:rgba(34,197,94,0.12);border-color:var(--borderg);color:var(--green)}
+.scf{border-radius:20px;overflow:hidden;border:1px solid rgba(34,197,94,0.25);box-shadow:0 24px 70px rgba(0,0,0,.55)}
+.scf img{width:100%;display:block;transition:opacity .25s ease}
+.scc{background:#0d1030;padding:1.2rem 1.8rem;border-top:1px solid var(--border);display:flex;align-items:flex-start;gap:12px}
+.scdot{width:10px;height:10px;border-radius:50%;background:var(--green);margin-top:5px;flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+.sctitle{font-size:.95rem;font-weight:700;margin-bottom:.3rem;color:var(--text)}
+.scdesc{font-size:.85rem;color:var(--muted);line-height:1.55}
+
+/* ── PAGES CARDS ── */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem;margin-top:3rem}
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.8rem;display:flex;align-items:flex-start;gap:1.2rem;transition:all .3s;position:relative;overflow:hidden}
+.pcard::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--green),var(--cyan));opacity:0;transition:opacity .3s;border-radius:0 3px 3px 0}
+.pcard:hover{border-color:rgba(34,197,94,0.25);transform:translateX(4px)}
+.pcard:hover::after{opacity:1}
+.pi{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;flex-shrink:0}
+.ig{background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.25);color:var(--green)}
+.ic{background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.25);color:var(--cyan)}
+.ip{background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);color:var(--purple)}
+.io{background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.25);color:var(--orange)}
+.ipk{background:rgba(236,72,153,0.12);border:1px solid rgba(236,72,153,0.25);color:#ec4899}
+.iy{background:rgba(234,179,8,0.12);border:1px solid rgba(234,179,8,0.25);color:#eab308}
+.pn{font-size:1.05rem;font-weight:700;margin-bottom:.4rem}
+.pd{font-size:.87rem;color:var(--muted);line-height:1.6}
+.ptags{display:flex;gap:6px;flex-wrap:wrap;margin-top:.7rem}
+.ptag{padding:2px 10px;border-radius:100px;font-size:.72rem;font-weight:600;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:var(--green)}
+
+/* ── FEATURES ── */
+.fsec{background:var(--bg2)}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem;margin-top:3rem}
+.feat{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.6rem;transition:all .3s;position:relative;overflow:hidden;cursor:default}
+.feat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--cyan));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.feat:hover{border-color:rgba(34,197,94,0.25);transform:translateY(-4px)}
+.feat:hover::before{transform:scaleX(1)}
+.fi{width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,rgba(34,197,94,0.12),rgba(6,182,212,0.08));border:1px solid rgba(34,197,94,0.2);display:grid;place-items:center;font-size:1.25rem;color:var(--green);margin-bottom:1.1rem}
+.ft_{font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.fd_{font-size:.875rem;color:var(--muted);line-height:1.6}
+
+/* ── SPLIT ── */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.split.flip{direction:rtl}
+.split.flip>*{direction:ltr}
+@media(max-width:860px){.split{grid-template-columns:1fr;gap:2.5rem}.split.flip{direction:ltr}}
+.simg{border-radius:18px;overflow:hidden;border:1px solid rgba(34,197,94,0.2);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.simg img{width:100%;display:block}
+.chk{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:1.5rem}
+.chk li{display:flex;align-items:flex-start;gap:10px;font-size:.92rem;color:var(--muted)}
+.chk li i{color:var(--green);margin-top:3px;flex-shrink:0}
+.chk li strong{color:var(--text)}
+
+/* ── CTA ── */
+.cta{background:linear-gradient(135deg,rgba(34,197,94,0.08),rgba(6,182,212,0.05));border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center}
+.cta .sh2{max-width:600px;margin:0 auto 1rem}
+.cta .sd.cen{margin-bottom:2.5rem}
+.ctab{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+footer{position:relative;z-index:1;background:rgba(7,9,26,0.97);border-top:1px solid var(--border);padding:2.5rem 2rem}
+.ftw{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1.2rem;text-align:center}
+.ftb{display:flex;align-items:center;gap:10px}
+.ftb .ico{width:34px;height:34px;background:linear-gradient(135deg,var(--green),var(--cyan));border-radius:9px;display:grid;place-items:center;font-size:.9rem;color:#fff}
+.ftb span{font-weight:800;font-size:1rem}
+.ftb span em{font-style:normal;color:var(--green)}
+.ftl{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.ftl a{color:var(--muted);font-size:.85rem;text-decoration:none;transition:color .2s}
+.ftl a:hover{color:var(--green)}
+.ftc{font-size:.8rem;color:var(--muted2)}
+
+/* ── ANIM ── */
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.rv{opacity:0;transform:translateY(28px);transition:all .65s ease}
+.rv.vis{opacity:1;transform:translateY(0)}
+@media(max-width:640px){nav{padding:0 1rem}.nlinks{display:none}section{padding:4rem 1rem}.hbtns{flex-direction:column;align-items:center}}
+</style>
 </head>
 <body>
-    <div class="bg"></div>
+<div class="bg-fx"></div>
+<div class="grid-bg"></div>
 
-    <div class="top">
-        <div class="wrap top-inner">
-            <a class="brand" href="index.html">
-                <img src="images/logo-pos.svg" alt="Smart Serve">
-                <span>SMART <em>SERVE</em> POS</span>
-            </a>
-            <div class="top-actions">
-                <div class="lang-sw">
-                    <button type="button" class="lang-btn on" data-l="ku" onclick="setPosLang('ku')">کوردی</button>
-                    <button type="button" class="lang-btn" data-l="ar" onclick="setPosLang('ar')">عربي</button>
-                    <button type="button" class="lang-btn" data-l="en" onclick="setPosLang('en')">EN</button>
-                </div>
-                <a class="hub-back" href="index.html">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-                    <span data-i18n="back">گەڕانەوە</span>
-                </a>
-            </div>
-        </div>
+<!-- NAV -->
+<nav>
+  <div class="nw">
+    <a href="index.html" class="nlogo"><div class="ico"><i class="fas fa-cash-register"></i></div><span>SMART <em>SERVE</em></span></a>
+    <div class="nlinks">
+      <a href="#how" class="nl">How It Works</a>
+      <a href="#screens" class="nl">Screenshots</a>
+      <a href="#pages" class="nl">All Pages</a>
+      <a href="#features" class="nl">Features</a>
     </div>
+    <a href="../market-pos-system/index.html" class="nbtn"><i class="fas fa-play"></i> Open POS</a>
+  </div>
+</nav>
 
-    <header class="wrap hero">
-        <span class="pill"><i class="fas fa-cash-register"></i> <span data-i18n="pill">بۆ کافێ و ڕێستورانت</span></span>
-        <h1 data-i18n="hero_h1">سیستەمی <span class='g'>POS</span>ی مۆدێرن بۆ کافێ و ڕێستورانت</h1>
-        <p data-i18n="hero_p">بەڕێوەبردنی مێز، کاشێر، چێشتخانە، گەیاندن، خەرجی و ڕاپۆرت — هەمووی لە یەک سیستەمی پیشەیی.</p>
-        <div class="cta-row">
-            <a class="btn btn-primary" data-wa="demo" href="https://wa.me/9647506454656" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-whatsapp"></i> <span data-i18n="cta_demo">داواکردنی دیمۆ لە واتساپ</span>
-            </a>
-            <a class="btn btn-wa" data-wa="order" href="https://wa.me/9647506454656" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-whatsapp"></i> <span data-i18n="cta_wa">داواکاری لە واتساپ</span>
-            </a>
-        </div>
-    </header>
-
-    <section>
-        <div class="wrap">
-            <div class="stitle">
-                <h2 data-i18n="shots_title">سکرینشۆتی ڕاستەقینەی سیستەمەکە</h2>
-                <p data-i18n="shots_sub">ئەمە ئەو شاشانەن کە کارمەند و خاوەنکار لە ڕۆژانەدا بەکاریان دەهێنن</p>
-            </div>
-            <div class="shots">
-                <article class="shot">
-                    <div class="shot-media"><img src="images/pos/pos-tables.png" alt="Table management" loading="lazy"></div>
-                    <div class="shot-info">
-                        <span class="shot-tag" data-i18n="s1_tag">مێزەکان</span>
-                        <h3 data-i18n="s1_t">بەڕێوەبردنی مێزەکان</h3>
-                        <p data-i18n="s1_d">دۆخی هەر مێزێک ببینە: بەردەست، گیراوە، ئامادەکردنی خواردن، داواکردنی حساب و حساب ئامادە. کۆی پارە بە دینار و کاتی دانیشتن لەسەر هەر مێز.</p>
-                    </div>
-                </article>
-                <article class="shot">
-                    <div class="shot-media"><img src="images/pos/pos-cashier.png" alt="Cashier" loading="lazy"></div>
-                    <div class="shot-info">
-                        <span class="shot-tag" data-i18n="s2_tag">کاشێر</span>
-                        <h3 data-i18n="s2_t">شاشەی کاشێر و فرۆشتن</h3>
-                        <p data-i18n="s2_d">هەڵبژاردنی خواردن بە وێنە و نرخ، زیادکردن بۆ داواکاری، جۆری ناوخۆ / گەیاندن / دەرەوە، و فرۆشتنی خێرا بە چاپ و ناردن بۆ چێشتخانە.</p>
-                    </div>
-                </article>
-                <article class="shot">
-                    <div class="shot-media"><img src="images/pos/pos-captain.png" alt="Captain tables" loading="lazy"></div>
-                    <div class="shot-info">
-                        <span class="shot-tag" data-i18n="s3_tag">کاپتن</span>
-                        <h3 data-i18n="s3_t">شاشەی کاپتن — هەڵبژاردنی مێز</h3>
-                        <p data-i18n="s3_d">کارمەند بە خێرایی مێز هەڵدەبژێرێت، دۆخی ڕەنگی دەبینێت، کات و کۆی حساب دەزانێت — گونجاو بۆ تابڵێت و مۆبایل.</p>
-                    </div>
-                </article>
-                <article class="shot">
-                    <div class="shot-media"><img src="images/pos/pos-kitchen.png" alt="Kitchen display" loading="lazy"></div>
-                    <div class="shot-info">
-                        <span class="shot-tag" data-i18n="s4_tag">چێشتخانە</span>
-                        <h3 data-i18n="s4_t">شاشەی چێشتخانە (Kitchen)</h3>
-                        <p data-i18n="s4_d">داواکارییەکان بە کارت دەردەکەون: ژمارەی مێز یان گەیاندن، ناوی خواردن، بڕ، وێنە، و دوگمەی دەستپێکردن — بۆ خێراکردنی کار لە چێشتخانە.</p>
-                    </div>
-                </article>
-                <article class="shot">
-                    <div class="shot-media"><img src="images/pos/pos-delivery.png" alt="Delivery cashier" loading="lazy"></div>
-                    <div class="shot-info">
-                        <span class="shot-tag" data-i18n="s5_tag">گەیاندن</span>
-                        <h3 data-i18n="s5_t">گەیاندن و شۆفێر و واتساپ</h3>
-                        <p data-i18n="s5_d">بەڕێوەبردنی داواکاریی گەیاندن، ناردن بۆ شۆفێر، دووبارە ناردنی واتساپ، چاپکردنی فاتوورە و هەڵوەشاندنەوە — هەمووی لە یەک شوێن.</p>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="wrap">
-            <div class="stitle">
-                <h2 data-i18n="feat_title">تایبەتمەندییە سەرەکییەکان</h2>
-                <p data-i18n="feat_sub">هەمان سیستەمی ڕاستەقینە کە لە سکرینشۆتەکاندا دەیبینیت</p>
-            </div>
-            <div class="feats">
-                <article class="feat"><div class="fi"><i class="fas fa-chair"></i></div><h3 data-i18n="f1_t">مێزەکان</h3><p data-i18n="f1_d">دۆخی مێز، کات، و کۆی حساب بە ڕەنگی ڕوون.</p></article>
-                <article class="feat"><div class="fi"><i class="fas fa-cash-register"></i></div><h3 data-i18n="f2_t">کاشێر</h3><p data-i18n="f2_d">فرۆشتنی خێرا، چاپ، و ناردن بۆ چێشتخانە.</p></article>
-                <article class="feat"><div class="fi"><i class="fas fa-user-tie"></i></div><h3 data-i18n="f3_t">کاپتن</h3><p data-i18n="f3_d">هەڵبژاردنی مێز و خزمەتگوزاری بۆ وەیتەر.</p></article>
-                <article class="feat"><div class="fi"><i class="fas fa-fire-burner"></i></div><h3 data-i18n="f4_t">چێشتخانە</h3><p data-i18n="f4_d">شاشەی ئامادەکردن بە کارت و دۆخی داواکاری.</p></article>
-                <article class="feat"><div class="fi"><i class="fas fa-motorcycle"></i></div><h3 data-i18n="f5_t">گەیاندن</h3><p data-i18n="f5_d">شۆفێر، ناونیشان، و واتساپی کڕیار.</p></article>
-                <article class="feat"><div class="fi"><i class="fas fa-utensils"></i></div><h3 data-i18n="f6_t">ئایتەم و بەش</h3><p data-i18n="f6_d">بەڕێوەبردنی مێنوو، نرخ، وێنە و کاتەگۆری.</p></article>
-                <article class="feat"><div class="fi"><i class="fas fa-clipboard-list"></i></div><h3 data-i18n="f7_t">داواکارییەکان</h3><p data-i18n="f7_d">شوێنکەوتنی هەموو داواکارییەکان لە یەک شوێن.</p></article>
-                <article class="feat"><div class="fi"><i class="fas fa-wallet"></i></div><h3 data-i18n="f8_t">خەرجییەکان</h3><p data-i18n="f8_d">تۆمارکردنی خەرجی ڕۆژانە و کۆنترۆڵی پارە.</p></article>
-                <article class="feat"><div class="fi"><i class="fas fa-chart-line"></i></div><h3 data-i18n="f9_t">ڕاپۆرتەکان</h3><p data-i18n="f9_d">فرۆشتن، قازانج، و ڕاپۆرتی کار بۆ خاوەنکار.</p></article>
-                <article class="feat"><div class="fi"><i class="fas fa-calendar-check"></i></div><h3 data-i18n="f10_t">داخستنی ڕۆژ</h3><p data-i18n="f10_d">کۆتایی ڕۆژ، کۆی فرۆشتن و داخستنی حساب.</p></article>
-                <article class="feat"><div class="fi"><i class="fas fa-database"></i></div><h3 data-i18n="f11_t">باکئەپ</h3><p data-i18n="f11_d">پاراستنی داتاکان و گەڕاندنەوە لە کاتی پێویست.</p></article>
-                <article class="feat"><div class="fi"><i class="fas fa-users-cog"></i></div><h3 data-i18n="f12_t">بەکارهێنەران</h3><p data-i18n="f12_d">کارمەند، ڕۆڵ و مۆڵەتی دەستگەیشتن.</p></article>
-            </div>
-        </div>
-    </section>
-
-    <div class="wrap">
-        <div class="cta-band">
-            <h2 data-i18n="band_t">ئامادەیت بۆ POSی خۆت؟</h2>
-            <p data-i18n="band_p">لە واتساپ نامە بنێرە بۆ دیمۆ یان داواکاری سیستەم</p>
-            <div class="cta-row">
-                <a class="btn btn-primary" data-wa="demo" href="https://wa.me/9647506454656" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-whatsapp"></i> <span data-i18n="cta_demo">داواکردنی دیمۆ لە واتساپ</span>
-                </a>
-                <a class="btn btn-wa" data-wa="order" href="https://wa.me/9647506454656" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-whatsapp"></i> <span data-i18n="cta_wa">داواکاری لە واتساپ</span>
-                </a>
-                <a class="btn btn-ghost" href="index.html" data-i18n="back">گەڕانەوە</a>
-            </div>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hbadge"><span class="dot"></span> Built for Restaurants, Caf&eacute;s &amp; Markets &mdash; in Kurdistan</div>
+  <h1 class="hh1"><span class="g1">Smart Serve POS</span><br><span class="g2">Full Market Management</span></h1>
+  <p class="hsub">A complete, multi-language point-of-sale system we built together from scratch. Handles cashier operations, shifts, inventory, reports, customer management, and much more &mdash; all in a beautiful dark interface with Kurdish, Arabic &amp; English support.</p>
+  <div class="hbtns">
+    <a href="../market-pos-system/index.html" class="bg_"><i class="fas fa-rocket"></i> Launch POS System</a>
+    <a href="#screens" class="bo_"><i class="fas fa-images"></i> See Real Screenshots</a>
+  </div>
+  <div class="hfwrap">
+    <div class="hframe">
+      <div class="fbar"><div class="fd fd-r"></div><div class="fd fd-y"></div><div class="fd fd-g"></div><div class="furl"><i class="furl-l fas fa-lock"></i> localhost/market-pos-system &mdash; POS Cashier View</div></div>
+      <img src="images/pos-screens/pos-cashier.png" alt="Smart Serve POS Cashier View" loading="eager">
     </div>
+  </div>
+</section>
 
-    <footer>
-        <div class="wrap">
-            <div>© 2026 Smart Serve POS</div>
-            <div><a class="hub-back" href="index.html" data-i18n="back">گەڕانەوە</a></div>
+<!-- STATS -->
+<div class="stats">
+  <div class="stg">
+    <div class="rv"><div class="sn">10+</div><div class="sl">Pages &amp; Panels</div></div>
+    <div class="rv"><div class="sn">4</div><div class="sl">Languages</div></div>
+    <div class="rv"><div class="sn">IQD+$</div><div class="sl">Multi-Currency</div></div>
+    <div class="rv"><div class="sn">X/Z</div><div class="sl">Shift Reports</div></div>
+    <div class="rv"><div class="sn">Live</div><div class="sl">Sales Analytics</div></div>
+    <div class="rv"><div class="sn">QR</div><div class="sl">Barcode &amp; QR Gen</div></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="steps-s" id="how">
+  <div class="sw">
+    <div class="ch rv">
+      <div class="stag"><i class="fas fa-route"></i> How It Works</div>
+      <h2 class="sh2">From Login to Receipt &mdash; In Seconds</h2>
+      <p class="sd cen">The POS system guides the cashier through a smooth, fast workflow designed for real restaurant and market environments.</p>
+    </div>
+    <div class="stepsg">
+      <div class="scard rv"><div class="snum">01</div><div class="sico"><i class="fas fa-sign-in-alt"></i></div><div class="stit">Login &amp; Open Shift</div><div class="sdsc">The cashier logs in with their credentials. A shift opens automatically, recording the start time, opening balance, and cashier identity. Every sale links to that shift.</div></div>
+      <div class="scard rv"><div class="snum">02</div><div class="sico"><i class="fas fa-th-large"></i></div><div class="stit">Browse &amp; Add Products</div><div class="sdsc">Products are displayed as a visual grid with photos and IQD prices. Tap a product to add it to the cart. Category tabs (Meat, Coffee, Bread, Drinks) filter the grid instantly.</div></div>
+      <div class="scard rv"><div class="snum">03</div><div class="sico"><i class="fas fa-shopping-cart"></i></div><div class="stit">Manage the Cart</div><div class="sdsc">The left panel shows the live cart with quantity, unit price, discount, and line total. Items can be edited, removed, or have notes added. Assign the order to a customer account.</div></div>
+      <div class="scard rv"><div class="snum">04</div><div class="sico"><i class="fas fa-money-bill-wave"></i></div><div class="stit">Payment &amp; Change</div><div class="sdsc">Smart numpad and quick-select IQD banknotes (1K, 5K, 10K, 25K, 50K) make cash entry instant. Supports Cash and Card. USD rate shown live. Change calculated automatically.</div></div>
+      <div class="scard rv"><div class="snum">05</div><div class="sico"><i class="fas fa-print"></i></div><div class="stit">Print Receipt</div><div class="sdsc">One click prints a professional thermal receipt with business name, cashier, date, all items, taxes, total, amount paid, and change. WhatsApp sharing is also supported.</div></div>
+      <div class="scard rv"><div class="snum">06</div><div class="sico"><i class="fas fa-clipboard-check"></i></div><div class="stit">Close Shift &amp; Z-Report</div><div class="sdsc">At end of day, the cashier closes the shift. The system auto-generates a Z-Report: total sales, cash in drawer, card sales, number of receipts, and a Cash Handover document.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section id="screens">
+  <div class="sw">
+    <div class="ch rv">
+      <div class="stag"><i class="fas fa-camera"></i> Real Screenshots</div>
+      <h2 class="sh2">See Every Part of the System</h2>
+      <p class="sd cen">These are actual screenshots from the live Smart Serve POS system &mdash; showing exactly how the interface looks in Kurdish language mode.</p>
+    </div>
+    <div class="scwrap rv">
+      <div class="sctabs">
+        <button class="sct on" onclick="setS(this,'images/pos-screens/pos-cashier.png','Cashier View (POS Terminal)','The main selling screen. Left side shows the live cart with item details, quantities, and totals. Right side shows the product grid with photos and IQD prices, organized by category tabs. Bottom panel has the smart IQD banknote quick-selector and total summary.')"><i class="fas fa-cash-register"></i> Cashier View</button>
+        <button class="sct" onclick="setS(this,'images/pos-screens/pos-navigation.png','Navigation Menu &amp; System Pages','The side navigation panel showing all system sections: Dashboard, Cash Management, Shifts, Users &amp; Cashiers, Partners, QR/Barcode Generator, Coupons, Customers, Reports, Daily Revenue, Sales Returns, and more.')"><i class="fas fa-bars"></i> Navigation Menu</button>
+        <button class="sct" onclick="setS(this,'images/pos-screens/pos-shift.png','Shift &amp; Cash Drawer (X/Z Reports)','The Shift management page showing Cash Drawer status and X/Z reports. Displays the current cashier (DIYAR), target cash (536,200 IQD), actual drawer balance, 34 receipts issued, and the complete shift history table.')"><i class="fas fa-clock"></i> Shifts &amp; Reports</button>
+      </div>
+      <div class="scf">
+        <img id="si" src="images/pos-screens/pos-cashier.png" alt="Smart Serve POS Screenshot">
+        <div class="scc">
+          <div class="scdot"></div>
+          <div>
+            <div class="sctitle" id="st">Cashier View (POS Terminal)</div>
+            <div class="scdesc" id="sdx">The main selling screen. Left side shows the live cart with item details, quantities, and totals. Right side shows the product grid with photos and IQD prices, organized by category tabs. Bottom panel has the smart IQD banknote quick-selector and total summary.</div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-    const POS_I18N = {
-        back: {
-            ku: "گەڕانەوە",
-            ar: "رجوع للرئيسية",
-            en: "Back to Hub"
-        },
-        pill: {
-            ku: "بۆ کافێ و ڕێستورانت",
-            ar: "للمقاهي والمطاعم",
-            en: "For cafés & restaurants"
-        },
-        hero_h1: {
-            ku: "سیستەمی <span class='g'>POS</span>ی مۆدێرن بۆ کافێ و ڕێستورانت",
-            ar: "نظام <span class='g'>POS</span> عصري للمقاهي والمطاعم",
-            en: "Modern <span class='g'>POS</span> for cafés & restaurants"
-        },
-        hero_p: {
-            ku: "بەڕێوەبردنی مێز، کاشێر، چێشتخانە، گەیاندن، خەرجی و ڕاپۆرت — هەمووی لە یەک سیستەمی پیشەیی.",
-            ar: "إدارة الطاولات والكاشير والمطبخ والتوصيل والمصاريف والتقارير — كل ذلك في نظام واحد احترافي.",
-            en: "Tables, cashier, kitchen, delivery, expenses and reports — all in one professional system."
-        },
-        cta_demo: {
-            ku: "داواکردنی دیمۆ لە واتساپ",
-            ar: "اطلب العرض التجريبي عبر واتساب",
-            en: "Request demo on WhatsApp"
-        },
-        cta_wa: { ku: "داواکاری لە واتساپ", ar: "اطلب عبر واتساب", en: "Order on WhatsApp" },
-        wa_demo: {
-            ku: "سڵاو SmartServe، دەمەوێت دیمۆی سیستەمی POS ببینم. تکایە کاتی دیمۆم بۆ دیاری بکە.",
-            ar: "مرحبا SmartServe، أريد مشاهدة عرض تجريبي لنظام POS. يرجى تحديد موعد للعرض.",
-            en: "Hello SmartServe, I want to see a live POS demo. Please schedule a demo for me."
-        },
-        wa_order: {
-            ku: "سڵاو SmartServe، دەمەوێت سیستەمی POS بۆ کافێ / ڕێستورانت.",
-            ar: "مرحبا SmartServe، أريد نظام POS لمقهى / مطعم.",
-            en: "Hello SmartServe, I want a POS system for a café / restaurant."
-        },
-        shots_title: {
-            ku: "سکرینشۆتی ڕاستەقینەی سیستەمەکە",
-            ar: "لقطات حقيقية من النظام",
-            en: "Real screenshots of the system"
-        },
-        shots_sub: {
-            ku: "ئەمە ئەو شاشانەن کە کارمەند و خاوەنکار لە ڕۆژانەدا بەکاریان دەهێنن",
-            ar: "هذه الشاشات التي يستخدمها الموظفون وأصحاب المحلات يوميًا",
-            en: "The same screens staff and owners use every day"
-        },
-        s1_tag: { ku: "مێزەکان", ar: "الطاولات", en: "Tables" },
-        s1_t: { ku: "بەڕێوەبردنی مێزەکان", ar: "إدارة الطاولات", en: "Table management" },
-        s1_d: {
-            ku: "دۆخی هەر مێزێک ببینە: بەردەست، گیراوە، ئامادەکردنی خواردن، داواکردنی حساب و حساب ئامادە. کۆی پارە بە دینار و کاتی دانیشتن لەسەر هەر مێز.",
-            ar: "تابع حالة كل طاولة: متاحة، مشغولة، تحضير الطعام، طلب الحساب، والحساب جاهز. مع المبلغ بالدينار ووقت الجلوس.",
-            en: "See every table status: available, occupied, preparing, requesting bill, bill ready — with IQD total and seating time."
-        },
-        s2_tag: { ku: "کاشێر", ar: "الكاشير", en: "Cashier" },
-        s2_t: { ku: "شاشەی کاشێر و فرۆشتن", ar: "شاشة الكاشير والبيع", en: "Cashier & sales screen" },
-        s2_d: {
-            ku: "هەڵبژاردنی خواردن بە وێنە و نرخ، زیادکردن بۆ داواکاری، جۆری ناوخۆ / گەیاندن / دەرەوە، و فرۆشتنی خێرا بە چاپ و ناردن بۆ چێشتخانە.",
-            ar: "اختر الأصناف بالصور والأسعار، أضفها للطلب، اختر داخلي / توصيل / خارجي، وبع بسرعة مع الطباعة والإرسال للمطبخ.",
-            en: "Pick items with photos and prices, add to the order, choose dine-in / delivery / takeaway, then print and send to kitchen."
-        },
-        s3_tag: { ku: "کاپتن", ar: "الكابتن", en: "Captain" },
-        s3_t: { ku: "شاشەی کاپتن — هەڵبژاردنی مێز", ar: "شاشة الكابتن — اختيار الطاولة", en: "Captain screen — select table" },
-        s3_d: {
-            ku: "کارمەند بە خێرایی مێز هەڵدەبژێرێت، دۆخی ڕەنگی دەبینێت، کات و کۆی حساب دەزانێت — گونجاو بۆ تابڵێت و مۆبایل.",
-            ar: "يختار الموظف الطاولة بسرعة، يرى الحالة بالألوان، والوقت والمبلغ — مناسب للتابلت والجوال.",
-            en: "Staff quickly pick a table, see color status, time and bill total — built for tablet and phone."
-        },
-        s4_tag: { ku: "چێشتخانە", ar: "المطبخ", en: "Kitchen" },
-        s4_t: { ku: "شاشەی چێشتخانە (Kitchen)", ar: "شاشة المطبخ (Kitchen)", en: "Kitchen display (KDS)" },
-        s4_d: {
-            ku: "داواکارییەکان بە کارت دەردەکەون: ژمارەی مێز یان گەیاندن، ناوی خواردن، بڕ، وێنە، و دوگمەی دەستپێکردن — بۆ خێراکردنی کار لە چێشتخانە.",
-            ar: "تظهر الطلبات كبطاقات: رقم الطاولة أو التوصيل، اسم الصنف، الكمية، الصورة، وزر البدء — لتسريع عمل المطبخ.",
-            en: "Orders appear as cards: table or delivery, item name, qty, photo, and a Start button — to speed up the kitchen."
-        },
-        s5_tag: { ku: "گەیاندن", ar: "التوصيل", en: "Delivery" },
-        s5_t: { ku: "گەیاندن و شۆفێر و واتساپ", ar: "التوصيل والسائق وواتساب", en: "Delivery, drivers & WhatsApp" },
-        s5_d: {
-            ku: "بەڕێوەبردنی داواکاریی گەیاندن، ناردن بۆ شۆفێر، دووبارە ناردنی واتساپ، چاپکردنی فاتوورە و هەڵوەشاندنەوە — هەمووی لە یەک شوێن.",
-            ar: "إدارة طلبات التوصيل، إرسال للسائق، إعادة إرسال واتساب، طباعة الفاتورة والإلغاء — كل ذلك في مكان واحد.",
-            en: "Manage delivery orders, send to driver, resend WhatsApp, print invoice and cancel — all in one place."
-        },
-        feat_title: { ku: "تایبەتمەندییە سەرەکییەکان", ar: "المميزات الرئيسية", en: "Key features" },
-        feat_sub: {
-            ku: "هەموو مۆدیوولەکانی سیستەم — کاشێر، کاپتن، چێشتخانە، ڕاپۆرت، داخستنی ڕۆژ، باکئەپ و زیاتر",
-            ar: "كل وحدات النظام — الكاشير والكابتن والمطبخ والتقارير وإغلاق اليوم والنسخ الاحتياطي والمزيد",
-            en: "Full system modules — cashier, captain, kitchen, reports, day closing, backup and more"
-        },
-        f1_t: { ku: "مێزەکان", ar: "الطاولات", en: "Tables" },
-        f1_d: { ku: "دۆخی مێز، کات، و کۆی حساب بە ڕەنگی ڕوون.", ar: "حالة الطاولة والوقت والمبلغ بألوان واضحة.", en: "Table status, time, and bill total with clear colors." },
-        f2_t: { ku: "کاشێر", ar: "الكاشير", en: "Cashier" },
-        f2_d: { ku: "فرۆشتنی خێرا، چاپ، و ناردن بۆ چێشتخانە.", ar: "بيع سريع وطباعة وإرسال للمطبخ.", en: "Fast selling, print, and send to kitchen." },
-        f3_t: { ku: "کاپتن", ar: "الكابتن", en: "Captain" },
-        f3_d: { ku: "هەڵبژاردنی مێز و خزمەتگوزاری بۆ وەیتەر.", ar: "اختيار الطاولة وخدمة الويتر.", en: "Table selection and waiter service screen." },
-        f4_t: { ku: "چێشتخانە", ar: "المطبخ", en: "Kitchen" },
-        f4_d: { ku: "شاشەی ئامادەکردن بە کارت و دۆخی داواکاری.", ar: "شاشة تحضير بالبطاقات وحالة الطلب.", en: "Prep screen with cards and order status." },
-        f5_t: { ku: "گەیاندن", ar: "التوصيل", en: "Delivery" },
-        f5_d: { ku: "شۆفێر، ناونیشان، و واتساپی کڕیار.", ar: "السائق والعنوان وواتساب الزبون.", en: "Drivers, address, and customer WhatsApp." },
-        f6_t: { ku: "ئایتەم و بەش", ar: "الأصناف والأقسام", en: "Items & categories" },
-        f6_d: { ku: "بەڕێوەبردنی مێنوو، نرخ، وێنە و کاتەگۆری.", ar: "إدارة القائمة والأسعار والصور والأقسام.", en: "Manage menu, prices, photos and categories." },
-        f7_t: { ku: "داواکارییەکان", ar: "الطلبات", en: "Orders" },
-        f7_d: { ku: "شوێنکەوتنی هەموو داواکارییەکان لە یەک شوێن.", ar: "متابعة كل الطلبات في مكان واحد.", en: "Track every order from one place." },
-        f8_t: { ku: "خەرجییەکان", ar: "المصاريف", en: "Expenses" },
-        f8_d: { ku: "تۆمارکردنی خەرجی ڕۆژانە و کۆنترۆڵی پارە.", ar: "تسجيل مصاريف اليوم والتحكم بالمال.", en: "Log daily expenses and control cash." },
-        f9_t: { ku: "ڕاپۆرتەکان", ar: "التقارير", en: "Reports" },
-        f9_d: { ku: "فرۆشتن، قازانج، و ڕاپۆرتی کار بۆ خاوەنکار.", ar: "المبيعات والأرباح وتقارير العمل لصاحب المحل.", en: "Sales, profit, and business reports for owners." },
-        f10_t: { ku: "داخستنی ڕۆژ", ar: "إغلاق اليوم", en: "Day closing" },
-        f10_d: { ku: "کۆتایی ڕۆژ، کۆی فرۆشتن و داخستنی حساب.", ar: "نهاية اليوم وإجمالي المبيعات وإغلاق الحساب.", en: "End of day, sales total, and account close." },
-        f11_t: { ku: "باکئەپ", ar: "النسخ الاحتياطي", en: "Backup" },
-        f11_d: { ku: "پاراستنی داتاکان و گەڕاندنەوە لە کاتی پێویست.", ar: "حفظ البيانات واسترجاعها عند الحاجة.", en: "Protect data and restore when needed." },
-        f12_t: { ku: "بەکارهێنەران", ar: "المستخدمون", en: "Users" },
-        f12_d: { ku: "کارمەند، ڕۆڵ و مۆڵەتی دەستگەیشتن.", ar: "الموظفون والأدوار وصلاحيات الوصول.", en: "Staff, roles, and access permissions." },
-        band_t: { ku: "ئامادەیت بۆ POSی خۆت؟", ar: "جاهز لنظام POS خاص بك؟", en: "Ready for your own POS?" },
-        band_p: {
-            ku: "لە واتساپ نامە بنێرە بۆ دیمۆ یان داواکاری سیستەم",
-            ar: "أرسل رسالة عبر واتساب لطلب العرض التجريبي أو النظام",
-            en: "Send a WhatsApp message to request a demo or order the system"
-        }
-    };
+<!-- SPLIT: Cashier -->
+<section style="background:var(--bg2)">
+  <div class="sw">
+    <div class="split rv">
+      <div class="simg"><img src="images/pos-screens/pos-cashier.png" alt="POS Cashier Terminal"></div>
+      <div>
+        <div class="stag"><i class="fas fa-cash-register"></i> Cashier Terminal</div>
+        <h2 class="sh2">Everything the Cashier Needs</h2>
+        <p class="sd">The main POS screen is split into clear zones so the cashier always knows exactly what to do &mdash; no training needed.</p>
+        <ul class="chk">
+          <li><i class="fas fa-check-circle"></i><span><strong>Product Grid</strong> &mdash; Photo cards with name &amp; IQD price, paginated for fast browsing</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>Category Tabs</strong> &mdash; Meat, Coffee, Juice, Bread, Dairy &amp; more for instant filtering</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>Smart Cart</strong> &mdash; Live order with quantity, discount, return &amp; note per line</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>IQD Banknote Panel</strong> &mdash; Quick-tap 1K, 5K, 10K, 25K, 50K, 100K IQD buttons</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>USD Rate Display</strong> &mdash; Live dollar equivalent shown automatically</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>F-Key Shortcuts</strong> &mdash; F2 scan barcode, F6 park order, F8 calculator</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>Customer Assignment</strong> &mdash; Link any sale to a customer account</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-    const WA_NUMBER = "9647506454656";
-    let LANG = localStorage.getItem('pos_lang') || 'ku';
+<!-- SPLIT: Shift -->
+<section>
+  <div class="sw">
+    <div class="split flip rv">
+      <div class="simg"><img src="images/pos-screens/pos-shift.png" alt="Shift &amp; Cash Drawer"></div>
+      <div>
+        <div class="stag"><i class="fas fa-clock"></i> Shift Management</div>
+        <h2 class="sh2">Cash Drawer &amp; X/Z Reports</h2>
+        <p class="sd">Full shift tracking so the owner always knows what cash is in the drawer, who sold what, and when every shift opened and closed.</p>
+        <ul class="chk">
+          <li><i class="fas fa-check-circle"></i><span><strong>Daily Z Report</strong> &mdash; End-of-day full summary with one click</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>X Report</strong> &mdash; Check totals mid-day without closing the shift</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>Cash In / Cash Out</strong> &mdash; Log any cash movements in or out of drawer</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>Cash Handover</strong> &mdash; Printable handover form for shift change</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>Shift History</strong> &mdash; Complete log of all past shifts with amounts</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>Target vs Actual</strong> &mdash; Compare expected cash vs real drawer balance</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>Receipt Count</strong> &mdash; Exact number of sales per cashier per shift</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-    function waLink(type) {
-        const key = type === 'order' ? 'wa_order' : 'wa_demo';
-        const msg = (POS_I18N[key] && POS_I18N[key][LANG]) || POS_I18N[key].ku;
-        return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
-    }
+<!-- SPLIT: Navigation -->
+<section style="background:var(--bg2)">
+  <div class="sw">
+    <div class="split rv">
+      <div class="simg"><img src="images/pos-screens/pos-navigation.png" alt="POS Navigation Menu"></div>
+      <div>
+        <div class="stag"><i class="fas fa-bars"></i> Navigation</div>
+        <h2 class="sh2">10+ Pages, One Sidebar</h2>
+        <p class="sd">Every section of the system is accessible from a clean side menu. The navigation is grouped into Main, Admin, and Reports sections.</p>
+        <ul class="chk">
+          <li><i class="fas fa-check-circle"></i><span><strong>Dashboard</strong> &mdash; Owner overview of sales &amp; activity</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>Cash Management</strong> &mdash; Money transfers and audit trail</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>Shifts</strong> &mdash; Open/close shifts and X/Z reports</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>Users &amp; Cashiers</strong> &mdash; Create and manage accounts</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>QR &amp; Barcode</strong> &mdash; Generate and print product codes</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>Coupons</strong> &mdash; Create discount codes</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>Customers</strong> &mdash; CRM with purchase history</span></li>
+          <li><i class="fas fa-check-circle"></i><span><strong>Reports &amp; Revenue</strong> &mdash; Full analytics and Excel export</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-    function setPosLang(l) {
-        LANG = l;
-        localStorage.setItem('pos_lang', l);
-        const root = document.getElementById('html-root');
-        root.lang = l;
-        root.dir = (l === 'en') ? 'ltr' : 'rtl';
-        document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('on', b.dataset.l === l));
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            const entry = POS_I18N[key];
-            if (!entry) return;
-            el.innerHTML = entry[l] != null ? entry[l] : (entry.ku || key);
-        });
-        document.querySelectorAll('[data-wa]').forEach(a => {
-            a.href = waLink(a.getAttribute('data-wa'));
-        });
-        document.title = l === 'ar' ? 'Smart Serve POS — نظام المطاعم' : (l === 'en' ? 'Smart Serve POS — Café & Restaurant' : 'Smart Serve POS — کافێ و ڕێستورانت');
-    }
+<!-- ALL PAGES -->
+<section id="pages">
+  <div class="sw">
+    <div class="ch rv">
+      <div class="stag"><i class="fas fa-map"></i> System Pages</div>
+      <h2 class="sh2">All Pages &amp; Sections</h2>
+      <p class="sd cen">Smart Serve POS is divided into focused sections. Here is every page and what it does.</p>
+    </div>
+    <div class="pgrid">
+      <div class="pcard rv"><div class="pi ig"><i class="fas fa-cash-register"></i></div><div><div class="pn">Cashier / POS Terminal</div><div class="pd">The main selling screen. Product grid, cart, IQD payment panel, receipt print. Used by cashiers all day. Supports barcode scanner input and keyboard shortcuts.</div><div class="ptags"><span class="ptag">Main Screen</span><span class="ptag">Cashier</span></div></div></div>
+      <div class="pcard rv"><div class="pi ic"><i class="fas fa-chart-line"></i></div><div><div class="pn">Dashboard (Owner Panel)</div><div class="pd">Overview of today's sales, revenue, top products, and active cashiers. Real-time cards with hourly chart. The owner sees the full picture at a glance.</div><div class="ptags"><span class="ptag">Owner</span><span class="ptag">Analytics</span></div></div></div>
+      <div class="pcard rv"><div class="pi ip"><i class="fas fa-clock"></i></div><div><div class="pn">Shift &amp; Cash Drawer (X/Z)</div><div class="pd">Manage open/close shifts, view X reports, print Z reports, log cash in/out movements, and generate cash handover forms for shift change.</div><div class="ptags"><span class="ptag">Shifts</span><span class="ptag">Z-Report</span><span class="ptag">Handover</span></div></div></div>
+      <div class="pcard rv"><div class="pi ig"><i class="fas fa-money-bill-transfer"></i></div><div><div class="pn">Cash Management</div><div class="pd">Track all money movements: cash deposits, withdrawals, and transfers. Full audit trail of every Iraqi Dinar that entered or left the business.</div><div class="ptags"><span class="ptag">Finance</span><span class="ptag">Audit</span></div></div></div>
+      <div class="pcard rv"><div class="pi io"><i class="fas fa-users-cog"></i></div><div><div class="pn">Users &amp; Cashiers</div><div class="pd">Create, edit, and manage all cashier and admin accounts. Set roles and permissions. Each user has their own login, shift history, and sales record.</div><div class="ptags"><span class="ptag">Admin</span><span class="ptag">Users</span></div></div></div>
+      <div class="pcard rv"><div class="pi ic"><i class="fas fa-handshake"></i></div><div><div class="pn">Partners</div><div class="pd">Manage business partners and suppliers. Track partner transactions, shared revenue, and cooperative arrangements linked to products or categories.</div><div class="ptags"><span class="ptag">Partners</span><span class="ptag">Suppliers</span></div></div></div>
+      <div class="pcard rv"><div class="pi ip"><i class="fas fa-qrcode"></i></div><div><div class="pn">QR &amp; Barcode Generator</div><div class="pd">Generate and print QR codes and barcodes for any product. Print product labels. Scan barcodes on the POS screen using a USB scanner or camera.</div><div class="ptags"><span class="ptag">QR Code</span><span class="ptag">Barcode</span><span class="ptag">Labels</span></div></div></div>
+      <div class="pcard rv"><div class="pi iy"><i class="fas fa-ticket-alt"></i></div><div><div class="pn">Coupons</div><div class="pd">Create discount coupons with fixed or percentage amounts. Set expiry dates and usage limits. Customers enter the code at checkout for automatic discount.</div><div class="ptags"><span class="ptag">Discounts</span><span class="ptag">Coupons</span></div></div></div>
+      <div class="pcard rv"><div class="pi ig"><i class="fas fa-user-friends"></i></div><div><div class="pn">Customers</div><div class="pd">Customer database with purchase history, loyalty points, and contact info. Link any sale to a customer. View total spend and visit count per customer.</div><div class="ptags"><span class="ptag">CRM</span><span class="ptag">Loyalty</span></div></div></div>
+      <div class="pcard rv"><div class="pi ic"><i class="fas fa-chart-bar"></i></div><div><div class="pn">Reports</div><div class="pd">Full sales reports filterable by date range, cashier, category, or product. Includes totals, transaction list, and charts. Export any report to Excel.</div><div class="ptags"><span class="ptag">Reports</span><span class="ptag">Excel</span></div></div></div>
+      <div class="pcard rv"><div class="pi io"><i class="fas fa-coins"></i></div><div><div class="pn">Daily Revenue &amp; Net Profit</div><div class="pd">Daily, weekly, and monthly revenue breakdown. Gross sales, discounts, returns, and calculated net profit. Revenue per cashier and per category.</div><div class="ptags"><span class="ptag">Revenue</span><span class="ptag">Profit</span></div></div></div>
+      <div class="pcard rv"><div class="pi ipk"><i class="fas fa-undo"></i></div><div><div class="pn">Sales Returns</div><div class="pd">Process full or partial returns on any past receipt. Reverses inventory and revenue, logs the return reason, and can reprint a return receipt.</div><div class="ptags"><span class="ptag">Returns</span><span class="ptag">Refunds</span></div></div></div>
+    </div>
+  </div>
+</section>
 
-    setPosLang(LANG);
-    </script>
+<!-- FEATURES -->
+<section class="fsec" id="features">
+  <div class="sw">
+    <div class="ch rv">
+      <div class="stag"><i class="fas fa-star"></i> Key Features</div>
+      <h2 class="sh2">Built-In Capabilities</h2>
+      <p class="sd cen">Every feature designed for the real workflow of a Kurdish restaurant or market.</p>
+    </div>
+    <div class="fgrid">
+      <div class="feat rv"><div class="fi"><i class="fas fa-globe"></i></div><div class="ft_">Multi-Language</div><div class="fd_">Full Kurdish (Sorani), Kurdish (Badini), Arabic, and English. RTL/LTR auto-switches. Even the receipt prints in the selected language.</div></div>
+      <div class="feat rv"><div class="fi"><i class="fas fa-coins"></i></div><div class="ft_">IQD + USD Dual Currency</div><div class="fd_">All prices in Iraqi Dinar. Live USD exchange rate shown next to every total. Cashier sees both currencies simultaneously.</div></div>
+      <div class="feat rv"><div class="fi"><i class="fas fa-print"></i></div><div class="ft_">Thermal Receipt Printing</div><div class="fd_">Prints to any 58mm or 80mm thermal printer. Auto-print on checkout, or preview first. WhatsApp share option available.</div></div>
+      <div class="feat rv"><div class="fi"><i class="fas fa-moon"></i></div><div class="ft_">Beautiful Dark UI</div><div class="fd_">Premium glassmorphism dark interface. Comfortable for all-day use in any lighting. Light mode also available via toggle.</div></div>
+      <div class="feat rv"><div class="fi"><i class="fas fa-shield-alt"></i></div><div class="ft_">License &amp; Auth System</div><div class="fd_">Hardware-locked license key system. Each business gets a unique license. Role-based login for owners and cashiers.</div></div>
+      <div class="feat rv"><div class="fi"><i class="fas fa-barcode"></i></div><div class="ft_">Barcode Scanner Support</div><div class="fd_">Plug in any USB barcode scanner. Generates and prints barcodes for products that don't have one.</div></div>
+      <div class="feat rv"><div class="fi"><i class="fas fa-file-excel"></i></div><div class="ft_">Excel Export</div><div class="fd_">Export daily reports, shift summaries, and cash handover documents directly to .xlsx Excel files.</div></div>
+      <div class="feat rv"><div class="fi"><i class="fas fa-usb"></i></div><div class="ft_">USB Backup &amp; Restore</div><div class="fd_">Back up the entire database to a USB drive with one click. Restore from backup in seconds. Never lose data.</div></div>
+      <div class="feat rv"><div class="fi"><i class="fas fa-desktop"></i></div><div class="ft_">Offline Desktop App</div><div class="fd_">Works completely offline as a Windows desktop app (Electron). No internet required. All data stays local.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="sw rv">
+    <div class="stag" style="margin-bottom:1.5rem"><i class="fas fa-rocket"></i> Open The System</div>
+    <h2 class="sh2">Ready to Run Your Business Smarter?</h2>
+    <p class="sd cen">Smart Serve POS is live and ready. Launch it now from your browser &mdash; no install needed for the web version.</p>
+    <div class="ctab">
+      <a href="../market-pos-system/index.html" class="bg_"><i class="fas fa-cash-register"></i> Open POS System</a>
+      <a href="index.html" class="bo_"><i class="fas fa-home"></i> Back to Smart Serve Home</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ftw">
+    <div class="ftb"><div class="ico"><i class="fas fa-cash-register"></i></div><span>SMART <em>SERVE</em></span></div>
+    <div class="ftl">
+      <a href="index.html">Home</a>
+      <a href="landing.html">Menu</a>
+      <a href="cv.html">Portfolio</a>
+      <a href="../market-pos-system/index.html">POS System</a>
+      <a href="https://www.instagram.com/smartserve_tech/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/9647506454656" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <p class="ftc">&copy; 2026 Smart Serve &mdash; Designed &amp; built with &#x2764;&#xFE0F; in Kurdistan</p>
+  </div>
+</footer>
+
+<script>
+const rv=document.querySelectorAll('.rv');
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+rv.forEach(el=>io.observe(el));
+
+function setS(b,src,t,d){
+  document.querySelectorAll('.sct').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  const img=document.getElementById('si');
+  img.style.opacity='0';
+  setTimeout(()=>{img.src=src;document.getElementById('st').textContent=t;document.getElementById('sdx').innerHTML=d;img.style.opacity='1'},220);
+}
+document.getElementById('si').style.transition='opacity .22s ease';
+</script>
 </body>
 </html>
