@@ -11,8 +11,11 @@
     <meta property="og:title" content="Basam Ali — Web &amp; Digital Systems Developer">
     <meta property="og:description" content="Websites, mobile apps, QR digital menus and POS systems — projects, skills and live work.">
     <meta property="og:url" content="https://smart-serve-bay.vercel.app/cv.html">
-    <meta property="og:image" content="https://smart-serve-bay.vercel.app/images/portfolio/avatar.webp">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://smart-serve-bay.vercel.app/images/portfolio/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Basam Ali Sedqi — web and digital systems developer">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="images/icon-192.png">
     <link rel="apple-touch-icon" href="images/icon-192.png">
     <meta name="theme-color" content="#05060B" id="metaTheme">
@@ -39,7 +42,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="images/portfolio/portrait.webp">
+    <link rel="preload" as="image" href="images/portfolio/hero-960.webp" imagesrcset="images/portfolio/hero-600.webp 600w, images/portfolio/hero-960.webp 960w" imagesizes="(max-width:600px) 86vw, 420px">
 
     <style>
         /* ============ TOKENS (shared with landing.html) ============ */
@@ -171,7 +174,8 @@
         .live-dot{position:relative;width:8px;height:8px;border-radius:50%;background:#34D399;flex:none}
         .live-dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:#34D399;animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}
         @keyframes ping{75%,100%{transform:scale(2.6);opacity:0}}
-        .hello{margin-top:28px;font-size:14px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3)}
+        .hello{display:inline-flex;align-items:center;gap:12px;font-size:13.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--text-2)}
+        .hello::before{content:"";width:34px;height:2px;border-radius:2px;background:var(--grad)}
         :root[dir="rtl"] .hello{letter-spacing:0;font-size:17px}
         .hero h1{font-size:clamp(3rem,1.6rem + 5.4vw,5.9rem);line-height:1;letter-spacing:-.045em;margin:6px 0 14px}
         :root[dir="rtl"] .hero h1{font-size:clamp(2.8rem,1.5rem + 4.6vw,5rem);line-height:1.3;letter-spacing:0;font-weight:900}
@@ -197,29 +201,39 @@
         .hero-copy > :nth-child(7){animation-delay:.36s}
         @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 
-        .hero-visual{position:relative;width:100%;max-width:540px;margin-inline:auto;animation:rise 1.1s .15s var(--ease) both}
-        .stage{position:relative;display:grid;place-items:center;padding:30px 0 10px}
-        .halo{position:absolute;top:2%;width:min(500px,105%);aspect-ratio:1;border-radius:50%;background:conic-gradient(from 90deg,#22D3EE,#3B82F6,#8B5CF6,#22D3EE);filter:blur(90px);opacity:.3;animation:spin 22s linear infinite;z-index:-1}
-        :root[data-theme="light"] .halo{opacity:.2}
-        .ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);aspect-ratio:1;border-radius:50%;border:1px solid var(--line);z-index:-1}
-        .ring.r1{width:min(460px,96%)}
-        .ring.r2{width:min(600px,124%);border-style:dashed;opacity:.6}
+        .hero-visual{position:relative;width:100%;max-width:520px;margin-inline:auto;animation:rise 1.1s .15s var(--ease) both}
+        .stage{position:relative;display:grid;place-items:center;padding:22px 40px}
+        .halo{position:absolute;top:10%;width:min(520px,110%);aspect-ratio:1;border-radius:50%;background:conic-gradient(from 90deg,#22D3EE,#3B82F6,#8B5CF6,#22D3EE);filter:blur(100px);opacity:.28;animation:spin 22s linear infinite;z-index:-1}
+        :root[data-theme="light"] .halo{opacity:.18}
         @keyframes spin{to{transform:rotate(360deg)}}
-        .portrait{position:relative;width:min(380px,82vw);aspect-ratio:380/480}
-        .arch{position:absolute;inset:13% 0 0 0;border-radius:999px 999px 34px 34px;background:var(--arch);border:1px solid var(--line-2);overflow:hidden;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.08)}
-        .arch::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 45% at 50% 22%,rgba(59,130,246,.45),transparent 70%),radial-gradient(50% 40% at 80% 70%,rgba(139,92,246,.25),transparent 70%)}
-        .arch::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px;-webkit-mask-image:linear-gradient(#000,transparent 70%);mask-image:linear-gradient(#000,transparent 70%)}
-        .portrait img{position:absolute;bottom:0;left:50%;width:118%;max-width:none;height:auto;transform:translateX(-50%);clip-path:inset(-60% 7.6% 0 7.6% round 0 0 34px 34px);filter:drop-shadow(0 20px 40px rgba(0,0,0,.35))}
+        /* editorial photo frame */
+        .frame{position:relative;width:min(420px,78vw);aspect-ratio:2/3}
+        .frame::before{content:"";position:absolute;inset:-14px;border-radius:42px;padding:1px;background:linear-gradient(160deg,rgba(94,231,247,.65),rgba(59,130,246,.18) 35%,transparent 55%,rgba(139,92,246,.55));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+        .photo{position:relative;width:100%;height:100%;border-radius:30px;overflow:hidden;background:#0B0D16;box-shadow:0 60px 110px -45px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.08);isolation:isolate}
+        :root[data-theme="light"] .photo{box-shadow:0 50px 90px -40px rgba(20,30,80,.45),0 0 0 1px rgba(14,18,40,.08)}
+        .photo img{--py:0px;position:absolute;left:0;top:-4%;width:100%;height:108%;object-fit:cover;object-position:50% 22%;transform:translate3d(0,var(--py),0) scale(1.02);transition:transform 1.1s var(--ease);filter:saturate(1.06) contrast(1.05) brightness(.97)}
+        .frame:hover .photo img{transform:translate3d(0,var(--py),0) scale(1.06)}
+        .photo::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(130% 75% at 50% 20%,transparent 55%,rgba(5,6,11,.42)),linear-gradient(180deg,rgba(5,6,11,.18) 0%,transparent 20%,transparent 66%,rgba(5,6,11,.9) 100%)}
+        .photo::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(125deg,rgba(255,255,255,.16),transparent 32%);mix-blend-mode:soft-light}
+        .cap{position:absolute;inset-inline:24px;bottom:22px;z-index:2;color:#fff;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+        .cap-name{font-family:var(--serif);font-style:italic;font-size:clamp(24px,2.2vw,31px);line-height:1;letter-spacing:-.01em;direction:ltr}
+        .cap-meta{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:rgba(255,255,255,.85);white-space:nowrap}
+        .cap-meta .i{width:15px;height:15px;color:#F9A8D4}
+        /* physical left/right: logical insets follow the vertical writing mode here */
+        .vert{position:absolute;top:36%;right:0;transform:translateY(-50%);writing-mode:vertical-rl;font:700 10.5px/1 var(--font);letter-spacing:.42em;text-transform:uppercase;color:var(--text-3);white-space:nowrap;direction:ltr}
+        :root[dir="rtl"] .vert{right:auto;left:0}
         .float{position:absolute;z-index:4;display:flex;align-items:center;gap:10px;padding:11px 15px;border-radius:18px;background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(160%);backdrop-filter:blur(16px) saturate(160%);border:1px solid var(--line-2);box-shadow:0 24px 50px -20px rgba(0,0,0,.55);font-size:13px;font-weight:700;animation:bob 7s ease-in-out infinite;white-space:nowrap}
         .float .i{width:18px;height:18px}
         .f-ico{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--grad-btn);color:#fff;flex:none}
         .f-ico .i{width:16px;height:16px}
         .float small{display:block;font-size:11.5px;font-weight:600;color:var(--text-2);margin-top:1px}
-        .f-code{inset-inline-start:-8%;top:58%;font-family:ui-monospace,'SFMono-Regular',Consolas,monospace;font-size:12.5px;direction:ltr}
+        .f-avail{inset-inline-start:-1%;top:8%;animation-delay:-1s}
+        .f-code{inset-inline-start:-7%;top:52%;font-family:ui-monospace,'SFMono-Regular',Consolas,monospace;font-size:12.5px;animation-delay:-5s}
+        .f-code > span{direction:ltr;unicode-bidi:isolate}
         .f-code .tag{color:var(--c1)}
-        .f-deg{inset-inline-end:-6%;bottom:22%;animation-delay:-3s}
-        .f-city{inset-inline-end:2%;top:14%;animation-delay:-5s}
-        .f-city .i{color:#F472B6}
+        .f-deg{inset-inline-end:-3%;bottom:21%;animation-delay:-3s}
+        .float{transition:opacity .35s}
+        .frame:hover ~ .float{opacity:.25}
         @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
         /* tech marquee */
@@ -387,6 +401,32 @@
         .cv-paper::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18),transparent 40%)}
         .cv-card .row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
 
+        /* numbered eyebrows + project index */
+        .eyebrow .num{order:-1;font-family:var(--font);font-weight:800;letter-spacing:.08em;color:var(--text);direction:ltr}
+        .tags .idx{margin-inline-start:auto;font:800 13px/26px var(--font);letter-spacing:.1em;color:var(--text-3);direction:ltr}
+
+        /* statement */
+        .statement{position:relative;padding:150px 0 140px;text-align:center;overflow:hidden;isolation:isolate}
+        .statement::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(45% 55% at 50% 60%,rgba(59,130,246,.16),transparent 70%),radial-gradient(30% 40% at 70% 40%,rgba(139,92,246,.12),transparent 70%)}
+        .statement::after{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 60% 55% at 50% 50%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 60% 55% at 50% 50%,#000 20%,transparent 75%)}
+        .qmark{display:block;font:400 170px/1 var(--serif);margin-bottom:-.52em;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
+        .quote{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(2.7rem,1.2rem + 6vw,6.8rem);line-height:1.02;letter-spacing:-.025em;max-width:13ch;margin:18px auto 0;text-wrap:balance}
+        .quote .g{padding-inline-end:.08em}
+        :root[dir="rtl"] .quote{font-family:var(--font-rtl);font-style:normal;font-weight:900;line-height:1.35;letter-spacing:0;font-size:clamp(2.2rem,1.1rem + 4.4vw,4.8rem);max-width:16ch}
+        .sign{display:inline-flex;align-items:center;gap:14px;margin-top:40px;font-weight:700;color:var(--text-2)}
+        .sign img{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--bg),0 0 0 3.5px rgba(59,130,246,.7)}
+        .sign b{display:block;color:var(--text);font-size:16px}
+        .sign small{display:block;font-size:13px;font-weight:600}
+        .sign span{text-align:start}
+
+        /* scroll progress */
+        .progress{position:fixed;top:0;inset-inline:0;height:2px;z-index:150;pointer-events:none}
+        .progress span{display:block;height:100%;background:var(--grad);transform:scaleX(var(--sp,0));transform-origin:left center;box-shadow:0 0 12px rgba(59,130,246,.8)}
+        :root[dir="rtl"] .progress span{transform-origin:right center}
+
+        /* footer wordmark */
+        .mega{font-family:var(--serif);font-style:italic;font-size:clamp(4.2rem,16.5vw,15.5rem);line-height:.9;text-align:center;letter-spacing:-.035em;white-space:nowrap;overflow:hidden;padding-bottom:.06em;margin-bottom:40px;background:linear-gradient(180deg,var(--text) 10%,transparent 92%);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.16;user-select:none;direction:ltr}
+
         /* footer */
         .footer{position:relative;padding:72px 0 32px;margin-top:40px;border-top:1px solid var(--line)}
         .foot-top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;padding-bottom:40px}
@@ -464,8 +504,11 @@
             .hero{padding:110px 0 48px}
             .hero-ctas{flex-direction:column;width:100%}
             .hero-ctas .btn{width:100%}
-            .float{display:none}
-            .ring.r2{display:none}
+            .float:not(.f-avail),.vert{display:none}
+            .f-avail{top:2px;inset-inline-start:auto;left:50%;transform:translateX(-50%);padding:7px 12px;font-size:12px;animation:none}
+            .stage{padding:18px 0}
+            .frame{width:min(360px,84vw)}
+            .cap{inset-inline:18px;bottom:18px}
             .focus{grid-template-columns:1fr}
             .focus .card:nth-child(2),.focus .card:nth-child(4),.focus .card:nth-child(2):hover,.focus .card:nth-child(4):hover{transform:none}
             .services,.minis,.contacts{grid-template-columns:1fr}
@@ -493,6 +536,7 @@
 </head>
 <body>
     <a class="skip" href="#main" data-i18n="lnd_skip">Skip to content</a>
+    <div class="progress" aria-hidden="true"><span id="prog"></span></div>
     <div class="bg" aria-hidden="true"></div>
 
     <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -587,7 +631,6 @@
         <section class="hero" id="top">
             <div class="container hero-grid">
                 <div class="hero-copy">
-                    <span class="pill"><span class="live-dot"></span><span data-i18n="pf_avail">Open to new projects</span></span>
                     <p class="hello" data-i18n="pf_hello">Hello, I'm</p>
                     <h1 data-i18n="pf_name">Basam <span class="g">Ali</span></h1>
                     <p class="role" data-i18n="pf_role">Web &amp; Digital Systems Developer</p>
@@ -611,14 +654,18 @@
                 <div class="hero-visual">
                     <div class="stage">
                         <span class="halo" aria-hidden="true"></span>
-                        <span class="ring r1" aria-hidden="true"></span>
-                        <span class="ring r2" aria-hidden="true"></span>
-                        <div class="portrait">
-                            <div class="arch" aria-hidden="true"></div>
-                            <img src="images/portfolio/portrait.webp" alt="Portrait of Basam Ali Sedqi" width="646" height="720" fetchpriority="high">
-                        </div>
+                        <figure class="frame">
+                            <div class="photo">
+                                <img src="images/portfolio/hero-960.webp" srcset="images/portfolio/hero-600.webp 600w, images/portfolio/hero-960.webp 960w" sizes="(max-width:600px) 86vw, 420px" alt="Basam Ali Sedqi in a dark suit, standing outdoors in Erbil" width="960" height="1440" fetchpriority="high" decoding="async">
+                                <figcaption class="cap">
+                                    <span class="cap-name">Basam Ali Sedqi</span>
+                                    <span class="cap-meta"><svg class="i"><use href="#i-pin"/></svg><span data-i18n="pf_chip_city">Erbil, Kurdistan</span></span>
+                                </figcaption>
+                            </div>
+                        </figure>
+                        <span class="vert" aria-hidden="true">Basam Ali — Portfolio 2026</span>
+                        <div class="float f-avail"><span class="live-dot"></span><span data-i18n="pf_avail">Open to new projects</span></div>
                         <div class="float f-code" aria-hidden="true"><span><span class="tag">&lt;</span>JavaScript · Node.js · Flutter<span class="tag"> /&gt;</span></span></div>
-                        <div class="float f-city" aria-hidden="true"><svg class="i"><use href="#i-pin"/></svg><span data-i18n="pf_chip_city">Erbil, Kurdistan</span></div>
                         <div class="float f-deg" aria-hidden="true"><span class="f-ico"><svg class="i"><use href="#i-cap"/></svg></span><span><span data-i18n="pf_chip_degree">B.Sc. Computer Science</span><small data-i18n="pf_uni">Cihan University – Erbil</small></span></div>
                     </div>
                 </div>
@@ -637,7 +684,7 @@
             <div class="container about">
                 <div class="about-copy" data-reveal>
                     <header class="sec-head start">
-                        <span class="eyebrow" data-i18n="pf_about_eb">About me</span>
+                        <span class="eyebrow"><b class="num">01</b><span data-i18n="pf_about_eb">About me</span></span>
                         <h2 data-i18n="pf_about_h">Transforming ideas into modern <span class="g">digital solutions</span></h2>
                     </header>
                     <p data-i18n="pf_about_p1"></p>
@@ -657,7 +704,7 @@
         <section class="section" id="skills">
             <div class="container">
                 <header class="sec-head" data-reveal>
-                    <span class="eyebrow" data-i18n="pf_skills_eb">My skills</span>
+                    <span class="eyebrow"><b class="num">02</b><span data-i18n="pf_skills_eb">My skills</span></span>
                     <h2 data-i18n="pf_skills_h">Technologies and tools <span class="g">I work with</span></h2>
                 </header>
                 <div class="skills">
@@ -714,7 +761,7 @@
         <section class="section" id="projects">
             <div class="container">
                 <header class="sec-head" data-reveal>
-                    <span class="eyebrow" data-i18n="pf_proj_eb">Featured projects</span>
+                    <span class="eyebrow"><b class="num">03</b><span data-i18n="pf_proj_eb">Featured projects</span></span>
                     <h2 data-i18n="pf_proj_h">My work and <span class="g">digital products</span></h2>
                 </header>
                 <div class="projects">
@@ -724,7 +771,7 @@
                             <img src="images/portfolio/pos-restaurant.webp" alt="SmartServe Restaurant POS — cashier screen" width="1024" height="529" loading="lazy" decoding="async">
                         </div>
                         <div class="proj-body">
-                            <div class="tags"><span class="tag-badge hot" data-i18n="pf_featured">Featured</span><span class="tag-badge" data-i18n="pf_type_biz">Business system</span></div>
+                            <div class="tags"><span class="tag-badge hot" data-i18n="pf_featured">Featured</span><span class="tag-badge" data-i18n="pf_type_biz">Business system</span><span class="idx" aria-hidden="true">01</span></div>
                             <h3 data-i18n="pf_pos_t">SmartServe Restaurant POS</h3>
                             <p data-i18n="pf_pos_d"></p>
                             <div class="stack"><span>Electron</span><span>Node.js</span><span>Express</span><span>SQLite</span><span>JavaScript</span></div>
@@ -737,7 +784,7 @@
                             <img src="images/portfolio/pos-market.webp" alt="Market POS System — sales screen" width="1024" height="532" loading="lazy" decoding="async">
                         </div>
                         <div class="proj-body">
-                            <div class="tags"><span class="tag-badge" data-i18n="pf_type_desk">Desktop app</span></div>
+                            <div class="tags"><span class="tag-badge" data-i18n="pf_type_desk">Desktop app</span><span class="idx" aria-hidden="true">02</span></div>
                             <h3 data-i18n="pf_mpos_t">Market POS System</h3>
                             <p data-i18n="pf_mpos_d"></p>
                             <div class="stack"><span>Node.js</span><span>SQLite</span><span>JavaScript</span></div>
@@ -753,7 +800,7 @@
                             </div>
                         </div>
                         <div class="proj-body">
-                            <div class="tags"><span class="tag-badge" data-i18n="pf_type_web">Web platform</span></div>
+                            <div class="tags"><span class="tag-badge" data-i18n="pf_type_web">Web platform</span><span class="idx" aria-hidden="true">03</span></div>
                             <h3 data-i18n="pf_menus_t">SmartServe Digital Menus</h3>
                             <p data-i18n="pf_menus_d"></p>
                             <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>QR</span></div>
@@ -778,7 +825,7 @@
         <section class="section" id="services">
             <div class="container">
                 <header class="sec-head" data-reveal>
-                    <span class="eyebrow" data-i18n="pf_srv_eb">Services</span>
+                    <span class="eyebrow"><b class="num">04</b><span data-i18n="pf_srv_eb">Services</span></span>
                     <h2 data-i18n="pf_srv_h">Have a project <span class="g">in mind?</span></h2>
                     <p data-i18n="pf_srv_p">I am ready to create modern and professional digital solutions for various businesses.</p>
                 </header>
@@ -798,7 +845,7 @@
             <div class="container journey">
                 <div>
                     <header class="sec-head start" data-reveal>
-                        <span class="eyebrow" data-i18n="pf_edu_eb">Education &amp; experience</span>
+                        <span class="eyebrow"><b class="num">05</b><span data-i18n="pf_edu_eb">Education &amp; experience</span></span>
                         <h2 data-i18n="pf_edu_h">My professional <span class="g">journey</span></h2>
                     </header>
                     <ol class="timeline">
@@ -829,7 +876,7 @@
         <section class="section" id="live">
             <div class="container">
                 <header class="sec-head" data-reveal>
-                    <span class="eyebrow" data-i18n="pf_live_eb">Live portfolio</span>
+                    <span class="eyebrow"><b class="num">06</b><span data-i18n="pf_live_eb">Live portfolio</span></span>
                     <h2 data-i18n="pf_live_h">Explore my <span class="g">full portfolio</span></h2>
                     <p data-i18n="pf_live_p">The complete site, live — scroll it right here or open it in a new tab.</p>
                 </header>
@@ -851,12 +898,24 @@
             </div>
         </section>
 
+        <!-- ============ STATEMENT ============ -->
+        <section class="statement" aria-label="Motto">
+            <div class="container" data-reveal>
+                <span class="qmark" aria-hidden="true">&ldquo;</span>
+                <p class="quote" data-i18n="pf_motto">Dream big, <span class="g">build better.</span></p>
+                <div class="sign">
+                    <img src="images/portfolio/avatar.webp" alt="" width="46" height="46" loading="lazy">
+                    <span><b data-i18n="pf_name_plain">Basam Ali</b><small data-i18n="pf_role">Web &amp; Digital Systems Developer</small></span>
+                </div>
+            </div>
+        </section>
+
         <!-- ============ CONTACT ============ -->
         <section class="section" id="contact">
             <div class="container">
                 <div class="cta-panel" data-reveal>
                     <div>
-                        <span class="eyebrow" data-i18n="pf_contact_eb">Get in touch</span>
+                        <span class="eyebrow"><b class="num">07</b><span data-i18n="pf_contact_eb">Get in touch</span></span>
                         <h2 data-i18n="pf_contact_h">Let's <span class="g">talk</span></h2>
                         <p data-i18n="pf_cta_line">Turn your ideas into a smart, fast and professional system.</p>
                         <div class="contacts">
@@ -885,6 +944,7 @@
     <!-- ============ FOOTER ============ -->
     <footer class="footer">
         <div class="container">
+            <div class="mega" aria-hidden="true">Basam Ali</div>
             <div class="foot-top">
                 <div class="foot-brand">
                     <a class="brand" href="#top"><img src="images/portfolio/avatar.webp" alt="" width="38" height="38" loading="lazy"><span data-i18n="pf_name_plain">Basam Ali</span></a>
@@ -961,12 +1021,22 @@
 
         /* ---------- header, mobile menu, floating WhatsApp, scrollspy ---------- */
         var hdr = $('#hdr'), burger = $('#burger'), fab = $('#fab'), contactInView = false;
+        var prog = $('#prog'), heroImg = $('.photo img'), ticking = false;
+        var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
         function onScroll() {
             var y = window.scrollY || window.pageYOffset;
             hdr.classList.toggle('scrolled', y > 12);
             fab.classList.toggle('show', y > 520 && !contactInView);
+            var max = document.documentElement.scrollHeight - window.innerHeight;
+            prog.style.setProperty('--sp', max > 0 ? Math.min(1, y / max).toFixed(4) : 0);
+            if (heroImg && !calm && y < 1400) heroImg.style.setProperty('--py', Math.min(44, y * 0.07).toFixed(1) + 'px');
         }
-        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('scroll', function () {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(function () { ticking = false; onScroll(); });
+        }, { passive: true });
+        window.addEventListener('resize', onScroll);
         if ('IntersectionObserver' in window) {
             new IntersectionObserver(function (en) { contactInView = en[0].isIntersecting; onScroll(); }, { threshold: 0.15 }).observe($('#contact'));
         }

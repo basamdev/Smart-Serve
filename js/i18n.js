@@ -319,6 +319,7 @@
         pf_c_loc_v:     { ku: "باحرکە، هەولێر، عێراق", ar: "باحركة، أربيل، العراق", en: "Bahirka, Erbil, Iraq" },
         pf_cv_t:        { ku: "CV ەکەم", ar: "سيرتي الذاتية", en: "My CV" },
         pf_cv_view:     { ku: "بینینی بە قەبارەی تەواو", ar: "عرض بالحجم الكامل", en: "View full size" },
+        pf_motto:       { ku: "خەونی گەورە ببینە، <span class='g'>باشتر دروست بکە.</span>", ar: "احلم بشكل كبير، <span class='g'>وابنِ بشكل أفضل.</span>", en: "Dream big, <span class='g'>build better.</span>" },
         pf_footer_tag:  { ku: "پەرەپێدەری وێب و سیستەمە دیجیتاڵییەکان — هەولێر", ar: "مطور الويب والأنظمة الرقمية — أربيل", en: "Web & digital systems developer — Erbil" },
 
         /* ---- بەسەرچوون / expired ---- */
