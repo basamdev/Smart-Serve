@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Basam Ali — Web &amp; Digital Systems Developer</title>
     <meta name="description" content="Basam Ali Sedqi — web and digital systems developer in Erbil. Websites, mobile apps, QR digital menus and POS systems built with JavaScript, Node.js, SQLite, Electron and Flutter.">
-    <link rel="canonical" href="https://smart-serve-bay.vercel.app/cv.html">
+    <link rel="canonical" href="https://basam-ali-info.vercel.app/">
     <meta property="og:type" content="profile">
     <meta property="og:site_name" content="SmartServe">
     <meta property="og:title" content="Basam Ali — Web &amp; Digital Systems Developer">
     <meta property="og:description" content="Websites, mobile apps, QR digital menus and POS systems — projects, skills and live work.">
-    <meta property="og:url" content="https://smart-serve-bay.vercel.app/cv.html">
-    <meta property="og:image" content="https://smart-serve-bay.vercel.app/images/portfolio/og.jpg">
+    <meta property="og:url" content="https://basam-ali-info.vercel.app/">
+    <meta property="og:image" content="https://basam-ali-info.vercel.app/images/portfolio/og.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Basam Ali Sedqi — web and digital systems developer">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" type="image/png" href="images/icon-192.png">
-    <link rel="apple-touch-icon" href="images/icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/portfolio/favicon-192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/portfolio/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/portfolio/apple-touch-icon.png">
     <meta name="theme-color" content="#05060B" id="metaTheme">
 
     <!-- Theme + language before first paint (shared with the hub and the menu page) -->
@@ -35,6 +36,7 @@
             var th = localStorage.getItem('smartserve_theme') || localStorage.getItem('landing_theme');
             d.setAttribute('data-theme', th === 'light' ? 'light' : 'dark');
         } catch (e) { d.setAttribute('data-theme', 'dark'); }
+        if (!/cv\.html$/i.test(location.pathname)) d.classList.add('standalone');
         d.classList.add('js');
     })();
     </script>
@@ -100,6 +102,10 @@
         .i{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
         .i.b{fill:currentColor;stroke:none}
         :root[dir="rtl"] .flip{transform:scaleX(-1)}
+        /* same file runs on the SmartServe hub (cv.html) and on basam-ali-info.vercel.app */
+        .standalone .hub-only{display:none!important}
+        :root:not(.standalone) .site-only{display:none!important}
+        .ss-logo{width:22px;height:22px;border-radius:50%;object-fit:cover}
         .ltr{direction:ltr;unicode-bidi:isolate}
 
         .bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
@@ -359,26 +365,6 @@
         .meter span{font-size:13px;color:var(--text-2)}
         @property --p{syntax:'<number>';inherits:false;initial-value:0}
 
-        /* live portfolio */
-        .browser{max-width:1080px;margin-inline:auto;border-radius:22px;overflow:hidden;border:1px solid var(--line-2);background:#0B0D16;box-shadow:var(--shadow),0 60px 120px -50px rgba(59,130,246,.35)}
-        .browser .chrome{height:46px;gap:8px;padding-inline:16px}
-        .browser .chrome i{width:12px;height:12px}
-        .browser .chrome b{flex:1;max-width:420px;margin-inline:auto;text-align:center;font-size:12.5px;padding:8px 14px;display:flex;align-items:center;justify-content:center;gap:8px}
-        .browser .chrome b svg{width:12px;height:12px;stroke:#34D399}
-        .browser .chrome a{display:inline-flex;align-items:center;gap:6px;color:#C9CDE4;font:700 12px/1 var(--font);padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.07)}
-        .browser .chrome a:hover{background:rgba(255,255,255,.14)}
-        .browser .chrome a .i{width:14px;height:14px}
-        .bview{position:relative;height:min(640px,72vh);overflow:hidden;background:#07080F}
-        .bview iframe{position:absolute;top:0;left:0;border:0;width:1280px;height:800px;transform-origin:0 0;background:#07080F}
-        .bview .loader{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:14px;color:#8E93B0;font-size:13px;font-weight:600;background:radial-gradient(60% 40% at 50% 40%,rgba(59,130,246,.16),transparent 70%),#07080F;transition:opacity .4s}
-        .bview.loaded .loader{opacity:0;pointer-events:none}
-        .spinner{width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,.12);border-top-color:#60A5FA;animation:spin .9s linear infinite}
-        .shield{display:none;position:absolute;inset:0;z-index:2;align-items:flex-end;justify-content:center;padding-bottom:20px;background:linear-gradient(to top,rgba(0,0,0,.45),transparent 40%)}
-        .shield > span{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.92);color:#0A0C18;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.4)}
-        .shield .i{width:16px;height:16px}
-        @media (hover:none){.shield{display:flex}.bview.interactive .shield{display:none}}
-        .live-cta{display:flex;justify-content:center;margin-top:26px}
-
         /* contact */
         .cta-panel{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;padding:56px;border-radius:36px;overflow:hidden;background:
             radial-gradient(55% 70% at 0% 0%,rgba(34,211,238,.13),transparent 60%),
@@ -493,7 +479,6 @@
         @media (max-width:820px){
             .skills,.projects{grid-template-columns:1fr}
             .section{padding:88px 0}
-            .bview{height:560px}
         }
         @media (max-width:600px){
             .container{padding-inline:16px}
@@ -519,9 +504,6 @@
             .tl{grid-template-columns:40px 1fr;gap:12px}
             .tl-dot{width:40px;height:40px}
             .timeline::before{inset-inline-start:19px}
-            .bview{height:520px}
-            .browser .chrome b{display:none}
-            .browser .chrome a{margin-inline-start:auto}
             .cta-panel{padding:28px 18px;border-radius:28px}
             .foot-top{grid-template-columns:1fr}
             .fab{width:52px;height:52px;bottom:16px;inset-inline-end:16px}
@@ -602,7 +584,8 @@
                     <svg class="i sun"><use href="#i-sun"/></svg>
                     <svg class="i moon"><use href="#i-moon"/></svg>
                 </button>
-                <a class="icon-btn hub-desk" href="index.html" data-i18n-title="lnd_hub_back">
+                <a class="icon-btn hub-desk site-only" href="https://smart-serve-bay.vercel.app/" title="SmartServe"><img class="ss-logo" src="images/portfolio/favicon-192.png" alt="" width="22" height="22"><span class="sr-only">SmartServe</span></a>
+                <a class="icon-btn hub-desk hub-only" href="index.html" data-i18n-title="lnd_hub_back">
                     <svg class="i"><use href="#i-grid"/></svg>
                     <span class="sr-only" data-i18n="lnd_hub_back">Back to Hub</span>
                 </a>
@@ -620,7 +603,8 @@
             <a href="#journey"><span data-i18n="pf_nav_journey">Journey</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
             <a href="#contact"><span data-i18n="pf_nav_contact">Contact</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
             <div class="mnav-actions">
-                <a class="btn btn-ghost" href="index.html"><svg class="i"><use href="#i-grid"/></svg><span data-i18n="lnd_hub_back">Back to Hub</span></a>
+                <a class="btn btn-ghost hub-only" href="index.html"><svg class="i"><use href="#i-grid"/></svg><span data-i18n="lnd_hub_back">Back to Hub</span></a>
+                <a class="btn btn-ghost site-only" href="https://smart-serve-bay.vercel.app/"><img class="ss-logo" src="images/portfolio/favicon-192.png" alt="" width="22" height="22"><span>SmartServe</span></a>
                 <a class="btn btn-primary" href="images/cv-basam.jpg" download="Basam_Ali_Sedqi_CV.jpg"><svg class="i"><use href="#i-dl"/></svg><span data-i18n="pf_download">Download CV</span></a>
             </div>
         </nav>
@@ -775,7 +759,7 @@
                             <h3 data-i18n="pf_pos_t">SmartServe Restaurant POS</h3>
                             <p data-i18n="pf_pos_d"></p>
                             <div class="stack"><span>Electron</span><span>Node.js</span><span>Express</span><span>SQLite</span><span>JavaScript</span></div>
-                            <a class="btn btn-primary btn-sm" href="pos.html"><span data-i18n="pf_view_project">View project</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
+                            <a class="btn btn-primary btn-sm" href="https://smart-serve-bay.vercel.app/pos.html"><span data-i18n="pf_view_project">View project</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
                         </div>
                     </article>
                     <article class="card proj" data-reveal>
@@ -788,7 +772,7 @@
                             <h3 data-i18n="pf_mpos_t">Market POS System</h3>
                             <p data-i18n="pf_mpos_d"></p>
                             <div class="stack"><span>Node.js</span><span>SQLite</span><span>JavaScript</span></div>
-                            <a class="btn btn-ghost btn-sm" href="market-pos.html"><span data-i18n="pf_view_project">View project</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
+                            <a class="btn btn-ghost btn-sm" href="https://smart-serve-bay.vercel.app/market-pos.html"><span data-i18n="pf_view_project">View project</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
                         </div>
                     </article>
                     <article class="card proj" data-reveal>
@@ -804,7 +788,7 @@
                             <h3 data-i18n="pf_menus_t">SmartServe Digital Menus</h3>
                             <p data-i18n="pf_menus_d"></p>
                             <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>QR</span></div>
-                            <a class="btn btn-ghost btn-sm" href="landing.html"><span data-i18n="pf_view_project">View project</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
+                            <a class="btn btn-ghost btn-sm" href="https://smart-serve-bay.vercel.app/landing.html"><span data-i18n="pf_view_project">View project</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
                         </div>
                     </article>
                 </div>
@@ -872,32 +856,6 @@
             </div>
         </section>
 
-        <!-- ============ LIVE PORTFOLIO ============ -->
-        <section class="section" id="live">
-            <div class="container">
-                <header class="sec-head" data-reveal>
-                    <span class="eyebrow"><b class="num">06</b><span data-i18n="pf_live_eb">Live portfolio</span></span>
-                    <h2 data-i18n="pf_live_h">Explore my <span class="g">full portfolio</span></h2>
-                    <p data-i18n="pf_live_p">The complete site, live — scroll it right here or open it in a new tab.</p>
-                </header>
-                <div class="browser" data-reveal>
-                    <div class="chrome">
-                        <i></i><i></i><i></i>
-                        <b><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-lock"/></svg>basam-ali-info.vercel.app</b>
-                        <a href="https://basam-ali-info.vercel.app/" target="_blank" rel="noopener noreferrer"><svg class="i"><use href="#i-ext"/></svg><span data-i18n="lnd_open_new">Open in a new tab</span></a>
-                    </div>
-                    <div class="bview" id="bview">
-                        <div class="loader"><span class="spinner"></span><span data-i18n="pf_loading">Loading portfolio…</span></div>
-                        <iframe id="siteFrame" title="Basam Ali — full portfolio (live)" data-src="https://basam-ali-info.vercel.app/" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"></iframe>
-                        <button type="button" class="shield" id="shield"><span><svg class="i"><use href="#i-hand"/></svg><span data-i18n="lnd_tap">Tap to explore</span></span></button>
-                    </div>
-                </div>
-                <div class="live-cta" data-reveal>
-                    <a class="btn btn-ghost" href="https://basam-ali-info.vercel.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="pf_open_site">Open full site</span><svg class="i"><use href="#i-ext"/></svg></a>
-                </div>
-            </div>
-        </section>
-
         <!-- ============ STATEMENT ============ -->
         <section class="statement" aria-label="Motto">
             <div class="container" data-reveal>
@@ -915,7 +873,7 @@
             <div class="container">
                 <div class="cta-panel" data-reveal>
                     <div>
-                        <span class="eyebrow"><b class="num">07</b><span data-i18n="pf_contact_eb">Get in touch</span></span>
+                        <span class="eyebrow"><b class="num">06</b><span data-i18n="pf_contact_eb">Get in touch</span></span>
                         <h2 data-i18n="pf_contact_h">Let's <span class="g">talk</span></h2>
                         <p data-i18n="pf_cta_line">Turn your ideas into a smart, fast and professional system.</p>
                         <div class="contacts">
@@ -972,7 +930,8 @@
             </div>
             <div class="foot-bottom">
                 <span>© 2026 <span data-i18n="pf_name_plain">Basam Ali</span>. <span data-i18n="lnd_rights">All rights reserved.</span></span>
-                <a href="index.html"><svg class="i flip"><use href="#i-chev"/></svg><span data-i18n="lnd_hub_back">Back to Hub</span></a>
+                <a class="hub-only" href="index.html"><svg class="i flip"><use href="#i-chev"/></svg><span data-i18n="lnd_hub_back">Back to Hub</span></a>
+                <a class="site-only" href="https://smart-serve-bay.vercel.app/"><img class="ss-logo" src="images/portfolio/favicon-192.png" alt="" width="22" height="22" loading="lazy"><span>SmartServe</span><svg class="i"><use href="#i-ext"/></svg></a>
             </div>
         </div>
     </footer>
@@ -987,7 +946,7 @@
         <img id="lbImg" src="data:," alt="CV of Basam Ali Sedqi" data-src="images/cv-basam.jpg">
     </div>
 
-    <script src="js/i18n.js"></script>
+    <script src="js/portfolio-i18n.js"></script>
     <script>
     (function () {
         'use strict';
@@ -1059,11 +1018,11 @@
             var spy = new IntersectionObserver(function (entries) {
                 entries.forEach(function (en) {
                     if (!en.isIntersecting) return;
-                    var id = en.target.id === 'services' ? 'projects' : en.target.id === 'live' ? 'journey' : en.target.id;
+                    var id = en.target.id === 'services' ? 'projects' : en.target.id;
                     navLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
                 });
             }, { rootMargin: '-45% 0px -50% 0px' });
-            ['top', 'about', 'skills', 'projects', 'services', 'journey', 'live', 'contact'].forEach(function (id) { var s = document.getElementById(id); if (s) spy.observe(s); });
+            ['top', 'about', 'skills', 'projects', 'services', 'journey', 'contact'].forEach(function (id) { var s = document.getElementById(id); if (s) spy.observe(s); });
         }
 
         /* ---------- reveal on scroll (+ language rings) ---------- */
@@ -1094,33 +1053,6 @@
                 el.style.setProperty('--my', (e.clientY - r.top) + 'px');
             });
         });
-
-        /* ---------- live portfolio in a browser window (loads when near) ---------- */
-        var bview = $('#bview'), frame = $('#siteFrame');
-        function fit() {
-            var w = bview.clientWidth, h = bview.clientHeight;
-            if (!w || !h) return;
-            var base = w < 640 ? 390 : 1280;
-            var s = w / base;
-            frame.style.width = base + 'px';
-            frame.style.height = Math.ceil(h / s) + 'px';
-            frame.style.transform = 'scale(' + s + ')';
-        }
-        if ('ResizeObserver' in window) new ResizeObserver(fit).observe(bview);
-        window.addEventListener('resize', fit);
-        fit();
-        function loadSite() {
-            if (frame.getAttribute('src')) return;
-            var timer = setTimeout(function () { bview.classList.add('loaded'); }, 9000);
-            frame.addEventListener('load', function () { clearTimeout(timer); bview.classList.add('loaded'); });
-            frame.setAttribute('src', frame.getAttribute('data-src'));
-        }
-        if ('IntersectionObserver' in window) {
-            var lio = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { loadSite(); lio.disconnect(); } }, { rootMargin: '600px 0px' });
-            lio.observe(bview);
-        } else { loadSite(); }
-        $('#shield').addEventListener('click', function () { bview.classList.add('interactive'); });
-        document.addEventListener('click', function (e) { if (!bview.contains(e.target)) bview.classList.remove('interactive'); });
 
         /* ---------- CV lightbox ---------- */
         var lb = $('#lightbox'), lbImg = $('#lbImg'), lastFocus = null;
