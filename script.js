@@ -76,6 +76,9 @@ const HUB_TRANSLATIONS = {
         cv_btn: 'بینینی پۆرتفۆلیۆ',
         social_title: 'سۆشیاڵ میدیا',
         social_desc: 'براندینگی دا‌هێنەرانە و دیزاینی تۆڕە کۆمەڵایەتییەکان',
+        brew_title: 'مێنیوی Brew',
+        brew_desc: 'مێنیوی دیجیتاڵی شیک بۆ کافێ و شوێنەکانی قاوە',
+        brew_btn: 'بینینی مێنیو',
         footer_text: '© ٢٠٢٦ سمارت سێرڤ. هەموو مافەکان پارێزراون.',
         select_lang: 'زمان هەڵبژێرە'
     },
@@ -101,6 +104,9 @@ const HUB_TRANSLATIONS = {
         cv_btn: 'دیتنا پۆرتفۆلیۆیێ',
         social_title: 'تۆرێن جڤاکی',
         social_desc: 'براندینگا داهێنەرانە و دیزاینێ سوشیال میدیایێ',
+        brew_title: 'مێنیویا Brew',
+        brew_desc: 'مێنیویا دیجیتالی یا شیک بۆ کافە و قاوەخانەیان',
+        brew_btn: 'دیتنا مێنیویێ',
         footer_text: '© ٢٠٢٦ سمارت سێرڤ. هەمی ماف پاراستینە.',
         select_lang: 'زمانێ خۆ هەلبژێره'
     },
@@ -126,6 +132,9 @@ const HUB_TRANSLATIONS = {
         cv_btn: 'Portfolyoyê Bibîne',
         social_title: 'Medyaya Civakî',
         social_desc: 'Brandinga Afirîner û Sêwirana Medyaya Civakî',
+        brew_title: 'Menûya Brew',
+        brew_desc: 'Menûya Dîjîtal a Şêrîn ji bo Qehwexane û Kafeyên',
+        brew_btn: 'Menûyê Bibîne',
         footer_text: '© 2026 Smart Serve. Hemû maf parastî ne.',
         select_lang: 'Ziman Hilbijêre'
     },
@@ -151,6 +160,9 @@ const HUB_TRANSLATIONS = {
         cv_btn: 'عرض الملف',
         social_title: 'التواصل الاجتماعي',
         social_desc: 'الهوية البصرية الإبداعية وتصاميم السوشيال ميديا',
+        brew_title: 'منيو Brew',
+        brew_desc: 'منيو رقمي أنيق للكافيهات ومحلات القهوة',
+        brew_btn: 'عرض المنيو',
         footer_text: '© ٢٠٢٦ سمارت سيرف. جميع الحقوق محفوظة.',
         select_lang: 'اختر اللغة'
     },
@@ -176,6 +188,9 @@ const HUB_TRANSLATIONS = {
         cv_btn: 'View Portfolio',
         social_title: 'Social Media',
         social_desc: 'Creative Branding & Social Media Design',
+        brew_title: 'Brew Smart Menu',
+        brew_desc: 'Elegant Café & Coffee Shop Digital Menu',
+        brew_btn: 'View Menu',
         footer_text: '© 2026 Smart Serve. All rights reserved.',
         select_lang: 'Select Language'
     }
